@@ -702,7 +702,7 @@ Scelta dei candidati:
 
 Calcolo della **[[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|chiusura]]**:
 
-- Per ogni candidato **X**, calcola la sua chiusura <b>X<sup>+</sup></b> utilizzando l'**[[Functional Dependencies#Algoritmo|algoritmo]]**.
+- Per ogni candidato **X**, calcola la sua chiusura <b>X<sup>+</sup></b> utilizzando l'**[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]]**.
 - Se <b>X<sup>+</sup></b> **= R** allora (**[[Functional Dependencies#CHIAVI|unicità]]** confermata): **X** è una **superchiave**.
 
 Verifica della **[[Functional Dependencies#CHIAVI|minimalità]]**:

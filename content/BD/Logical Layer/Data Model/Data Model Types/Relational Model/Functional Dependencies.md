@@ -860,22 +860,22 @@ Una **copertura minimale** è una versione “ridotta all’essenziale” di un 
 
 Perché **G** sia una copertura minimale di **F**, per ogni **DF** in **G** devono valere tre proprietà:
 
-- **Parte destra ridotta a singleton:** ^cb10f5
+**Parte destra ridotta a singleton:** ^cb10f5
 
-	- Ogni dipendenza funzionale in **G** ha a come determinato un solo attributo.
-	- **Esempio:** invece di scrivere **A → BC**, si scrive **A → B** e **A → C** ([[Functional Dependencies#Decomposizione (Decomposition / Projectivity)|decomposizione]]).
+- Ogni dipendenza funzionale in **G** ha a come determinato un solo attributo.
+- **Esempio:** invece di scrivere **A → BC**, si scrive **A → B** e **A → C** ([[Functional Dependencies#Decomposizione (Decomposition / Projectivity)|decomposizione]]).
 
-- **Parte sinistra non ridondante:** ^2c0cc2
+**Parte sinistra non ridondante:** ^2c0cc2
 
-	- In ogni dipendenza **X → A**, nessun attributo di **X** è superfluo.
-	- **Formalmente:** per nessuna dipendenza funzionale **X → A** in **G** esiste un sottoinsieme **X' ⊂ X** tale che **G ≡ G - {X → A} ∪ {X' → A}**, ovvero tale che **X' → A** sia già implicato da **G**.
-	- **Esempio:** se ho **AB → C**, ma già **A → C** è implicato, allora **B** è ridondante e va tolto.
+- In ogni dipendenza **X → A**, nessun attributo di **X** è superfluo.
+- **Formalmente:** per nessuna dipendenza funzionale **X → A** in **G** esiste un sottoinsieme **X' ⊂ X** tale che **G ≡ G - {X → A} ∪ {X' → A}**, ovvero tale che **X' → A** sia già implicato da **G**.
+- **Esempio:** se ho **AB → C**, ma già **A → C** è implicato, allora **B** è ridondante e va tolto.
 
-- **Dipendenza non ridondante:** ^f19a2d
+**Dipendenza non ridondante:** ^f19a2d
 
-	- Nessuna dipendenza di **G** è superflua o ridondante.
-	- **Formalmente:** per nessuna dipendenza funzionale **X → A** in **G** vale **G ≡ G - {X → A}**.
-	- Ogni dipendenza di **G** è indispensabile per mantenere l’equivalenza **G ≡ F**.
+- Nessuna dipendenza di **G** è superflua o ridondante.
+- **Formalmente:** per nessuna dipendenza funzionale **X → A** in **G** vale **G ≡ G - {X → A}**.
+- Ogni dipendenza di **G** è indispensabile per mantenere l’equivalenza **G ≡ F**.
 
 ---
 #### Calcolo della copertura minimale di F:
@@ -883,7 +883,7 @@ Perché **G** sia una copertura minimale di **F**, per ogni **DF** in **G** devo
 Per ogni insieme di dipendenze funzionali **F** esiste una copertura minimale, equivalente ad **F**, che può essere ottenuta **in tempo polinomiale** in tre passi:
 
 1. Usando la regola della [[Functional Dependencies#Decomposizione (Decomposition / Projectivity)|decomposizione]], le parti destre delle dipendenze funzionali vengono ridotte a singleton. Quindi ogni dipendenza funzionale **X → Y** viene decomposta ricorsivamente fino a quando **|Y| = 1**  (il singolo attributo **A**). ([[Functional Dependencies#^cb10f5|...]])
-2. Ogni dipendenza funzionale <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> <b style="color: blueviolet;">A<sub>i</sub></b> A<sub>i+1</sub>... A<sub>n</sub> → A</b> in **F** tale che: **F ≡ F - { <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> <b style="color: blueviolet;">A<sub>i</sub></b> A<sub>i+1</sub>... A<sub>n</sub> → A</b> } ∪ { <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b> }** viene sostituita da <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b>. Il processo viene ripetuto ricorsivamente su <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b> fino a quando la dipendenza non può essere più ridotta (cioè quando tutti gli attributi del determinante risultano non ridondanti). ([[Functional Dependencies#^2c0cc2|...]])
-3. Ogni dipendenza funzionale **X → A** in **F** tale che **F ≡ F - {X → A}** viene eliminata, in quanto risulta ridondante. ([[Functional Dependencies#^f19a2d|...]])
+2. Ogni dipendenza funzionale <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> <b style="color: blueviolet;">A<sub>i</sub></b> A<sub>i+1</sub>... A<sub>n</sub> → A</b> in **F** tale che: **F ≡ F - { <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> <b style="color: blueviolet;">A<sub>i</sub></b> A<sub>i+1</sub>... A<sub>n</sub> → A</b> } ∪ { <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b> }** viene sostituita da <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b>. Il processo viene ripetuto ricorsivamente su <b>A<sub>1</sub> A<sub>2</sub>... A<sub>i-1</sub> A<sub>i+1</sub>... A<sub>n</sub> → A</b> fino a quando la dipendenza non può essere più ridotta (cioè quando tutti gli attributi del determinante risultano non ridondanti). Detto in altre parole, data **X → A**, se esiste un sottoinsieme **V** di **X** tale che <b>A ⊆ V<sup>+</sup></b> allora posso sostituire **X → A** con **V → A**. ([[Functional Dependencies#^2c0cc2|...]])
+3. Ogni dipendenza funzionale **X → A** in **F** tale che **F ≡ F - {X → A}** viene eliminata, in quanto risulta ridondante. Detto in altre parole, data **X → A**, se <b>A ⊆ X<sup>+</sup><sub>F - {X → A}</sub></b> allora posso eliminare **X → A**. ([[Functional Dependencies#^f19a2d|...]])
 
 ---

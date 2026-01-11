@@ -477,6 +477,10 @@ end
 - **Input:** uno schema **R**, una [[Functional Dependencies#COPERTURA MINIMALE|copertura minimale]] **F** su **R**.
 - **Output:** una decomposizione **ρ** di **R** che preserva **F** e che per ogni ***i, i=1, ..., k*** : <b>R<sub>i</sub></b> è in **3NF**.
 
+> N.B. La copertura minimale non garantisce che una chiave candidata compaia ancora in qualche dipendenza funzionale. Per questo motivo, **se si desidera garantire anche la proprietà di [[Decomposition#DECOMPOSIZIONI CON JOIN SENZA PERDITA|join senza perdita]]**, è necessario verificare che la decomposizione finale **ρ** contenga almeno un sottoschema che includa una chiave candidata di **R**. Se ciò non accade, allora si aggiunge esplicitamente una relazione contenente una chiave candidata: **ρ := ρ ∪ {K}** dove **K** è una chiave candidata di **R**. Questo passo **non è obbligatorio** per la sola preservazione delle dipendenze e per la 3NF, ma **diventa necessario** se si vuole assicurare che la decomposizione sia anche **lossless**.
+
+^0e840c
+
 ---
 
 **Inizializzazione:**
@@ -543,7 +547,7 @@ Se non esiste una **DF** totale su **R**:
 for every X → A ∈ F do: ρ := ρ ∪ (X ∪ A)
 ```
 
-Per ogni dipendenza minimale con lato destro singolo **A** (come richiesto dalla [[Functional Dependencies#COPERTURA MINIMALE|copertura minimale]]) aggiunge una relazione (sottoschema di **R**) contenente gli attributi di **X** insieme all’attributo **A** (attributi della **DF**).
+Per ogni dipendenza minimale con lato destro singolo **A** (come richiesto dalla [[Functional Dependencies#COPERTURA MINIMALE|copertura minimale]]) aggiunge una relazione (sottoschema di **R**) contenente gli attributi di **X** insieme all’attributo **A** (attributi della **DF**). ([[Decomposition#^0e840c|N.B.]])
 
 ---
 

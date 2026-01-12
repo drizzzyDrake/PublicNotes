@@ -293,7 +293,7 @@ b.setOnClickListener(new OnClickListener() {
 ---
 ### CLASSE STATICA
 
-Una **classe statica** è una [[Classes#CLASSE INTERNA|classe interna]] dichiarata con `static`.  
+Una **classe statica** è una classe dichiarata con `static`.  
 È spesso usata per **raggruppare metodi di utilità** o **costanti**, perché **non ha bisogno di un'istanza esterna**.
 
 **Esempio:**

@@ -15,29 +15,29 @@ Un **algoritmo di hashing** trasforma il valore della chiave in un **indirizzo d
 
 Numero **massimo** di record che **un bucket può contenere**:
 
-$$CAP = \left\lfloor\frac{BS}{RS}\right\rfloor$$
+$$CAP = \left\lfloor\frac{BTS}{RS}\right\rfloor$$
 
 Dove:
 
-- **BS** = dimensione del bucket (in byte)
+- **BTS** = dimensione del bucket (in byte)
 - **RS** = dimensione dei record (in byte)
 
 ---
 
 Numero di record che finiscono **in media** in un bucket:
 
-$$AVG = \frac{NR}{NB}$$
+$$AVG = \frac{NR}{NBT}$$
 
 Dove:
 
 - **NR** = numero totale di record nel file
-- **NB** = numero di bucket
+- **NBT** = numero di bucket
 
 ---
 
 Il **numero di bucket dell’area primaria (non in overflow) del file hash**, cioè il numero di indirizzi distinti generabili dalla funzione di hashing:
 
-$$NB = \left\lceil \frac{NR}{BS \times LF} \right\rceil$$
+$$NBT = \left\lceil \frac{NR}{BTS \times LF} \right\rceil$$
 
 Dove:
 
@@ -60,7 +60,7 @@ Un **hash function** definisce la trasformazione:
 
 <b>address(key<sub>i​</sub>) = key<sub>i</sub> mod M</b>
 
-- **M** = numero di indirizzi hash possibili (spesso un numero primo vicino ma leggermente più grande di **NB**)
+- **M** = numero di indirizzi hash possibili (spesso un numero primo vicino ma leggermente più grande di **NBT**)
 - il resto (mod) della divisione determina il bucket di destinazione
 
 L’obiettivo è ottenere una **distribuzione uniforme** delle chiavi sui bucket.
@@ -106,8 +106,8 @@ La struttura indicizzata permette accessi diretti ai blocchi:
 **Hash file:**
 
 - **Capacità bucket (CAP)** = **2** record per blocco
-- **NR** = **5** record → **NB** = **⌈5/2⌉** = **3** bucket necessari
-- Scegliamo **M = 5** (numero primo > **NB**)
+- **NR** = **5** record → **NBT** = **⌈5/2⌉** = **3** bucket minimi necessari
+- Scegliamo **M = 5** (numero primo > **NBT**)
 
 ```powershell
 FILE HASH

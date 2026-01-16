@@ -174,7 +174,7 @@ public class Pesce extends Animale implements Preda, Predatore {
 ---
 #### Interfaccia funzionale
 
-Un’interfaccia funzionale è una **interfaccia che ha un solo metodo (astratto)**. Le interfacce funzionali sono utili perché a queste fanno riferimento le [[Lambda Functions|funzioni lambda]].
+Un’interfaccia funzionale è una **interfaccia che ha un solo metodo astratto** (può avere più metodi `default` o `static`, purché abbia un solo metodo astratto). Le interfacce funzionali sono utili perché a queste fanno riferimento le [[Lambda Functions|funzioni lambda]].
 
 **Esempio:**
 
@@ -211,7 +211,7 @@ import java.util.function.*;
 
 Una **classe interna** è una classe **dichiarata all’interno di un’altra classe**.
 
-**Classe interna non statica**: Ha accesso ai membri dell’oggetto esterno.
+**Classe interna non statica**: Ha accesso a tutti i membri dell’oggetto esterno.
 
 ```java
 public class Esterna {

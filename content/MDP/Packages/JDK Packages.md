@@ -6,6 +6,8 @@ In **Java**, alcuni package sono considerati **"speciali"** perché fanno parte 
 ### PACKAGE IMPORTATI DI DEFAULT
 
 Questi package non necessitano di `import` perché sono automaticamente disponibili in tutti i programmi Java:
+
+---
 #### **`java.lang`**
 
 **Contiene classi fondamentali** come `String`, `Math`, `System`, `Thread`, e `Object` (la classe base da cui derivano tutte le classi Java).
@@ -16,6 +18,8 @@ Questi package non necessitano di `import` perché sono automaticamente disponib
 ### PACKAGE STANDARD
 
 Questi package **devono essere importati** con `import nome_package.*;` o con `import nome_package.Classe;`:
+
+---
 #### **`java.util`**
 
 Include **collezioni di dati** (come `ArrayList`, `HashMap`, `HashSet`), utilità per la gestione di date (`Date`, `Calendar`), strumenti per la gestione delle stringhe e molto altro.
@@ -29,7 +33,10 @@ Gestisce l'**input/output**, ovvero la lettura e scrittura di file, flussi di da
 
 **Tree:** https://docs.oracle.com/javase/8/docs/api/java/io/package-tree.html
 
-**`java.nio`** → Alternativa più veloce a `java.io` per I/O bufferizzato.
+---
+#### **`java.nio`** 
+
+Alternativa più veloce a `java.io` per I/O bufferizzato.
 
 **Tree:** https://docs.oracle.com/javase/8/docs/api/java/nio/package-tree.html
 

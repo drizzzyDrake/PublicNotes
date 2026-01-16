@@ -1,5 +1,4 @@
-**Collection** in Java è un'interfaccia **contenuta nel [[Packages|package]] `java.util`** che permette di **memorizzare, accedere e manipolare gruppi di oggetti attraverso strutture dati**.  
-Collection estende l'interfaccia [[Iterable]] del package `java.lang` (tutte le collezioni sono iterabili). Collection **non include gli array**, ma li possono sostituire in modo più flessibile.
+**Collection** in Java è un'interfaccia **contenuta nel [[Packages|package]] `java.util`** che permette di **memorizzare, accedere e manipolare gruppi di oggetti attraverso strutture dati**. Collection estende l'interfaccia [[Iterable]] del package `java.lang` (tutte le collezioni sono iterabili). Collection **non include gli array**, ma li possono sostituire in modo più flessibile.
 
 ---
 ### FRAMEWORK COLLECTION (GERARCHIA)

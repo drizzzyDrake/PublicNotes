@@ -47,8 +47,8 @@ System.out.println(somma.esegui(4, 5)); // 9
 **Predicate (ritorna booleano)**
 
 ```java
-Predicate<String> èLunga = s -> s.length() > 5;
-System.out.println(èLunga.test("Java")); // false
+Predicate<String> lunghezza = s -> s.length() > 5;
+System.out.println(lunghezza.test("Java")); // false
 ```
 
 **Function (trasforma un valore)**

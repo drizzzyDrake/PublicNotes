@@ -1,4 +1,4 @@
-La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione dei programmi Java attraverso un modello di memoria strutturato in aree distinte, ognuna con un ruolo specifico.
+La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione dei programmi Java attraverso un modello di memoria virtuale strutturato in aree distinte, ognuna con un ruolo specifico.
 
 ---
 ### HEAP
@@ -6,15 +6,15 @@ La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione
 **Caratteristiche**: 
 
 - Area di memoria più grande, condivisa tra tutti i thread. 
-- Gestita dal **Garbage Collector**. 
+- Gestita dal **[[Garbage Collector]]**. 
 - Divisa in **Young Generation** (Eden + Survivor spaces) e **Old Generation**.
 - Contiene il [[Strings Pool|pool di stringhe]].
 
 **Contenuto**:
 
 - Oggetti creati con `new`.
-- Variabili di istanza (campi degli oggetti).
-- Array.
+- [[Variables#Variabili d'istanza (non `static`)|Variabili d'istanza]].
+- [[MDP/Types/Arrays|Array]].
 
 ---
 ### STACK
@@ -27,7 +27,7 @@ La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione
 
 **Contenuto**:
 
-- Variabili locali (primitive e riferimenti ad oggetti nell’Heap).
+- [[Variables#Variabili locali|Variabili locali]].
 - Parametri dei metodi.
 - Indirizzi di ritorno.
 
@@ -42,9 +42,8 @@ La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione
 
 **Contenuto**:
 
-- Metadati delle **classi caricate** (nomi, metodi, campi, bytecode).
-- Costanti e pool dei metodi.
-- Dati usati dai **Class Loader**.   
+- Metadati delle **classi caricate** (struttura della classe).
+- Constant pool.   
 
 ---
 ### PROGRAM COUNTER
@@ -77,7 +76,7 @@ La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione
 ```r
 +---------------------------+
 |           Heap            |          
-|   Location: Native Memory |
+|   Location: JVM Memory    |
 +---------------------------+
 |        Metaspace          |
 |   Location: Native Memory |
@@ -104,7 +103,7 @@ La [[JDK#COMPONENTI DEL JDK|JVM]] (Java Virtual Machine) gestisce l’esecuzione
 class Persona {
 	
 	static int contatore = 0;  
-	// Memorizzato nel METASPACE (perché è statico)
+	// Memorizzato nell'HEAP (static -> metadato nel metaspace)
 	
     String nome;  
     // Memorizzato nell'HEAP (parte dell'oggetto)
@@ -113,7 +112,7 @@ class Persona {
         this.nome = nome;  
         // La variabile nome è salvata nell'HEAP
         contatore++;  
-        // La variabile statica rimane nel METASPACE
+        // La variabile statica rimane nell'HEAP
     }
     
     public void mostraNome() {
@@ -121,7 +120,7 @@ class Persona {
         // La variabile "nome" è recuperata dall'HEAP
     }
     
-    // Metodo statico (memorizzato nel METASPACE)
+    // Eseguito nello stack del thread (static -> bytecode nel metaspace)
     public static void mostraContatore() {
         System.out.println("Numero di persone create: " + contatore);
     }
@@ -146,8 +145,10 @@ public class StackHeapExample {
         // Recupera "Kanye" dall'HEAP
 		
         Persona.mostraContatore();
-		/* Chiamata a un metodo statico 
-		   (non dipende da un'istanza singola, eseguito dal Metaspace) */
+		/* Chiamata a un metodo statico:
+			non dipende da un'istanza,
+			bytecode nel Metaspace,
+			esecuzione nello stack del thread */
     }
 }
 ```

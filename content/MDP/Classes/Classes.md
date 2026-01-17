@@ -209,9 +209,9 @@ import java.util.function.*;
 ---
 ### CLASSE INTERNA
 
-Una **classe interna** è una classe **dichiarata all’interno di un’altra classe**.
+Una **classe interna** (nested class) è una classe **dichiarata all’interno di un’altra classe**.
 
-**Classe interna non statica**: Ha accesso a tutti i membri dell’oggetto esterno.
+**Classe interna non statica (inner class)**: Ha accesso a tutti i membri dell’oggetto esterno. Può essere istanziata fuori dalla classe esterna solo attraverso un oggetto della classe esterna.
 
 ```java
 public class Esterna {
@@ -225,7 +225,7 @@ public class Esterna {
 }
 ```
 
-**Classe interna statica**: È indipendente dall’istanza esterna.
+**Classe interna statica (static nested class)**: È indipendente dall’istanza esterna e può accedere solo ai membri statici della classe esterna.
 
 ```java
 public class Esterna {
@@ -237,7 +237,7 @@ public class Esterna {
 }
 ```
 
-**Classe locale (in un metodo)**: Definita all’interno di un metodo.
+**Classe locale (local class)**: Definita all’interno di un blocco di codice, come ad esempio un metodo. Il suo scope è limitato all'interno del metodo, non può essere istanziata all'esterno di esso.
 
 ```java
 public void metodo() {

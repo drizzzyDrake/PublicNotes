@@ -14,8 +14,8 @@ java.lang.Object
 ```
 
 Questa superclasse ha due sottoclassi principali:
-**[[Error|Error]]**: problemi gravi e generalmente non recuperabili 
-**[[Exception|Exception]]**: condizioni anomale che il programma può gestire
+- **[[Error|Error]]**: problemi gravi e generalmente non recuperabili 
+- **[[Exception|Exception]]**: condizioni anomale che il programma può gestire
 
 ---
 ### COSTRUTTORI E METODI PRINCIPALI DI `Throwable`

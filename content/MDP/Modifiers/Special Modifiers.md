@@ -1,4 +1,6 @@
 I modificatori speciali modificano il comportamento predefinito delle variabili, dei metodi e delle classi in Java.
+
+---
 ### FINAL (COSTANTE)
 
 Il valore non può essere modificato dopo l'assegnazione iniziale.

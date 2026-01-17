@@ -6,10 +6,10 @@ Supporta la lettura di vari tipi di dati (stringhe, numeri, booleani, ecc.) e su
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-Può leggere dati da: `System.in`, file (`File`), stringhe (`String`), stream (`InputStream`).
-Divide il testo in **token** usando un delimitatore (default: spazi bianchi).
-Fornisce metodi **specifici** per diversi tipi di dati (`nextInt()`, `nextDouble()`, ecc.).
-È **bloccante**: il programma attende finché l’input non è disponibile.
+- Può leggere dati da: `System.in`, file (`File`), stringhe (`String`), stream (`InputStream`).
+- Divide il testo in **token** usando un delimitatore (default: spazi bianchi).
+- Fornisce metodi **specifici** per diversi tipi di dati (`nextInt()`, `nextDouble()`, ecc.).
+- È **bloccante**: il programma attende finché l’input non è disponibile.
 
 ---
 ### METODI PRINCIPALI

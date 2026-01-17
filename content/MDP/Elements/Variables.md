@@ -1,7 +1,11 @@
 Le variabili in Java hanno tutte un tipo e vengono classificate in base a:
+
+---
 ### AMBITO (SCOPE)
 
 Questa classificazione dipende da dove e per quanto tempo la variabile è accessibile.
+
+---
 #### Variabili locali
 
 - Dichiarate all'interno di un metodo, costruttore o blocco.
@@ -12,12 +16,13 @@ Questa classificazione dipende da dove e per quanto tempo la variabile è access
 ```java
 class Numero {
 	public void metodo() {
-	    int numero = 11; // Variabile locale
+	    int numero = 11;  // Variabile locale
 	    System.out.println(numero);
 	}
 }
 ```
 
+---
 #### Variabili d'istanza (non `static`)
 
 - Dichiarate all'interno di una classe, ma fuori dai metodi.
@@ -32,6 +37,7 @@ class Persona {
 }
 ```
 
+---
 #### Variabili di classe (`static`)
 
 - Appartengono alla **classe** e non a una singola istanza.

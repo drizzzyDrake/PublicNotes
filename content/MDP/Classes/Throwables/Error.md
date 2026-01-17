@@ -5,10 +5,10 @@ In Java, un **`Error`** è una sottoclasse della classe [[Throwable]] che rappre
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Derivano da `Throwable`** ma non sono [[Exception|eccezioni]]:
-**Non vanno catturati con `try-catch`**: tecnicamente è possibile farlo, ma è **sconsigliato**, perché nasconderebbe problemi gravi invece di farli emergere.
-**Non vanno dichiarati con `throws`**: non è necessario (né utile) dichiarare che un metodo può lanciare un `Error`.
-**Sono in genere irrecuperabili**: l'applicazione non dovrebbe tentare di gestirli, ma piuttosto **prevenirli**.
+- **Derivano da `Throwable`** ma non sono [[Exception|eccezioni]]:
+- **Non vanno catturati con `try-catch`**: tecnicamente è possibile farlo, ma è **sconsigliato**, perché nasconderebbe problemi gravi invece di farli emergere.
+- **Non vanno dichiarati con `throws`**: non è necessario (né utile) dichiarare che un metodo può lanciare un `Error`.
+- **Sono in genere irrecuperabili**: l'applicazione non dovrebbe tentare di gestirli, ma piuttosto **prevenirli**.
 
 ---
 ### ESEMPI COMUNI DI `Error`

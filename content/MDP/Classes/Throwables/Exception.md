@@ -21,15 +21,9 @@ Throwable
            └── IndexOutOfBoundsException   (unchecked)
 ```
 
-**Checked exceptions (eccezioni verificate)**
-Devono essere dichiarate nel metodo con `throws` oppure gestite con `try-catch`.
-Il compilatore verifica che siano correttamente gestite (da qui il termine "checked").
-Se non gestite o dichiarate, il codice non compila.
+- **Checked exceptions (eccezioni verificate):** Devono essere dichiarate nel metodo con `throws` oppure gestite con `try-catch`. Il compilatore verifica che siano correttamente gestite (da qui il termine "checked"). Se non gestite o dichiarate, il codice non compila.
 
-**Unchecked exceptions (eccezioni non verificate)**
-Sono sottoclassi di `RuntimeException`.
-Rappresentano errori di programmazione, come errori logici o di sintassi che causano problemi a runtime.
-Non è obbligatorio gestirle o dichiararle.
+- **Unchecked exceptions (eccezioni non verificate):** Sono sottoclassi di `RuntimeException`. Rappresentano errori di programmazione, come errori logici o di sintassi che causano problemi a runtime. Non è obbligatorio gestirle o dichiararle.
 
 ---
 ### POLITICA "CATCH OR DECLARE"

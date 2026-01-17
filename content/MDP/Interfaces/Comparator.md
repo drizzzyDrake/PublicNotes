@@ -5,10 +5,10 @@
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Ordinamento esterno:** A differenza di `Comparable`, non richiede di modificare la classe degli oggetti da ordinare.
-**Più criteri:** È possibile definire diversi comparatori per lo stesso tipo di oggetto, cambiando il criterio di ordinamento a seconda delle necessità.
-**Interfaccia funzionale:** Ha un solo metodo astratto (`compare`) ed è quindi compatibile con espressioni lambda e reference a metodi.
-**Utilizzo con collezioni:** Può essere passato ai costruttori di collezioni ordinate (ad esempio `TreeSet`) per determinare l’ordine degli elementi.
+- **Ordinamento esterno:** A differenza di `Comparable`, non richiede di modificare la classe degli oggetti da ordinare.
+- **Più criteri:** È possibile definire diversi comparatori per lo stesso tipo di oggetto, cambiando il criterio di ordinamento a seconda delle necessità.
+- **Interfaccia funzionale:** Ha un solo metodo astratto (`compare`) ed è quindi compatibile con espressioni lambda e reference a metodi.
+- **Utilizzo con collezioni:** Può essere passato ai costruttori di collezioni ordinate (ad esempio `TreeSet`) per determinare l’ordine degli elementi.
 
 ---
 ### METODI PRINCIPALI

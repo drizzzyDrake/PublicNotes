@@ -1,3 +1,6 @@
+In Java, i tipi di dati rappresentano le diverse categorie di valori che un programma può utilizzare e manipolare. Essi si dividono principalmente in **tipi primitivi**, che contengono valori semplici direttamente gestiti dalla JVM, e **tipi reference**, che contengono riferimenti ad oggetti memorizzati nell’heap.
+
+---
 ### TIPI PRIMITIVI
 
 Tutti i valori in Java sono oggetti eccetto i valori primitivi. Quest'ultimi appartengono a 8 tipi primitivi che sono direttamente supportati dal linguaggio:
@@ -55,6 +58,8 @@ ArrayList<String> lista = new ArrayList<>();  // Oggetto ArrayList
 ---
 
 **I tipi di riferimento in Java includono:**
+
+---
 #### Oggetti (istanze di classe)
 
 Ogni classe che definisci in Java rappresenta un tipo di riferimento. Quando crei un oggetto di una classe, quella variabile di riferimento ha il tipo della classe. Un esempio sono le [[String|stringhe]].
@@ -62,8 +67,7 @@ Ogni classe che definisci in Java rappresenta un tipo di riferimento. Quando cre
 ---
 #### Array
 
-Gli **[[Arrays|array]]** sono un tipo di riferimento, anche se contengono tipi primitivi o oggetti.
-Gli array stessi sono oggetti, quindi sono memorizzati nella [[Java Memory Model|heap]], ma gli **elementi** all'interno dell'array possono essere tipi primitivi (come `int`, `char`, ecc.) o altri oggetti.
+Gli **[[Arrays|array]]** sono un tipo di riferimento, anche se contengono tipi primitivi o oggetti. Gli array stessi sono oggetti, quindi sono memorizzati nella [[Java Memory Model|heap]], ma gli **elementi** all'interno dell'array possono essere tipi primitivi (come `int`, `char`, ecc.) o altri oggetti.
 
 ---
 #### Interfacce
@@ -78,9 +82,7 @@ Le **enumerazioni (Enum)** sono un tipo di riferimento che definisce un insieme 
 ---
 #### Classi Wrapper per tipi primitivi
 
-In Java, i **tipi wrapper** (o **wrapper classes**) sono classi che permettono di trattare i **tipi primitivi** come **oggetti**. Ogni tipo primitivo ha una classe wrapper associata, che fornisce funzionalità aggiuntive per manipolare il valore del tipo primitivo come un oggetto.
-
-La conversione di un tipo primitivo al corrispondente tipo riferimento è chiamata [[Autoboxing]], mentre quella inversa, dal tipo riferimento al tipo primitivo, è chiamata [[Unboxing]].
+In Java, i **tipi wrapper** (o **wrapper classes**) sono classi che permettono di trattare i **tipi primitivi** come **oggetti**. Ogni tipo primitivo ha una classe wrapper associata, che fornisce funzionalità aggiuntive per manipolare il valore del tipo primitivo come un oggetto. La conversione di un tipo primitivo al corrispondente tipo riferimento è chiamata [[Autoboxing]], mentre quella inversa, dal tipo riferimento al tipo primitivo, è chiamata [[Unboxing]].
 
 | Tipo primitivo | Tipo riferimento |
 | -------------- | ---------------- |

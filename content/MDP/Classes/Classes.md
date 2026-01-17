@@ -1,5 +1,7 @@
 La **classe** è una struttura che definisce **proprietà** (campi) e **comportamenti** (metodi) di un oggetto. È come un **modello** o un **progetto** da cui vengono creati gli oggetti.
 
+---
+
 **Contiene:**
 
 - **campi**: sono i dati che descrivono l'oggetto.
@@ -13,6 +15,8 @@ public class NomeClasse { // corpo della classe
     definizione-di-metodi (statici e non)
 }
 ```
+
+---
 
 **Un esempio di classe:**
 

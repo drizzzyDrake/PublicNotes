@@ -5,10 +5,10 @@
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Interfaccia radice delle collezioni iterate:** Tutte le classi che vogliono essere iterate (come `Collection`, `List`, `Set`, `Queue`) implementano `Iterable`.  
-**Supporto al for-each:** Grazie a `iterator()`, permette l’uso del _for-each loop_ in modo semplice e leggibile.  
-**Iterazione sicura:** L’iterazione avviene tramite un `Iterator`, che può prevenire problemi durante la modifica della collezione mentre la si scorre.  
-**Metodi di utilità con Java 8+:** Include metodi `default` come `forEach` e `spliterator` per operazioni funzionali e parallele.
+- **Interfaccia radice delle collezioni iterate:** Tutte le classi che vogliono essere iterate (come `Collection`, `List`, `Set`, `Queue`) implementano `Iterable`.  
+- **Supporto al for-each:** Grazie a `iterator()`, permette l’uso del _for-each loop_ in modo semplice e leggibile.  
+- **Iterazione sicura:** L’iterazione avviene tramite un `Iterator`, che può prevenire problemi durante la modifica della collezione mentre la si scorre.  
+- **Metodi di utilità con Java 8+:** Include metodi `default` come `forEach` e `spliterator` per operazioni funzionali e parallele.
 
 ---
 ### METODI PRINCIPALI

@@ -10,7 +10,7 @@ Restituiscono `true` o `false` a seconda della condizione.
 | `<=`      | Minore o uguale   | `a <= b // false`           |
 
 ---
-### `equals()` VS `==`
+### RIFERIMENTO VS CONTENUTO
 
 La differenza tra `equals()` e `==` in Java è fondamentale, perché **hanno scopi diversi**:
 

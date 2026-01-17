@@ -5,12 +5,12 @@ La classe `String` in Java rappresenta una sequenza immutabile di caratteri Unic
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Immutabilità**: una volta creata, una `String` non può essere modificata.
-**Archiviazione interna**: memorizza i caratteri in un array interno (`char[]` fino a Java 8, `byte[]` da Java 9).
-**Pool delle stringhe** (_String Pool_): le stringhe letterali vengono memorizzate in un’area speciale di memoria per ottimizzare l’uso della RAM e migliorare le prestazioni.
-**Supporto Unicode**: ogni carattere è rappresentato secondo lo standard Unicode.
-**Metodi ricchi**: la classe offre numerosi metodi per ricerca, confronto, manipolazione e conversione.
-**Implementa interfacce**: `Serializable`, `Comparable<String>`, `CharSequence`.
+- **Immutabilità**: una volta creata, una `String` non può essere modificata.
+- **Archiviazione interna**: memorizza i caratteri in un array interno (`char[]` fino a Java 8, `byte[]` da Java 9).
+- **Pool delle stringhe** (_String Pool_): le stringhe letterali vengono memorizzate in un’area speciale di memoria per ottimizzare l’uso della RAM e migliorare le prestazioni.
+- **Supporto Unicode**: ogni carattere è rappresentato secondo lo standard Unicode.
+- **Metodi ricchi**: la classe offre numerosi metodi per ricerca, confronto, manipolazione e conversione.
+- **Implementa interfacce**: `Serializable`, `Comparable<String>`, `CharSequence`.
 
 ---
 ### DICHIARAZIONE E CREAZIONE

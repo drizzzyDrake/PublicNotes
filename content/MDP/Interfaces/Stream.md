@@ -1,4 +1,6 @@
-**Stream** in Java è un’interfaccia **contenuta nel [[Packages|package]] `java.util`** che permette di **elaborare sequenze di dati in modo dichiarativo e funzionale**. Uno Stream **non memorizza elementi**; opera su sorgenti dati come [[Collection]], [[MDP/Types/Arrays|array]] o generatori, descrivendo **una pipeline di operazioni**. Lo Stream separa il _cosa fare_ dai dettagli di implementazione del _come iterare_, permettendo trasformazioni, filtraggio, aggregazioni e parallelizzazione senza mutare la sorgente.
+`Stream` è un’interfaccia che permette di **elaborare sequenze di dati in modo dichiarativo e funzionale**. Uno Stream **non memorizza elementi**; opera su sorgenti dati come [[Collection]], [[MDP/Types/Arrays|array]] o generatori, descrivendo **una pipeline di operazioni**. Lo Stream separa il _cosa fare_ dai dettagli di implementazione del _come iterare_, permettendo trasformazioni, filtraggio, aggregazioni e parallelizzazione senza mutare la sorgente.
+
+>**Package**: [[JDK Packages#**`java.util`**|java.util]]
 
 ---
 ### TIPI DI STREAM

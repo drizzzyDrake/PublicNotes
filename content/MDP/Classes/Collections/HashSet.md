@@ -1,5 +1,4 @@
-La classe `HashSet` è una **classe** che implementa l’interfaccia `Set` e rappresenta una **collezione di elementi unici** (cioè non ammette duplicati). Gli elementi **non hanno un ordine garantito**: l’ordine di iterazione può essere diverso da quello di inserimento.  
-Internamente utilizza una **tabella hash** (`HashMap` come struttura di supporto) per garantire operazioni veloci.
+La classe `HashSet` è una **classe** che implementa l’interfaccia `Set` e rappresenta una **collezione di elementi unici** (cioè non ammette duplicati). Gli elementi **non hanno un ordine garantito**: l’ordine di iterazione può essere diverso da quello di inserimento. Internamente utilizza una **tabella hash** (`HashMap` come struttura di supporto) per garantire operazioni veloci.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
 >**Interfaccia di riferimento**: [[Collection#`Set<E>`|Set]] (che estende [[Collection]]).
@@ -7,12 +6,12 @@ Internamente utilizza una **tabella hash** (`HashMap` come struttura di supporto
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Unicità**: non permette elementi duplicati.
-**Nessun ordine garantito**: l’ordine può sembrare casuale e può cambiare nel tempo.
-**Implementazione con hash table**: operazioni `add`, `remove`, `contains` in media O(1).
-**Elemento null**: ammesso **una sola volta**.
-**Non sincronizzato**: più veloce in single-thread, ma non [[Multithreading|thread-safe]].
-**Ridimensionamento automatico**: cresce in base al carico della tabella hash (load factor).    
+- **Unicità**: non permette elementi duplicati.
+- **Nessun ordine garantito**: l’ordine può sembrare casuale e può cambiare nel tempo.
+- **Implementazione con hash table**: operazioni `add`, `remove`, `contains` in media O(1).
+- **Elemento null**: ammesso **una sola volta**.
+- **Non sincronizzato**: più veloce in single-thread, ma non [[Multithreading|thread-safe]].
+- **Ridimensionamento automatico**: cresce in base al carico della tabella hash (load factor).    
 
 ---
 ### METODI PRINCIPALI

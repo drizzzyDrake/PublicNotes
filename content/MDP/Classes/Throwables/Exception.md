@@ -79,7 +79,7 @@ public void parse(String data) throws ParseException {
 }
 ```
 
-Serve a **propagare l’eccezione** al **chiamante** del metodo, che dovrà a sua volta gestirla o dichiararla. Quindi, chi chiama `parse` dovrà a sua volta **gestire o dichiarare** la stessa eccezione. Se la catena di chiamate continua fino al `main`, allora sarà il `main` a gestirla o dichiararla.
+Serve a **propagare l’eccezione** al **chiamante** del metodo, che dovrà a sua volta gestirla o dichiararla (quindi, chi chiama `parse` dovrà a sua volta **gestire o dichiarare** la stessa eccezione). Se la catena di chiamate continua fino al `main`, allora sarà il `main` a gestirla o dichiararla.
 
 ---
 ### CREARE UN'ECCEZIONE PERSONALIZZATA

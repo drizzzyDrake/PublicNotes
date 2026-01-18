@@ -6,12 +6,12 @@ La classe `PriorityQueue` implementa l’interfaccia `Queue`. Una **`PriorityQue
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Ordinamento automatico**: mantiene la coda in ordine di priorità.
-**Heap min per default**: l’elemento con valore più basso viene estratto per primo (per invertire, usare un comparatore personalizzato).
-**Nessun ordine costante di iterazione**: l’iterazione può dare elementi in ordine arbitrario.
-**Permette elementi duplicati**.
-**Non permette `null`**.
-**Thread-unsafe**: non [[Multithreading|sincronizzata]] (per versione sincronizzata, usare `PriorityBlockingQueue`).
+- **Ordinamento automatico**: mantiene la coda in ordine di priorità.
+- **Heap min per default**: l’elemento con valore più basso viene estratto per primo (per invertire, usare un comparatore personalizzato).
+- **Nessun ordine costante di iterazione**: l’iterazione può dare elementi in ordine arbitrario.
+- **Permette elementi duplicati**.
+- **Non permette `null`**.
+- **Thread-unsafe**: non [[Multithreading|sincronizzata]] (per versione sincronizzata, usare `PriorityBlockingQueue`).
 
 ---
 ### METODI PRINCIPALI

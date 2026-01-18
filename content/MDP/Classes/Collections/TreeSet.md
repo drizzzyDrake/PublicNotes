@@ -1,7 +1,8 @@
-La classe `TreeSet` è una **classe** che implementa l’interfaccia `NavigableSet` (che estende `SortedSet`, a sua volta estende `Set`).  
-Rappresenta un **insieme ordinato** di elementi **unici** (non ammette duplicati), in cui l’ordinamento è determinato:
+La classe `TreeSet` è una **classe** che implementa l’interfaccia `NavigableSet` (che estende `SortedSet`, a sua volta estende `Set`). Rappresenta un **insieme ordinato** di elementi **unici** (non ammette duplicati), in cui l’ordinamento è determinato:
+
 - dall’**ordine naturale** degli elementi (definito dall’interfaccia `Comparable`), **oppure**
 - da un **Comparator** fornito al momento della creazione.
+
 Internamente utilizza un **albero rosso-nero** (Red-Black Tree), una struttura ad albero binario bilanciato.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
@@ -10,12 +11,12 @@ Internamente utilizza un **albero rosso-nero** (Red-Black Tree), una struttura a
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Ordinato**: mantiene gli elementi in ordine crescente (o secondo un `Comparator` personalizzato).
-**Unicità**: non ammette duplicati.
-**Prestazioni**: operazioni `add`, `remove`, `contains` in O(log n) grazie all’albero bilanciato.
-**Navigazione ordinata**: metodi come `first()`, `last()`, `higher()`, `lower()` per ottenere elementi in base all’ordine.
-**Elemento null**: non ammesso (può causare `NullPointerException` se si tenta di inserirlo).
-**Non sincronizzato**: più veloce in single-thread, non [[Multithreading|thread-safe]].
+- **Ordinato**: mantiene gli elementi in ordine crescente (o secondo un `Comparator` personalizzato).
+- **Unicità**: non ammette duplicati.
+- **Prestazioni**: operazioni `add`, `remove`, `contains` in O(log n) grazie all’albero bilanciato.
+- **Navigazione ordinata**: metodi come `first()`, `last()`, `higher()`, `lower()` per ottenere elementi in base all’ordine.
+- **Elemento null**: non ammesso (può causare `NullPointerException` se si tenta di inserirlo).
+- **Non sincronizzato**: più veloce in single-thread, non [[Multithreading|thread-safe]].
 
 ---
 ### METODI PRINCIPALI

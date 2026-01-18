@@ -1,6 +1,6 @@
-[[Classes#INTERFACCIA|Interfaccia]] contenuta nel [[Packages|package]] `java.lang`. 
-**Funzione:** è usata per definire l’**ordinamento naturale** degli oggetti di una classe. Implementando `Comparable`, una classe stabilisce un **criterio di confronto “naturale”** tra i suoi oggetti, permettendo di ordinarli.
-**Utilizzo tipico:** l'ordinamento avviene tramite `Collections.sort()` o strutture dati ordinate come `TreeSet` e `TreeMap`.
+`Comparable` è un'[[Classes#INTERFACCIA|Interfaccia]] usata per definire l’**ordinamento naturale** degli oggetti di una classe. Implementando `Comparable`, una classe stabilisce un **criterio di confronto “naturale”** tra i suoi oggetti, permettendo di ordinarli. L'ordinamento avviene tramite `Collections.sort()` o strutture dati ordinate come `TreeSet` e `TreeMap`.
+
+>**Package**: [[JDK Packages#**`java.lang`**|java.lang]]
 
 ---
 ### METODO `compareTo()`

@@ -1,5 +1,4 @@
-La classe `LinkedList` è una **classe** che implementa le interfacce `List`, `Deque` e `Queue`.  Rappresenta una **lista doppiamente collegata** in cui ogni elemento (nodo) mantiene un riferimento sia al nodo precedente che a quello successivo.  
-A differenza di `ArrayList`, le operazioni di inserimento e rimozione sono molto efficienti in qualsiasi punto della lista, ma l’accesso casuale per indice è più lento.
+La classe `LinkedList` è una **classe** che implementa le interfacce `List`, `Deque` e `Queue`.  Rappresenta una **lista doppiamente collegata** in cui ogni elemento (nodo) mantiene un riferimento sia al nodo precedente che a quello successivo. A differenza di `ArrayList`, le operazioni di inserimento e rimozione sono molto efficienti in qualsiasi punto della lista, ma l’accesso casuale per indice è più lento.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
 >**Interfacce di riferimento**: [[Collection#`List<E>`|List]], [[Collection#`Queue<E>` e `Deque<E>`|Queue e Deque]] (che estendono [[Collection]]).
@@ -7,13 +6,13 @@ A differenza di `ArrayList`, le operazioni di inserimento e rimozione sono molto
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Struttura interna**: lista doppiamente collegata (doppio puntatore: nodo precedente e successivo).
-**Ordine garantito**: mantiene l’ordine di inserimento.
-**Accesso per indice**: tempo O(n), più lento rispetto a `ArrayList`.
-**Inserimenti e rimozioni**: veloci in testa, in coda e in punti intermedi (non serve spostare elementi).
-**Non sincronizzata**: non è [[Multithreading|thread-safe]].
-**Elementi null**: ammessi.
-**Implementa anche una coda**: può essere usata come `Queue` o `Deque` (lista doppia).
+- **Struttura interna**: lista doppiamente collegata (doppio puntatore: nodo precedente e successivo).
+- **Ordine garantito**: mantiene l’ordine di inserimento.
+- **Accesso per indice**: tempo O(n), più lento rispetto a `ArrayList`.
+- **Inserimenti e rimozioni**: veloci in testa, in coda e in punti intermedi (non serve spostare elementi).
+- **Non sincronizzata**: non è [[Multithreading|thread-safe]].
+- **Elementi null**: ammessi.
+- **Implementa anche una coda**: può essere usata come `Queue` o `Deque` (lista doppia).
 
 ---
 ### METODI PRINCIPALI

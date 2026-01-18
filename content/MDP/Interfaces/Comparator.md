@@ -1,11 +1,11 @@
-[[Classes#Interfaccia funzionale|Interfaccia funzionale]] contenuta nel [[Packages|package]] `java.util`. 
-**Funzione:** Definisce un criterio di ordinamento esterno a una classe, permettendo di confrontare **due oggetti distinti** senza che questi implementino `Comparable`.
-**Utilizzo tipico:** Ordinamento di collezioni o array, passando il comparatore a metodi come `Collections.sort()` o ai costruttori di strutture dati ordinate (es. `TreeSet`, `TreeMap`).
+`Comparator` è un'[[Classes#Interfaccia funzionale|Interfaccia funzionale]] che definisce un criterio di ordinamento esterno a una classe, permettendo di confrontare **due oggetti distinti** senza che questi implementino `Comparable`. Permette di ordinare collezioni o array, passando il comparatore a metodi come `Collections.sort()` o ai costruttori di strutture dati ordinate (es. `TreeSet`, `TreeMap`).
+
+>**Package**: [[JDK Packages#**`java.util`**|java.util]]
 
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-- **Ordinamento esterno:** A differenza di `Comparable`, non richiede di modificare la classe degli oggetti da ordinare.
+- **Ordinamento esterno:** A differenza di Comparable, non richiede di modificare la classe degli oggetti da ordinare.
 - **Più criteri:** È possibile definire diversi comparatori per lo stesso tipo di oggetto, cambiando il criterio di ordinamento a seconda delle necessità.
 - **Interfaccia funzionale:** Ha un solo metodo astratto (`compare`) ed è quindi compatibile con espressioni lambda e reference a metodi.
 - **Utilizzo con collezioni:** Può essere passato ai costruttori di collezioni ordinate (ad esempio `TreeSet`) per determinare l’ordine degli elementi.

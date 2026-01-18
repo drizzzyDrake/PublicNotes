@@ -39,19 +39,24 @@ Confronto basato sul **valore**.
 ---
 #### Confronto di contenuto (`equals()`)
 
-Confronta **il contenuto/logica di uguaglianza** tra oggetti. È un metodo definito in `Object` e spesso **sovrascritto** (override) dalle classi.
+Il metodo `equals()` serve a confrontare **il contenuto logico** di due oggetti. È definito in `Object`, ma molte classi lo **sovrascrivono** per confrontare i propri campi invece dei riferimenti.
+
+**Esempio con `String`:**
 
 ```java
 String a = new String("Java");
 String b = new String("Java");
 
-System.out.println(a.equals(b)); // true, stesso contenuto
+System.out.println(a.equals(b)); // true: stesso contenuto
 ```
 
-Qui `equals()` confronta il **contenuto della stringa**, non l’indirizzo in memoria.
+Qui `equals()` confronta i caratteri della stringa, non l’indirizzo in memoria.
 
 ---
-#### Esempio
+
+**Esempio con una classe personalizzata:**
+
+Per impostazione predefinita, una classe che **non** sovrascrive `equals()` eredita quello di `Object`, che confronta **solo i riferimenti**.
 
 ```java
 class Punto {
@@ -62,11 +67,11 @@ class Punto {
 Punto p1 = new Punto(1,2);
 Punto p2 = new Punto(1,2);
 
-System.out.println(p1 == p2);       // false, riferimenti diversi
-System.out.println(p1.equals(p2));  // false, perché equals non è sovrascritto
+System.out.println(p1 == p2);      // false: oggetti diversi
+System.out.println(p1.equals(p2)); // false: ereditato → confronto riferimenti
 ```
 
-**Se vogliamo confrontare i valori:**
+Se vogliamo che due punti siano considerati uguali quando hanno le stesse coordinate, dobbiamo **ridefinire** `equals()`:
 
 ```java
 class Punto {
@@ -75,16 +80,18 @@ class Punto {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof Punto p){
+        if (o instanceof Punto p) {
             return this.x == p.x && this.y == p.y;
         }
         return false;
     }
 }
-```
 
-```java
-System.out.println(p1.equals(p2));   // true, ora confronta i valori
+Punto p1 = new Punto(1,2);
+Punto p2 = new Punto(1,2);
+
+System.out.println(p1 == p2);      // false: oggetti diversi
+System.out.println(p1.equals(p2)); // true: sovrascritto → stesso contenuto
 ```
 
 ---

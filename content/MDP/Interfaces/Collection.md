@@ -1,4 +1,6 @@
-**Collection** in Java è un'interfaccia **contenuta nel [[Packages|package]] `java.util`** che permette di **memorizzare, accedere e manipolare gruppi di oggetti attraverso strutture dati**. Collection estende l'interfaccia [[Iterable]] del package `java.lang` (tutte le collezioni sono iterabili). Collection **non include gli array**, ma li possono sostituire in modo più flessibile.
+`Collection` è un'interfaccia che permette di **memorizzare, accedere e manipolare gruppi di oggetti attraverso strutture dati**. Collection estende l'interfaccia [[Iterable]] del package `java.lang` (tutte le collezioni sono iterabili). Collection **non include gli array**, ma permette di sostituirli in modo più flessibile.
+
+>**Package**: [[JDK Packages#**`java.util`**|java.util]]
 
 ---
 ### FRAMEWORK COLLECTION (GERARCHIA)
@@ -23,16 +25,19 @@ java.util.Collection (INTERFACCIA)
     └── LinkedList (CLASSE)
 ```
 
->⚠️ **Nota**: C’è anche `Map` (`HashMap`, `TreeMap`, `LinkedHashMap`), che non è figlia di `Collection` ma fa comunque parte del JCF.
+>N.B. C’è anche `Map` (`HashMap`, `TreeMap`, `LinkedHashMap`), che non è figlia di `Collection` ma fa comunque parte del JCF.
 
 ---
 ### PRINCIPALI INTERFACCE
 
+Ogni interfaccia che implementa Collection differisce dalle altre per caratteristiche, funzionalità e ordinamento:
+
+---
 #### `List<E>`
 
-Permette **elementi duplicati**
-Ordine **basato sull’inserimento**
-Accesso per **indice**
+- Permette **elementi duplicati**
+- Ordine **basato sull’inserimento**
+- Accesso per **indice**
 
 **Implementazioni comuni**:
 
@@ -50,8 +55,8 @@ System.out.println(list); // [Java, Python, Java] (ordine garantito)
 ---
 #### `Set<E>`
 
-Non permette **duplicati**
-Ordine **non garantito** (dipende dall’implementazione)
+- Non permette **duplicati**
+- Ordine **non garantito** (dipende dall’implementazione)
 
 **Implementazioni comuni**:
 
@@ -70,8 +75,8 @@ System.out.println(set); // [Java, Python] (ordine non garantito)
 ---
 #### `Queue<E>` e `Deque<E>`
 
-Comportamento **FIFO**
-`Deque` permette operazioni in testa e in coda (double-ended)
+- Comportamento **FIFO**
+- `Deque` permette operazioni in testa e in coda (double-ended)
 
 **Implementazioni comuni**:
 
@@ -88,9 +93,9 @@ System.out.println(coda.poll()); // Task1
 ---
 #### `Map<K, V>` 
 
-Associa **chiavi** a **valori**
-Non permette chiavi duplicate
-(non estende Collection)
+- Associa **chiavi** a **valori**
+- Non permette chiavi duplicate
+- (non estende Collection)
 
 **Implementazioni comuni**:
 
@@ -111,14 +116,6 @@ System.out.println(mappa.get("Java")); // 1995
 #### For-each loop 
 
 Una speciale [[for Instruction#^3e8bd6|tipologia di for]].
-
-| Caratteristica              | Valore                        |
-| --------------------------- | ----------------------------- |
-| Tipo di iterazione          | Esterna                       |
-| Accesso all'indice          | ❌                             |
-| Modifica durante iterazione | ❌ ([[Exception\|eccezione]]) |
-| Leggibilità                 | ✅ Alta                        |
-| Uso più comune              | ✅ Sì                          |
 
 ---
 #### Iterator
@@ -145,14 +142,6 @@ while (it.hasNext()) {
 }
 ```
 
-| Caratteristica              | Valore             |
-| --------------------------- | ------------------ |
-| Tipo di iterazione          | Esterna            |
-| Accesso all'indice          | ❌                  |
-| Modifica durante iterazione | ✅ (con `remove()`) |
-| Leggibilità                 | Media              |
-| Flessibilità                | ✅ Alta             |
-
 **Esempio con rimozione**:
 
 ```java
@@ -174,12 +163,6 @@ while (it.hasNext()) {
     // uso elemento
 }
 ```
-
-| Caratteristica              | Valore               |
-| --------------------------- | -------------------- |
-| Tipo di iterazione          | Esterna              |
-| Direzione                   | ✅ Avanti/indietro    |
-| Modifica durante iterazione | ✅ (set, add, remove) |
 
 **Esempio con modifica**:
 
@@ -203,13 +186,6 @@ for (int i = 0; i < lista.size(); i++) {
     // uso elemento
 }
 ```
-
-|Caratteristica|Valore|
-|---|---|
-|Tipo di iterazione|Esterna|
-|Accesso all'indice|✅|
-|Modifica durante iterazione|⚠️ Possibile, ma attenzione|
-|Solo per List|✅|
 
 ---
 

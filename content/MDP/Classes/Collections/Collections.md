@@ -1,18 +1,16 @@
-La classe `Collections` è una **classe di utilità** contenente **metodi statici** per operare su collezioni (`List`, `Set`, `Map`, ecc.) e per creare collezioni particolari (immutabili, sincronizzate, singleton, ecc.).
-
-La classe **`Collections` non può essere istanziata e non estende alcuna interfaccia** del [[Collection#FRAMEWORK COLLECTION (GERARCHIA)|Java Collections Framework]], e nemmeno **implementa** interfacce come `Collection` o `List`. `Collections` è **solo** una **classe di utilità finale** (`public final class Collections`) che contiene **metodi statici**.
+La classe `Collections` è una **classe di utilità** contenente **metodi statici** per operare su collezioni (`List`, `Set`, `Map`, ecc.) e per creare collezioni particolari (immutabili, sincronizzate, singleton, ecc.). La classe **`Collections` non può essere istanziata e non estende alcuna interfaccia** del [[Collection#FRAMEWORK COLLECTION (GERARCHIA)|Java Collections Framework]], e nemmeno **implementa** interfacce come `Collection` o `List`. `Collections` è **solo** una **classe di utilità finale** (`public final class Collections`) che contiene **metodi statici**.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
 
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Classe finale**: non estendibile.
-**Metodi statici**: non serve creare un’istanza per usarla.
-**Funzioni di utilità**: ordinamento, ricerca, riempimento, copia, inversione, conteggio, ecc.
-**Creazione di collezioni particolari**.
-**Supporta generics**: per maggiore sicurezza sui tipi.
-**Operazioni ottimizzate**: molte funzioni sfruttano algoritmi interni ad alte prestazioni.
+- **Classe finale**: non estendibile.
+- **Metodi statici**: non serve creare un’istanza per usarla.
+- **Funzioni di utilità**: ordinamento, ricerca, riempimento, copia, inversione, conteggio, ecc.
+- **Creazione di collezioni particolari**.
+- **Supporta generics**: per maggiore sicurezza sui tipi.
+- **Operazioni ottimizzate**: molte funzioni sfruttano algoritmi interni ad alte prestazioni.
 
 ---
 ### METODI PRINCIPALI

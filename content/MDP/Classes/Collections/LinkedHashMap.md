@@ -1,6 +1,5 @@
 La classe **`LinkedHashMap`** estende `HashMap` e implementa l’interfaccia `Map<K, V>`.  
-È una mappa che mantiene **l’ordine di inserimento** degli elementi o, opzionalmente, l’ordine di accesso (per implementare una cache LRU).  
-Internamente usa una tabella hash collegata a una lista doppia per mantenere l’ordine.
+È una mappa che mantiene **l’ordine di inserimento** degli elementi o, opzionalmente, l’ordine di accesso (per implementare una cache LRU). Internamente usa una tabella hash collegata a una lista doppia per mantenere l’ordine.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
 >**Interfaccia di riferimento**: [[Collection#`Map<K, V>`|Map]] (che estende [[Collection]]).
@@ -8,13 +7,13 @@ Internamente usa una tabella hash collegata a una lista doppia per mantenere l�
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Mantiene ordine di inserimento**: durante l’iterazione gli elementi vengono restituiti nell’ordine in cui sono stati inseriti.
-**Opzionale ordine di accesso**: può ordinare per accesso (default è ordine inserimento).
-**Chiavi uniche**, come in `HashMap`.
-Permette **una chiave `null`** e valori `null`.
-**Non sincronizzato**, quindi non [[Multithreading|thread-safe]].
-Performance simili a `HashMap` (operazioni in tempo costante medio O(1)).
-Usato spesso quando serve iterare gli elementi in ordine prevedibile.
+- **Mantiene ordine di inserimento**: durante l’iterazione gli elementi vengono restituiti nell’ordine in cui sono stati inseriti.
+- **Opzionale ordine di accesso**: può ordinare per accesso (default è ordine inserimento).
+- **Chiavi uniche**, come in `HashMap`.
+- Permette **una chiave `null`** e valori `null`.
+- **Non sincronizzato**, quindi non [[Multithreading|thread-safe]].
+- Performance simili a `HashMap` (operazioni in tempo costante medio O(1)).
+- Usato spesso quando serve iterare gli elementi in ordine prevedibile.
 
 ---
 ### METODI PRINCIPALI

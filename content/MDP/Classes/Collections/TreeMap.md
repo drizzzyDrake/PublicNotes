@@ -1,5 +1,4 @@
-La classe **`TreeMap`** implementa l’interfaccia `NavigableMap<K, V>` (che estende `SortedMap<K, V>` e quindi `Map<K, V>`).  
-Una **`TreeMap`** memorizza coppie chiave-valore in ordine **naturale** delle chiavi o secondo un **comparatore personalizzato** fornito al momento della creazione.  
+La classe **`TreeMap`** implementa l’interfaccia `NavigableMap<K, V>` (che estende `SortedMap<K, V>` e quindi `Map<K, V>`). Una **`TreeMap`** memorizza coppie chiave-valore in ordine **naturale** delle chiavi o secondo un **comparatore personalizzato** fornito al momento della creazione.  
 Internamente è basata su un **albero rosso-nero bilanciato**, che garantisce operazioni di ricerca, inserimento e cancellazione in **tempo logaritmico O(log n)**.
 
 >**Package**: [[JDK Packages#**`java.util`**|java.util]].
@@ -8,12 +7,12 @@ Internamente è basata su un **albero rosso-nero bilanciato**, che garantisce op
 ---
 ### CARATTERISTICHE PRINCIPALI
 
-**Ordinamento delle chiavi garantito**: l’iterazione segue l’ordine naturale o il comparatore fornito.  
-**Chiavi uniche**: come tutte le mappe, una chiave può apparire una sola volta (valore aggiornato se chiave già presente).  
-**Non permette chiavi null** (perché l’ordinamento su `null` non è definito), ma permette valori `null`.  
-**Non sincronizzato**: non [[Multithreading|thread-safe]]; per usi concorrenti servono wrapper o `ConcurrentSkipListMap`.  
-**Efficienza**: operazioni in O(log n) grazie all’albero bilanciato.  
-**Supporta operazioni avanzate** come sotto-mappe (`subMap`), chiavi min/max, navigazione ordinata.
+- **Ordinamento delle chiavi garantito**: l’iterazione segue l’ordine naturale o il comparatore fornito.  
+- **Chiavi uniche**: come tutte le mappe, una chiave può apparire una sola volta (valore aggiornato se chiave già presente).  
+- **Non permette chiavi null** (perché l’ordinamento su `null` non è definito), ma permette valori `null`.  
+- **Non sincronizzato**: non [[Multithreading|thread-safe]]; per usi concorrenti servono wrapper o `ConcurrentSkipListMap`.  
+- **Efficienza**: operazioni in O(log n) grazie all’albero bilanciato.  
+- **Supporta operazioni avanzate** come sotto-mappe (`subMap`), chiavi min/max, navigazione ordinata.
 
 ---
 ### METODI PRINCIPALI

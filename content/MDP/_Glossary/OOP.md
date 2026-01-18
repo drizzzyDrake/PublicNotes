@@ -143,7 +143,7 @@ public class Main {
 
 Il **polimorfismo** è la capacità di un oggetto di assumere molteplici forme. In pratica, permette di **trattare oggetti di diverse classi in modo uniforme** attraverso un'interfaccia comune (solitamente una superclasse o un'interfaccia), ma con comportamenti specifici per ciascuna classe.
 
-- **Polimorfismo di inclusione** (o **runtime polymorphism**) tramite **metodi sovrascritti**   (`@Override`).
+- **Polimorfismo di inclusione** (o **runtime polymorphism**) tramite **metodi sovrascritti** (`@Override`).
 - **Polimorfismo di metodo** (o **compile-time polymorphism**) tramite **overloading** dei metodi.
 
 **Esempio:**

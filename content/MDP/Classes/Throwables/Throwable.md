@@ -1,5 +1,4 @@
-In Java, **`Throwable`** è la **superclasse di tutti gli oggetti che possono essere lanciati come eccezioni o errori**. Tutti gli oggetti che rappresentano un problema durante l'esecuzione di un programma devono derivare da `Throwable`.
-Qualsiasi oggetto che si voglia **lanciare con `throw`** o **intercettare con `catch`** deve essere un'istanza di una sottoclasse di `Throwable`.
+In Java, **`Throwable`** è la **superclasse di tutti gli oggetti che possono essere lanciati come eccezioni o errori**. Tutti gli oggetti che rappresentano un problema durante l'esecuzione di un programma devono derivare da `Throwable`. Qualsiasi oggetto che si voglia **lanciare con `throw`** o **intercettare con `catch`** deve essere un'istanza di una sottoclasse di `Throwable`.
 
 >**Package**: [[JDK Packages#**`java.lang`**|java.lang]]
 

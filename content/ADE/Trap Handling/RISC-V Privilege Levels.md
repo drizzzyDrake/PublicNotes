@@ -26,7 +26,7 @@ L’architettura RISC‑V definisce **tre modalità di privilegio hardware**, un
 
 **Responsabilità:**
 
-- gestione della [[Virtual Memory|memoria virtuale]]
+- gestione della [[ADE/Memory/Virtual Memory|memoria virtuale]]
 - gestione delle [[Trap|trap]] tramite `stvec`, `sepc`, `scause`, `stval`
 - gestione dei processi in U‑mode
 - gestione delle system call (`ecall` da U‑mode)

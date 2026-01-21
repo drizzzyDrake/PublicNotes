@@ -12,7 +12,7 @@ L’**architettura del calcolatore**, più precisamente **Instruction Set Archit
 - **[[Registers|Registri visibili al software]]**
 - **[[Instruction Formats|Formati delle istruzioni]]**
 - **[[Addressing Modes|Modalità di indirizzamento]]**
-- **[[Virtual Memory|Modello di memoria]]**
+- **[[ADE/Memory/Virtual Memory|Modello di memoria]]**
 
 ---
 ### MICROARCHITETTURA

@@ -53,7 +53,7 @@ si usa `jalr x0, 0(ra)` per il ritorno → **nessun valore salvato**
 
 ---
 ### USO DELLO STACK
-#### Quando usare lo [[Virtual Memory#STACK UTENTE (↓)|stack]] in una funzione:
+#### Quando usare lo [[ADE/Memory/Virtual Memory#STACK UTENTE (↓)|stack]] in una funzione:
 
 **Salvare registri che verranno sovrascritti**: ad esempio, se la funzione usa registri come `s0-s11`, deve salvarli nello stack all’inizio e ripristinarli alla fine.
 **Allocare spazio per variabili locali** se non bastano i registri.

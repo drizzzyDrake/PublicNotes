@@ -1,0 +1,3 @@
+Un **context switch** è il momento in cui il sistema operativo interrompe un processo in esecuzione, ne salva lo stato nel suo PCB e carica lo stato di un altro processo, permettendo alla CPU di passare da un’attività all’altra senza perdere informazioni. È il meccanismo che rende possibile il multitasking, anche su macchine con un solo core. Un context switch può avvenire in diverse situazioni: ad esempio quando scade il time slice ([[Interrupt|interrupt]] del timer), quando un processo si blocca per I/O o quando una [[Trap|trap]] di sistema porta il kernel a scegliere un altro processo da eseguire.
+
+---

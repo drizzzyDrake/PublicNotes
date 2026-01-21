@@ -38,7 +38,7 @@ Se non è nei registri, la CPU genera un **indirizzo di memoria** per cercarlo a
 La **cache controller** cerca nella **Cache L1**:
 Ogni **[[Block|blocco]]** (linea di cache) ha un **[[Tag|tag]]** che identifica l’indirizzo originale da cui proviene.
 Se il **tag combacia** con l’indirizzo richiesto → **Hit** in L1.
-Se no → **[[Miss]]** → si prosegue nella Cache L2 (si carica l’intero blocco dal livello inferiore per sfruttare la **[[Località Spaziale|località spaziale]]**).
+Se no → **[[Miss]]** → si prosegue nella Cache L2 (si carica l’intero blocco dal livello inferiore per sfruttare la **[[Spatial Locality|località spaziale]]**).
 
 ---
 #### 3. L2 e L3 Cache
@@ -53,7 +53,7 @@ Ogni livello ha un **[[Miss Penalty|miss penalty]]** maggiore → più cicli spr
 Se anche le cache hanno fallito (**Miss in L1, L2, L3**), si accede alla **RAM**.
 Questo è **molto più lento**: si può perdere **decine di cicli**.
 La RAM è organizzata a blocchi fisici, ma l'accesso è **random access**.
-Si sfrutta la **[[Località Temporale|località temporale]]** (dato usato di recente sarà probabilmente riutilizzato) per ricaricare anche blocchi vicini.
+Si sfrutta la **[[Temporal Locality|località temporale]]** (dato usato di recente sarà probabilmente riutilizzato) per ricaricare anche blocchi vicini.
 
 ---
 #### 5. L5 Page fault e memoria secondaria (SSD/HDD)

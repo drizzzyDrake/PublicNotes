@@ -1,4 +1,4 @@
-Vediamo come avviene la mappatura tra memoria fisica e [[Virtual Memory|virtuale]].
+La memoria virtuale viene suddivisa in **pagine**, che vengono associate a blocchi di memoria fisica tramite apposite strutture chiamate **tabelle delle pagine**. Quando un processo accede a un indirizzo virtuale, la MMU traduce quell’indirizzo nell’indirizzo fisico corrispondente. Se la pagina richiesta non è presente in RAM, il sistema operativo può recuperarla dal disco (swap), garantendo così che i programmi possano utilizzare più memoria di quella fisicamente disponibile.
 
 ---
 ### INDIRIZZI VIRTUALI
@@ -27,6 +27,9 @@ Una pagina virtuale può essere **mappata in qualunque frame** della memoria fis
 ---
 ### MAPPING VIRTUALE → FISICO
 
+Vediamo come avviene la mappatura tra memoria fisica e [[ADE/Memory/Virtual Memory|virtuale]].
+
+---
 #### Step 1: Divisione dell’indirizzo virtuale
 
 In architettura a 32 bit con pagine da 4 KB (2¹²):
@@ -38,7 +41,7 @@ Esempio:
 
 ```r
 Indirizzo virtuale:   0xABCD1234 
-Binario:              1010 1011 1100 1101 0001 0010 0011 0100                                   |-----------------------|-------------|                                   #        N page       offset nella pagina
+Binario:              1010 1011 1100 1101 0001 0010 0011 0100                                            |-----------------------|-------------|                                            #N page                  offset nella pagina
 ```
 
 ---

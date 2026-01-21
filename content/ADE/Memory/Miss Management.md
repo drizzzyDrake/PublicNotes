@@ -53,8 +53,8 @@ Una volta che il dato richiesto è stato letto dalla memoria principale, viene s
 
 Quando si verifica un **miss** in una cache set-associativa o completamente associativa, può dipendere da **[[Miss Management#1. RILEVAMENTO DELLA MISS|diversi fattori]]**. Le **politiche di rimpiazzo** decidono **quale blocco eliminare** in caso di miss: Quando un **set è pieno** e deve essere caricato un nuovo blocco, si applica una politica di rimpiazzo per decidere **quale blocco eliminare**:
 
-- **LRU ([[Località Temporale|località temporale]]) - Least Recently Used**: sostituisce il blocco usato meno recentemente. 
-- **LFU ([[Località Spaziale|località spaziale]]) - Least Frequently Used**: sostituisce il blocco usato meno frequentemente.
+- **LRU ([[Temporal Locality|località temporale]]) - Least Recently Used**: sostituisce il blocco usato meno recentemente. 
+- **LFU ([[Spatial Locality|località spaziale]]) - Least Frequently Used**: sostituisce il blocco usato meno frequentemente.
 - **Random**: sostituisce un blocco a caso (o in sequenza circolare).
 
 ---

@@ -3,7 +3,7 @@ Un array è una sequenza di elementi dello stesso tipo, posizionati in celle di 
 ---
 ### DICHIARAZIONE E MEMORIZZAZIONE
 
-Gli array vengono dichiarati nella **sezione dati** (tipicamente `.data`), e quindi memorizzati in [[Virtual Memory|memoria]], mentre i registri vengono usati per:
+Gli array vengono dichiarati nella **sezione dati** (tipicamente `.data`), e quindi memorizzati in [[ADE/Memory/Virtual Memory|memoria]], mentre i registri vengono usati per:
 
 - Tenere l'indirizzo di base dell'array.
 - Calcolare l'indirizzo di un elemento specifico.

@@ -3,7 +3,7 @@ La **memoria cache** è una **memoria molto veloce** posta tra la **[[CPU]]** e 
 ---
 ### FUNZIONE
 
-La CPU moderna è **molto più veloce** della RAM. Accedere continuamente alla RAM rallenterebbe l’esecuzione. Infatti la cache sfrutta **[[Località Spaziale|località spaziale]]** e **[[Località Temporale|località temporale]]** per **massimizzare la [[Hit Rate|probabilità di hit]]**.
+La CPU moderna è **molto più veloce** della RAM. Accedere continuamente alla RAM rallenterebbe l’esecuzione. Infatti la cache sfrutta **[[Spatial Locality|località spaziale]]** e **[[Temporal Locality|località temporale]]** per **massimizzare la [[Hit Rate|probabilità di hit]]**.
 
 ---
 

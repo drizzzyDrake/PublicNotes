@@ -5,9 +5,8 @@ La componente di **Input/Output (I/O)** consente al calcolatore di **interagire 
 ![[io system.png]]
 #### Dispositivo fisico e device controller
 
-Il **dispositivo fisico** è la periferica vera e propria (ad esempio tastiera, disco, stampante, interfaccia di rete). Questo dispositivo **non comunica direttamente con la CPU**, ma è gestito da un **device controller**, un componente hardware che funge da intermediario.
-
-Il **device controller** controlla il funzionamento del dispositivo fisico e traduce i comandi generici ricevuti dalla CPU in segnali elettrici comprensibili dal device, e viceversa. Ogni controller è collegato al **bus di sistema** ed espone una serie di **registri** attraverso i quali è possibile comunicare con esso.
+- Il **dispositivo fisico** è la periferica vera e propria (ad esempio tastiera, disco, stampante, interfaccia di rete). Questo dispositivo **non comunica direttamente con la CPU**, ma è gestito da un **device controller**, un componente hardware che funge da intermediario.
+- Il **device controller** controlla il funzionamento del dispositivo fisico e traduce i comandi generici ricevuti dalla CPU in segnali elettrici comprensibili dal device, e viceversa. Ogni controller è collegato al **bus di sistema** ed espone una serie di **registri** attraverso i quali è possibile comunicare con esso.
 
 ---
 ##### Registri del controller

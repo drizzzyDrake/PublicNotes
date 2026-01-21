@@ -5,7 +5,7 @@ Le CPU moderne implementano un sistema di **livelli di privilegio** che serve a 
 ---
 ### MODALITA' OPERATIVE
 
-Le CPU moderne usano principalmente **due modalità operative**, controllate da un bit speciale chiamato **mode bit**. il passaggio tra le due modalità avviene tramite [[Trap|trap]] di sistema.
+Le CPU moderne usano principalmente **due modalità operative**, controllate da un bit speciale chiamato **mode bit**. il passaggio tra le due modalità avviene tramite [[Processor Exception|eccezioni]] di sistema.
 
 ---
 #### Kernel mode 

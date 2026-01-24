@@ -45,14 +45,16 @@ foreach ($folder in $folders) {
     }
 }
 
+Write-Host "Build Quartz..."
+
+npx quartz build
+
 Write-Host "Commit & push..."
 
 Set-Location "C:\Users\giuli\Desktop\Obsidian\PublicNotes"
 git add .
 git commit -m "Sync + build $(Get-Date)" --allow-empty
 git push origin main
-
-npx quartz build
 
 Write-Host "Sync completato!"
 

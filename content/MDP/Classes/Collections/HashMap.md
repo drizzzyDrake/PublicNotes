@@ -9,7 +9,7 @@ La classe **`HashMap`** implementa l’interfaccia `Map<K, V>`. Una **`HashMap`*
 - **Chiavi uniche**: l’inserimento di una chiave già esistente sovrascrive il valore associato.
 - **Una chiave null consentita**, più valori null permessi.
 - **Nessun ordine garantito** di chiavi e valori.
-- **Non sincronizzata** → non [[Multithreading|thread-safe]] (per versione sincronizzata, usare `Collections.synchronizedMap()` o `ConcurrentHashMap`).
+- **Non sincronizzata** → non [[MDP/Memory/Thread|thread-safe]] (per versione sincronizzata, usare `Collections.synchronizedMap()` o `ConcurrentHashMap`).
 - Prestazioni ottimali quando il **load factor** (predefinito 0.75) è mantenuto bilanciato.
 - Operazioni di ricerca, inserimento e rimozione **O(1)** in media, **O(n)** nel caso peggiore (molte collisioni).
 

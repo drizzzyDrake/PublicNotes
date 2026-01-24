@@ -13,7 +13,6 @@ Supponiamo che un programma preveda 1 000 000 di accessi in memoria
 e che il tempo di accesso sia di 100 ns:
 
 Il tempo che il programma impiegherà per l’accesso è 1 000 000 × 100 ns = 100 ms
-
 MA se si usa una cache con tempo di accesso 1 ns e la **[[Miss Rate|percentuale di miss]]** è il 10%:
 
 - il 90% di 1 000 000 accessi (HIT) impiegheranno 1 ns × 1 000 000 × 90% = 0.9 ms

@@ -89,15 +89,12 @@ Archiviazione di **dati freddi** (accesso infrequente)
 
 ##### Elementi meccanici:
 
-![[hard disk 1.png]]**Piatti (platters):** dischi rigidi rivestiti di materiale magnetico montati sullo stesso asse che ruotano **tutti insieme**.
-
-**Motore di rotazione (spindle motor):** motore dell'asse che fa ruotare tutti i dischi uniformemente a velocità costante (es. 5.400, 7.200, 10.000 RPM)
-
-**Braccio attuatore (actuator arm):** struttura meccanica mobile che sposta radialmente le testine sul disco.
-
-**Attuatore a bobina (voice coil actuator):** sistema elettromagnetico che muove i bracci tutti insieme (il movimento dei bracci non è indipendente) con estrema precisione.
-
-**Testine di lettura/scrittura:** dispositivi elettromagnetici microscopici, montati all’estremità del braccio attuatore, che **leggono e scrivono i dati** magnetizzando o rilevando la magnetizzazione della superficie dei dischi, senza contatto fisico diretto (distanza di pochi nanometri).
+![[hard disk 1.png]]
+- **Piatti (platters):** dischi rigidi rivestiti di materiale magnetico montati sullo stesso asse che ruotano **tutti insieme**.
+- **Motore di rotazione (spindle motor):** motore dell'asse che fa ruotare tutti i dischi uniformemente a velocità costante (es. 5.400, 7.200, 10.000 RPM)
+- **Braccio attuatore (actuator arm):** struttura meccanica mobile che sposta radialmente le testine sul disco.
+- **Attuatore a bobina (voice coil actuator):** sistema elettromagnetico che muove i bracci tutti insieme (il movimento dei bracci non è indipendente) con estrema precisione.
+- **Testine di lettura/scrittura:** dispositivi elettromagnetici microscopici, montati all’estremità del braccio attuatore, che **leggono e scrivono i dati** magnetizzando o rilevando la magnetizzazione della superficie dei dischi, senza contatto fisico diretto (distanza di pochi nanometri).
 
 ---
 ##### Composizione di un platter:
@@ -110,14 +107,18 @@ Archiviazione di **dati freddi** (accesso infrequente)
 - **Settori (sectors):** suddivisioni angolari delle tracce e unità minime di lettura/scrittura (tipicamente 512 B o 4 KB).
 - **Cilindri:** le tracce con **stesso raggio** su superfici diverse formano un **cilindro**, per spostarsi tra tracce dello stesso cilindro basta selezionare una testina diversa (non richiede **seek**), infatti come abbiamo detto le testine si muovono tutte insieme.
 
+> N.B. La capacità totale di memoria di un hard disk corrisponde a **C = H · T · S · B** dove: **H** è il numero di superfici, **T** il numero di tracce per superficie, **S** il numero di settori per traccia e **B** il numero di byte per settore.
+
 ---
 ##### Posizionamento del dato:
 
-Il tempo di lettura/scrittura di un dato è dato da 3 azioni:
+Il tempo di lettura/scrittura **(DTT)** di un dato è dato da 3 azioni:
 
-- **Seek time:** il braccio si muove fino al cilindro corretto
-- **Rotational latency:** attesa che il settore desiderato passi sotto la testina
-- **Transfer time:** lettura/scrittura effettiva del dato
+- **Seek time (ST):** il braccio si muove fino al cilindro corretto
+- **Rotational latency (ROT):** attesa che il settore desiderato passi sotto la testina
+- **Transfer time (TT):** lettura/scrittura effettiva del dato
+
+$$DTT = ST + ROT + TT$$
 
 ---
 

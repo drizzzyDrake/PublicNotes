@@ -3,7 +3,7 @@ Un sistema operativo è un software complesso che deve gestire molteplici risors
 ---
 ### STRUTTURA SEMPLICE
 
-Nella **struttura semplice** non esiste una vera suddivisione in sottosistemi e non vi è separazione tra **kernel mode** e **user mode**. Tutto il codice, incluso quello delle applicazioni, può accedere direttamente all’hardware. Un esempio storico è **MS-DOS**
+Nella **struttura semplice** non esiste una vera suddivisione in sottosistemi e non vi è separazione tra **kernel mode** e **user mode**. Tutto il codice, incluso quello delle applicazioni, può accedere direttamente all’hardware. Un esempio storico è **MS-DOS**.
 
 ---
 ### KERNEL MONOLITICO

@@ -13,7 +13,7 @@ La classe `LinkedHashSet` è una **classe** che implementa l’interfaccia `Set`
 - **Unicità**: non ammette duplicati.
 - **Prestazioni**: operazioni `add`, `remove`, `contains` generalmente in O(1) grazie alla hash table.
 - **Elemento null**: ammesso, ma solo uno.
-- **Non sincronizzato**: più veloce in single-thread, non [[Multithreading|thread-safe]].
+- **Non sincronizzato**: più veloce in single-thread, non [[MDP/Memory/Thread|thread-safe]].
 - **Uso tipico**: quando serve un insieme che mantenga sia la velocità di `HashSet` sia l’ordine prevedibile di iterazione.
 
 ---

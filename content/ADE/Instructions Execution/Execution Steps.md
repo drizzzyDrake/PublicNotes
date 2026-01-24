@@ -51,7 +51,7 @@ Solo per istruzioni che coinvolgono la **memoria dati** (`sw`, `lw` ecc.):
 Questa fase si applica solo alle istruzioni che **producono un valore da salvare in un registro** (`add`, `sub`, `lw`, `andi`, `mul`, ecc.). Il valore può provenire dall’ALU (aritmetica) o dalla RAM (load).
 
 ---
-### 6. (AGGIORNAMENTO DEL PC)
+### 6. AGGIORNAMENTO DEL PC
 
 **Aggiornamento del Program Counter**: 
 

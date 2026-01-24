@@ -10,7 +10,7 @@ Internamente è basata su un **albero rosso-nero bilanciato**, che garantisce op
 - **Ordinamento delle chiavi garantito**: l’iterazione segue l’ordine naturale o il comparatore fornito.  
 - **Chiavi uniche**: come tutte le mappe, una chiave può apparire una sola volta (valore aggiornato se chiave già presente).  
 - **Non permette chiavi null** (perché l’ordinamento su `null` non è definito), ma permette valori `null`.  
-- **Non sincronizzato**: non [[Multithreading|thread-safe]]; per usi concorrenti servono wrapper o `ConcurrentSkipListMap`.  
+- **Non sincronizzato**: non [[MDP/Memory/Thread|thread-safe]]; per usi concorrenti servono wrapper o `ConcurrentSkipListMap`.  
 - **Efficienza**: operazioni in O(log n) grazie all’albero bilanciato.  
 - **Supporta operazioni avanzate** come sotto-mappe (`subMap`), chiavi min/max, navigazione ordinata.
 

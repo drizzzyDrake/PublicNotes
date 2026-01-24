@@ -36,7 +36,7 @@ Se non è nei registri, la CPU genera un **indirizzo di memoria** per cercarlo a
 #### 2. L1 Cache
 
 La **cache controller** cerca nella **Cache L1**:
-Ogni **[[Block|blocco]]** (linea di cache) ha un **[[Tag|tag]]** che identifica l’indirizzo originale da cui proviene.
+Ogni **[[Block|blocco]]** (linea di cache) ha un **tag** che identifica l’indirizzo originale da cui proviene.
 Se il **tag combacia** con l’indirizzo richiesto → **Hit** in L1.
 Se no → **[[Miss]]** → si prosegue nella Cache L2 (si carica l’intero blocco dal livello inferiore per sfruttare la **[[Spatial Locality|località spaziale]]**).
 

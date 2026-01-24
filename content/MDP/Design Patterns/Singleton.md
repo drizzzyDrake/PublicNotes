@@ -29,7 +29,7 @@ public class Singleton {
 **Initialization on-demand:**
 
 - inizializzazione _lazy_ (l’istanza è creata solo se necessaria)
-- [[Multithreading|thread-safe]] grazie al class loading di Java
+- [[MDP/Memory/Thread|thread-safe]] grazie al class loading di Java
 - nessun [[Overhead|overhead]] di sincronizzazione
 
 ---

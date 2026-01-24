@@ -10,7 +10,7 @@ La classe `ArrayList` è una **classe** che implementa l’interfaccia `List` e 
 - **Ordine garantito**: mantiene l’ordine in cui gli elementi sono stati inseriti.
 - **Accesso veloce per indice**: tempo di accesso O(1) per lettura/scrittura.
 - **Inserimenti e rimozioni**: veloci in fondo alla lista. Più lenti all’inizio o in mezzo (perché richiedono lo spostamento degli elementi).
-- **Non sincronizzata**: più veloce, ma non [[Multithreading|thread-safe]].
+- **Non sincronizzata**: più veloce, ma non [[MDP/Memory/Thread|thread-safe]].
 - **Elementi null**: ammessi.
 
 ---

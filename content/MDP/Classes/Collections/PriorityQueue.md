@@ -11,7 +11,7 @@ La classe `PriorityQueue` implementa l’interfaccia `Queue`. Una **`PriorityQue
 - **Nessun ordine costante di iterazione**: l’iterazione può dare elementi in ordine arbitrario.
 - **Permette elementi duplicati**.
 - **Non permette `null`**.
-- **Thread-unsafe**: non [[Multithreading|sincronizzata]] (per versione sincronizzata, usare `PriorityBlockingQueue`).
+- **Thread-unsafe**: non [[MDP/Memory/Thread|sincronizzata]] (per versione sincronizzata, usare `PriorityBlockingQueue`).
 
 ---
 ### METODI PRINCIPALI

@@ -1,4 +1,4 @@
-In **Java**, alcuni package sono considerati **"speciali"** perché fanno parte del [[Language Core|core del linguaggio]] e vengono caricati automaticamente o forniscono funzionalità fondamentali.
+In **Java**, alcuni package sono considerati **"speciali"** perché fanno parte del **core del linguaggio** e vengono caricati automaticamente o forniscono funzionalità fondamentali.
 
 > Sono package forniti di default dal [[JDK]] (Java Development Kit).
 

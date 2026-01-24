@@ -11,7 +11,7 @@ La classe **`LinkedHashMap`** estende `HashMap` e implementa l’interfaccia `Ma
 - **Opzionale ordine di accesso**: può ordinare per accesso (default è ordine inserimento).
 - **Chiavi uniche**, come in `HashMap`.
 - Permette **una chiave `null`** e valori `null`.
-- **Non sincronizzato**, quindi non [[Multithreading|thread-safe]].
+- **Non sincronizzato**, quindi non [[MDP/Memory/Thread|thread-safe]].
 - Performance simili a `HashMap` (operazioni in tempo costante medio O(1)).
 - Usato spesso quando serve iterare gli elementi in ordine prevedibile.
 

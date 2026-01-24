@@ -10,7 +10,7 @@ La classe `HashSet` è una **classe** che implementa l’interfaccia `Set` e rap
 - **Nessun ordine garantito**: l’ordine può sembrare casuale e può cambiare nel tempo.
 - **Implementazione con hash table**: operazioni `add`, `remove`, `contains` in media O(1).
 - **Elemento null**: ammesso **una sola volta**.
-- **Non sincronizzato**: più veloce in single-thread, ma non [[Multithreading|thread-safe]].
+- **Non sincronizzato**: più veloce in single-thread, ma non [[MDP/Memory/Thread|thread-safe]].
 - **Ridimensionamento automatico**: cresce in base al carico della tabella hash (load factor).    
 
 ---

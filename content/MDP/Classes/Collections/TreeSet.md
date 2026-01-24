@@ -16,7 +16,7 @@ Internamente utilizza un **albero rosso-nero** (Red-Black Tree), una struttura a
 - **Prestazioni**: operazioni `add`, `remove`, `contains` in O(log n) grazie all’albero bilanciato.
 - **Navigazione ordinata**: metodi come `first()`, `last()`, `higher()`, `lower()` per ottenere elementi in base all’ordine.
 - **Elemento null**: non ammesso (può causare `NullPointerException` se si tenta di inserirlo).
-- **Non sincronizzato**: più veloce in single-thread, non [[Multithreading|thread-safe]].
+- **Non sincronizzato**: più veloce in single-thread, non [[MDP/Memory/Thread|thread-safe]].
 
 ---
 ### METODI PRINCIPALI

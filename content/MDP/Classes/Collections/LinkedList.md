@@ -10,7 +10,7 @@ La classe `LinkedList` è una **classe** che implementa le interfacce `List`, `D
 - **Ordine garantito**: mantiene l’ordine di inserimento.
 - **Accesso per indice**: tempo O(n), più lento rispetto a `ArrayList`.
 - **Inserimenti e rimozioni**: veloci in testa, in coda e in punti intermedi (non serve spostare elementi).
-- **Non sincronizzata**: non è [[Multithreading|thread-safe]].
+- **Non sincronizzata**: non è [[MDP/Memory/Thread|thread-safe]].
 - **Elementi null**: ammessi.
 - **Implementa anche una coda**: può essere usata come `Queue` o `Deque` (lista doppia).
 

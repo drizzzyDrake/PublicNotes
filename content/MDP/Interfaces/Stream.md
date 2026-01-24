@@ -107,7 +107,7 @@ System.out.println(flatList); // [a, b, c, d]
 ---
 ### STREAM PARALLELI
 
-Gli **Stream paralleli** (`parallelStream()`) in Java sono **uno strumento per eseguire le pipeline di uno Stream in più [[Multithreading|thread]] contemporaneamente**, sfruttando il **multi-core della CPU**, senza dover gestire esplicitamente i thread.
+Gli **Stream paralleli** (`parallelStream()`) in Java sono **uno strumento per eseguire le pipeline di uno Stream in più [[MDP/Memory/Thread|thread]] contemporaneamente**, sfruttando il **multi-core della CPU**, senza dover gestire esplicitamente i thread.
 
 ---
 #### Funzionamento

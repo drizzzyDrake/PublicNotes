@@ -21,7 +21,7 @@ static int contatore = 0;
 ---
 ### VOLATILE (MULTITHREADING)
 
-Garantisce che il valore sia sempre aggiornato tra i [[Multithreading|thread]].
+Garantisce che il valore sia sempre aggiornato tra i [[MDP/Memory/Thread|thread]].
 
 ```java
 volatile boolean running = true;

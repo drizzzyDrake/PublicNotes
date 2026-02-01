@@ -154,7 +154,7 @@ Continuiamo finché **S** non aggiunge più nulla (cioè **S ⊆ Z**).
 ---
 ### DECOMPOSIZIONI CON JOIN SENZA PERDITA
 
-Sia **R** uno schema di relazione. Una decomposizione <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> di **R** ha un [[Relational Algebra#JOIN NATURALE (⨝)|join]] senza perdita se per ogni istanza legale ***r*** di **R** si ha:
+Sia **R** uno schema di relazione. Una decomposizione <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> di **R** ha un [[Relational Algebra#INNER JOIN (⨝)|join]] senza perdita se per ogni istanza legale ***r*** di **R** si ha:
 
 $$r = \pi_{R_1}(r)⨝\pi_{R_2}(r)⨝...⨝\pi_{R_k}(r)$$
 
@@ -169,7 +169,7 @@ Sia **R** uno schema di relazione e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., 
 - <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>
 - <b><i>m</i><sub>ρ</sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>
 
-> <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> è il [[Relational Algebra#JOIN NATURALE (⨝)|join]] delle [[Relational Algebra#PROIEZIONE (π)|proiezioni]] di ***r*** sui sottoschemi <b>R<sub>i</sub></b>, cioè l'istanza di **R** ricostruita a partire dalla decomposizione **ρ**.
+> <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> è il [[Relational Algebra#INNER JOIN (⨝)|join]] delle [[Relational Algebra#PROIEZIONE (π)|proiezioni]] di ***r*** sui sottoschemi <b>R<sub>i</sub></b>, cioè l'istanza di **R** ricostruita a partire dalla decomposizione **ρ**.
 
 ---
 

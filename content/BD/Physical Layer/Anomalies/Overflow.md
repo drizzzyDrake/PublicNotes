@@ -1,4 +1,4 @@
-Gli overflow sono fenomeni logici che si verificano generalmente nei file [[Random File|hash]] quando il numero di record in un bucket supera la **capacità massima** del bucket (in seguito quindi a più [[Collision|collisioni]] sul bucket). I record in eccesso devono essere memorizzati in blocchi aggiuntivi, aumentando il numero di **[[Block Access|block access]]** richiesti. Ne esistono due tipi:
+Gli overflow sono fenomeni logici che si verificano generalmente nei file [[Hash File|hash]] quando il numero di record in un bucket supera la **capacità massima** del bucket (in seguito quindi a più [[Collision|collisioni]] sul bucket). I record in eccesso devono essere memorizzati in blocchi aggiuntivi, aumentando il numero di **[[Block Access|block access]]** richiesti. Ne esistono due tipi:
 
 ---
 ### OPEN ADDRESSING / LINEAR PROBING

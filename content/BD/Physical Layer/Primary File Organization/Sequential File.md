@@ -36,9 +36,9 @@ Scansione sequenziale dei blocchi con possibilità di **stop condizionato**.
 
 **Costo medio:**
 
-In un file con **NBLK** blocchi:
+In un file con **NBK** blocchi:
 
-- **NBLK/2 accessi** (in media)
+- **NBK/2 accessi** (in media)
 - tutti **SBA**
 
 > N.B. Stop condizionato: se si incontra un record con chiave maggiore (o minore) di quella cercata, la ricerca può terminare in quanto i record sono ordinati (evita full scan del file nella maggior parte dei casi).
@@ -50,17 +50,45 @@ Approccio possibile perché il file è ordinato (guarda il funzionamento dell'al
 
 **Costo medio:**
 
-In un file con **NBLK** blocchi:
+In un file con **NBK** blocchi:
 
-- <b>log<sub>2​</sub>(NBLK)</b>
+- <b>log<sub>2​</sub>(NBK)</b>
 - tutti **RBA**
 
 ---
-##### Esempio:
+#### Eliminazione
 
-**NR** = 30.000 record, **RS** = 100 bytes, **BS** = 2048 bytes
-**BF** = **⌊BS/RS⌋** = 20 record per blocco
-**NBLK** = 30.000 / 20 = 1.500 blocchi
+Prima si individua il record (ricerca) poi si elimina il record spostando eventuali record successivi per mantenere l’ordine
+
+**Costo medio:**
+
+In un file con **NBK** blocchi:
+
+- ricerca: **linear search:** **NBK/2** (**SBA**) o **binary search:** <b>log<sub>2​</sub>(NBK)</b> (**RBA**)
+- spostamento e scrittura dei record nel blocco: **1 accesso** per blocco (**RBA** o **SBA** se contiguo)
+
+Se il record si trova all’inizio del file, potrebbe essere necessario aggiornare più blocchi per mantenere l’ordine
+
+---
+#### Modifica
+
+Prima si individua il record (ricerca) poi si aggiorna il record nel blocco corrispondente
+
+**Costo medio:**
+
+In un file con **NBK** blocchi:
+
+- ricerca: **linear search:** **NBK/2** (**SBA**) o **binary search:** <b>log<sub>2​</sub>(NBK)</b> (**RBA**)
+- spostamento e scrittura dei record nel blocco: **1 accesso** per blocco (**RBA** o **SBA** se contiguo)
+
+> N.B. La modifica non cambia l’ordine della chiave. Se si modifica la chiave, il record deve essere **spostato** nella posizione corretta, equivalente a una **cancellazione + inserimento**, con costi simili a quelli di inserimento.
+
+---
+#### Esempio:
+
+**NR** = 30.000 record, **RS** = 100 bytes, **BKS** = 2048 bytes
+**NRpBK** = **⌊BS/RS⌋** = 20 record per blocco
+**NBK** = 30.000 / 20 = 1.500 blocchi
 
 **Linear search** → 1.500 / 2 = 750 **SBA**
 **Binary search** → log₂(1.500) ≈ 11 **RBA**
@@ -72,10 +100,10 @@ In un file con **NBLK** blocchi:
 ![[primary file organization.png]]
 **Sequential file:**
 
-- **Capacità bucket (CAP)** = **2** record per blocco
+- **Capacità blocco (NRpBK)** = **2** record per blocco
 
 ```powershell
-FILE SEQUENTIAL # Ordine crescente
+SEQUENTIAL FILE # Ordine crescente
 |
 ├─ Blocco 1 [Header: num_records=2]
 |  ├─ Record: 101, Giulio, Informatica

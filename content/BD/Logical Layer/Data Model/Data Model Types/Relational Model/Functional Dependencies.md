@@ -696,7 +696,7 @@ Scelta dei candidati:
 > N.B. Dati:
 > **X =** insieme generico di attributi in **R**.
 > **A =** attributo di **R** che non compare mai come determinato in **F**.
-> Se **X** non contiene **A** allora <b>X<sup>+</sup></b> non potrà mai contenere **A** (perché **A** non è mai apparso come determinato in **F**), quindi <b>X<sup>+</sup>≠ R</b>. Dunque **qualsiasi** sottoinsieme privo di **A** non è main superchiave. Infatti gli attributi di **R** che non compaiono mai in **F** come determinati possono essere determinati solo per [[Functional Dependencies#Riflessività (reflexivity)|riflessività]] da loro stessi.
+> Se **X** non contiene **A** allora <b>X<sup>+</sup></b> non potrà mai contenere **A** (perché **A** non è mai apparso come determinato in **F**), quindi <b>X<sup>+</sup>≠ R</b>. Dunque **qualsiasi** sottoinsieme privo di **A** non è mai superchiave. Infatti gli attributi di **R** che non compaiono mai in **F** come determinati possono essere determinati solo per [[Functional Dependencies#Riflessività (reflexivity)|riflessività]] da loro stessi.
 
 ^ca98ec
 

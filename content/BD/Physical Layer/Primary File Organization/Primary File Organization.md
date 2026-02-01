@@ -2,7 +2,7 @@ L'organizzazione fisica dei database definisce come i record logici di una relaz
 
 - File [[Heap File|heap]].
 - File [[Sequential File|sequenziale]].
-- File [[Random File|hash]].
+- File [[Hash File|hash]].
 - File [[Indexed Sequential File|sequenziale indicizzato]].
 - File [[Tree‑Structured File|indicizzato tramite albero]].
 

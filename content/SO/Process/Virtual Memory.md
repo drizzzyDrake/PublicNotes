@@ -16,7 +16,7 @@ Questo spazio è **virtuale**, non reale.
 
 **Paginazione:**
 
-La memoria è divisa in **pagine** (tipicamente 4 KB). Il sistema operativo mantiene una **tabella delle pagine** che mappa:
+La memoria è divisa in **[[Paging|pagine]]** (tipicamente 4 KB). Il sistema operativo mantiene una **tabella delle pagine** che mappa:
 
 ```
 indirizzo virtuale → indirizzo fisico (RAM) oppure su disco

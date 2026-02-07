@@ -288,7 +288,7 @@ $$F^A⊆F^+$$
 ---
 #### Seconda inclusione: 
 
-Dimostriamo che <b>F<sup>+</sup> ⊆ F<sup>A</sup></b>:
+Dimostriamo che <b>F<sup>+</sup>⊆ F<sup>A</sup></b>:
 
 > "Ogni dipendenza funzionale logicamente vera rispetto a F (<b>∈ F<sup>+</sup></b>) è anche deducibile sintatticamente tramite gli assiomi di Armstrong (<b>∈ F<sup>A</sup></b>)".
 
@@ -318,23 +318,22 @@ Questa costruzione serve per **“testare” la validità delle dipendenze**:
 Ora bisogna mostrare che **r soddisfa tutte le dipendenze in F** (cioè è legale).
 Supponiamo **per assurdo** che una dipendenza di **F**, ad esempio **V → W**, **non sia soddisfatta** da ***r***.  
 Affinché ciò accada le due tuple devono essere:
+
 - **Uguali su V**: significa che **V ⊆ <b>X<sup>+</sup></b>** (perché le tuple coincidono proprio su <b>X<sup>+</sup></b>);
 - **Diverse su W**:  quindi **W ∩ (R − <b>X<sup>+</sup></b>) ≠ ∅** (cioè W contiene almeno un attributo non in <b>X<sup>+</sup></b>).
-Tuttavia:
-Se **V ⊆ <b>X<sup>+</sup></b>**, dal **[[Functional Dependencies#Lemma 1|Lemma]]** sappiamo che **X → V ∈ Fᴬ**, e siccome anche **V → W ∈ F** ⊆ **Fᴬ**, per **[[Functional Dependencies#Transitività (Transitivity)|transitività]]** otteniamo **X → W ∈ Fᴬ**. Sempre dal **Lemma**, questo implicherebbe **W ⊆ <b>X<sup>+</sup></b>**, **che contraddice** la condizione **W ∩ (R − <b>X<sup>+</sup></b>) ≠ ∅**.
-Abbiamo dimostrato per assurdo che: **tutte le dipendenze in F sono soddisfatte da *r* (*r* è legale).**
+
+Tuttavia: se **V ⊆ <b>X<sup>+</sup></b>**, dal **[[Functional Dependencies#Lemma 1|Lemma]]** sappiamo che **X → V ∈ Fᴬ**, e siccome anche **V → W ∈ F** ⊆ **Fᴬ**, per **[[Functional Dependencies#Transitività (Transitivity)|transitività]]** otteniamo **X → W ∈ Fᴬ**. Sempre dal **Lemma**, questo implicherebbe **W ⊆ <b>X<sup>+</sup></b>**, **che contraddice** la condizione **W ∩ (R − <b>X<sup>+</sup></b>) ≠ ∅**. Abbiamo dimostrato per assurdo che: **tutte le dipendenze in F sono soddisfatte da *r* (*r* è legale).**
 
 ---
 
 **Verifica della contraddizione finale:**
 
-Ora, siccome **X → Y ∈ F⁺**, significa che **tutte le istanze legali**, compresa ***r***, devono soddisfarla.
-Ma [[special instance.png|osserviamo]] ***r*** :
+Ora, siccome **X → Y ∈ F⁺**, significa che **tutte le istanze legali**, compresa ***r***, devono soddisfarla. Ma [[special instance.png|osserviamo]] ***r*** :
+
 - Le due tuple coincidono su **X** (perché **X ⊆ <b>X<sup>+</sup></b>** per [[Functional Dependencies#Riflessività (reflexivity)|riflessività]]).
 - Dunque devono coincidere anche su **Y**, se ***r*** soddisfa **X → Y** (per la [[Functional Dependencies#Condizione logica|definizione]] di dipendenza funzionale).
-Questo implica che **Y ⊆ <b>X<sup>+</sup></b>** (cioè gli attributi di Y sono determinati da X, per la [[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|definizione]] di <b>X<sup>+</sup></b>).  
-Ma dal **[[Functional Dependencies#Lemma 1|Lemma]] precedente**, **Y ⊆ <b>X<sup>+</sup></b> ⇔ X → Y ∈ Fᴬ**. Ecco dunque la **contraddizione**:
-Avevamo assunto inizialmente che:
+
+Questo implica che **Y ⊆ <b>X<sup>+</sup></b>** (cioè gli attributi di Y sono determinati da X, per la [[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|definizione]] di <b>X<sup>+</sup></b>). Ma dal **[[Functional Dependencies#Lemma 1|Lemma]] precedente**, **Y ⊆ <b>X<sup>+</sup></b> ⇔ X → Y ∈ Fᴬ**. Ecco dunque la **contraddizione**: Avevamo assunto inizialmente che:
 
 $$X → Y ∈ F^+ \quad | \quad X → Y ∉ F^A$$
 
@@ -628,7 +627,7 @@ Quindi la dipendenza **V → W** in **F** è soddisfatta anche quando le due tup
 
 **Verifica che A ∈ <b>Z<sub>j</sub></b>:**
 
-Abbiamo già mostrato che l’istanza ***r*** costruita **è legale**, cioè soddisfa **tutte** le dipendenze funzionali in **F** e quindi anche **tutte le dipendenze in <b>F<sup>+</sup></b>.
+Abbiamo già mostrato che l’istanza ***r*** costruita **è legale**, cioè soddisfa **tutte** le dipendenze funzionali in **F** e quindi anche **tutte le dipendenze in** <b>F<sup>+</sup></b>.
 
 Ora consideriamo la dipendenza funzionale che ci interessa:
 
@@ -690,7 +689,7 @@ Dati uno schema **R** e un insieme di dipendenze funzionali **F**:
 
 Scelta dei candidati:
 
-- Per ogni **determinante** tra le dipendenze in **F**, forma un candidato iniziale.
+- Per ogni sottoinsieme dell'insieme dei **determinanti** in **F**, forma un candidato iniziale.
 - Aggiungi ad **ogni** candidato gli attributi in **R** che non compaiono mai come **determinati** tra le dipendenze in **F**.
 
 > N.B. Dati:
@@ -725,11 +724,13 @@ Verifica della **[[Functional Dependencies#CHIAVI|minimalità]]**:
 
 Scelta dei candidati:
 
-Parto dai determinanti in **F**: **AB, G, H, D**.
+Parto dall'insieme dei determinanti in **F**: **AB ∪ G ∪ H ∪ D** = **ABDGH**
 Cerco in **R** tutti gli attributi che non compaiono mai come determinati in **F**: solo **C**.
-Aggiungo **C** a tutti i determinanti in **F** e trovo i candidati iniziali: **ABC, GC, HC, DC**.
+Aggiungo **C** a tutti i sottoinsiemi di **ABDGH** che vado a controllare:
 
 Calcolo della chiusura per ogni candidato:
+
+> N.B. La scelta dell'ordine dei sottoinsiemi candidati da verificare è arbitraria, anche se solitamente è consigliato iniziare dai sottoinsiemi più piccoli così da non doverne verificare la minimalità (sono sicuramente minimali). In questo esempio partiremo da **ABC** per mostrare anche il controllo sulla minimalità, ma ci converrebbe controllare per primi i sottoinsiemi **AC**, **BC**, **DC**, **GC** e **HC**.
 
 <b>ABC<sup>+</sup>= ABCDEGH = R</b> quindi **ABC** è una superchiave di **R**.
 
@@ -753,6 +754,8 @@ Tutti i sottoinsiemi di **GC** non sono superchiavi dunque **GC** è **chiave ca
 Per **HC** e **DC** il procedimento è identico a quello di **GC**, quindi anche queste sono **chiavi candidata** di **R**. In conclusione, le chiavi candidate dello schema **R** sono:
 
 **ABC, GC, HC e DC**.
+
+Posso concludere qui la ricerca delle chiavi, senza il controllo di sottoinsiemi con cardinalità maggiore in quanto sicuramente conterrebbero almeno una delle chiavi già trovate (non sarebbero minimali).
 
 ---
 

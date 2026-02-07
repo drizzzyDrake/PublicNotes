@@ -173,13 +173,28 @@ Sia **R** uno schema di relazione e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., 
 
 ---
 
-**Spiegazione:**
+**Dimostrazione ***r* ⊆** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>**:**
 
-***r* ⊆** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> : Ogni tupla di ***r*** compare anche in <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>. Il join delle proiezioni infatti non perde mai tuple originali (può solo aggiungerne di altre).
+Dimostriamo che ogni tupla di ***r*** compare anche in <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>. Il join delle proiezioni infatti non perde mai tuple originali (può solo aggiungerne di altre). 
 
-<b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> : Se si prende il join <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> e lo si proietta su <b>R<sub>i</sub></b>, si ottieni esattamente la stessa proiezione che si aveva da ***r***. 
+Sia **t** una tupla **∈** ***r***. Proiettando ***r*** su <b>R<sub>i</sub></b>, la parte di **t** sugli attributi di <b>R<sub>i</sub></b> compare in <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> (ovvero <b>t[R<sub>i</sub>]</b> **∈** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> per ogni ***i*** **∈ {1, ..., k}**). Nel join naturale <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> delle proiezioni, tutte queste parti compatibili si ricombinano, quindi la tupla **t** viene ricostruita, ovvero **t** **∈** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> (ogni tupla di ***r*** è anche in <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>).
 
-<b><i>m</i><sub>ρ</sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> : Se si prende l’istanza ricostruita <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> e si applica di nuovo la stessa operazione di decomposizione e join, si ottiene lo stesso risultato (idempotenza). Questo è importante perché assicura che la ricostruzione è stabile e non dipende da quante volte si applica l’operazione.
+---
+
+**Dimostrazione** <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>**:**
+
+Dimostriamo che se si prende il join <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> e lo si proietta su <b>R<sub>i</sub></b>, si ottiene esattamente la stessa proiezione che si aveva da ***r***. Bisogna dimostrare **due inclusioni**.
+
+1. Per il _punto 1_ si ha ***r* ⊆** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> e, quindi <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> **⊆** <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> è dimostrata (proiettando entrambi sui campi <b>R<sub>i</sub></b>​, l’inclusione resta valida).
+2. Dimostriamo ora che anche <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **⊆** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>. Sia **t ∈** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>. Per definizione di join naturale, la tupla **t** è stata ottenuta combinando tuple provenienti dalle proiezioni di **r**, cioè: <b>t = t<sub>1</sub> ∪ t<sub>2</sub> ∪ ... ∪ t<sub>k</sub></b> con <b>t<sub>1</sub></b> **∈** <b>π<sub>R<sub>1</sub></sub>(<i>r</i>)</b>, <b>t<sub>2</sub></b> **∈** <b>π<sub>R<sub>2</sub></sub>(<i>r</i>)</b>, **...**, <b>t<sub>k</sub></b> **∈** <b>π<sub>R<sub>k</sub></sub>(<i>r</i>)</b> e tutte compatibili sugli attributi in comune. In particolare, la parte della tupla **t** sugli attributi <b>R<sub>i</sub> coincide con la tupla t<sub>i</sub></b>, quindi <b>t[R<sub>i</sub>] = t<sub>i</sub></b>. Poiché **t<sub>i</sub> ∈** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>, segue che: <b>t[R<sub>i</sub>] ∈ π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>. Questo vale per ogni **t ∈** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>, quindi <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>) ⊆ π<sub>R<sub>i</sub></sub>(<i>r</i>)</b>.
+
+---
+
+**Dimostrazione** <b><i>m</i><sub>ρ</sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>**:**
+
+Dimostriamo che se si prende l’istanza ricostruita <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> e si applica di nuovo la stessa operazione di decomposizione e join, si ottiene lo stesso risultato (idempotenza). Questo è importante perché assicura che la ricostruzione è stabile e non dipende da quante volte si applica l’operazione.
+
+Per definizione <b><i>m</i><sub>ρ</sub>(<i>m</i><sub>ρ</sub>(<i>r</i>))</b> **=** <b>π<sub>R<sub>1</sub></sub>(<i>m</i><sub>ρ</sub>(<i>r</i>))</b> **⨝** <b>π<sub>R<sub>2</sub></sub>(<i>m</i><sub>ρ</sub>(<i>r</i>))</b> **⨝** **...** **⨝** <b>π<sub>R<sub>k</sub></sub>(<i>m</i><sub>ρ</sub>(<i>r</i>))</b>. Dal _punto 2_ già dimostrato sappiamo che <b>π<sub>R<sub>i</sub></sub>(<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>)</b> **=** <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> per ogni ***i***. Sostituendo: <b><i>m</i><sub>ρ</sub>(<i>m</i><sub>ρ</sub>(<i>r</i>))</b> **=** <b>π<sub>R<sub>1</sub></sub>(<i>r</i>)</b> **⨝** <b>π<sub>R<sub>2</sub></sub>(<i>r</i>)</b> **⨝** **...** **⨝** <b>π<sub>R<sub>k</sub></sub>(<i>r</i>)</b> **=** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>.
 
 ---
 ##### Algoritmo verifica join senza perdita:

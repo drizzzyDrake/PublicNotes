@@ -177,7 +177,7 @@ Dimostriamo che <b>Z<sub>f</sub> ⊆ X<sup>+</sup><sub>G</sub></b>:
 
 ---
 
-**Caso base (*i* = 0):**
+**Caso base (*j* = 0):**
 
 $$Z_0​=X⊆X^+_G⟹Z_0​⊆X^+_G$$
 
@@ -219,7 +219,7 @@ L’algoritmo si ferma solo quando non riesce più ad aggiungere attributi appli
 
 $$(Z_f)_G^+ = Z_f$$
 
-Una proprietà generale della chiusura è: se <b>X ⊆ Y</b> allora <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>Y<sup>+</sup><sub>G</sub></b>. Qui sappiamo che **X** **⊆** <b>Z<sub>f</sub></b>, quindi: <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b>. Ma dato che <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b> **=** <b>Z<sub>f</sub></b>, allora <b>X<sup>+</sup><sub>G</sub> ⊆ Z<sub>f</sub></b>. L'inclusione è dimostrata, infatti, al termine dell'algoritmo, <b>Z<sub>f</sub></b> deve contenere **tutto ciò che è derivabile da X** in **G**.
+Una proprietà generale della chiusura di **X** che nasce dalla [[Decomposition#^de0ac5|monotonia]] delle chiusure è: se <b>X ⊆ Y</b> allora <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>Y<sup>+</sup><sub>G</sub></b>. Qui sappiamo che **X** **⊆** <b>Z<sub>f</sub></b>, quindi: <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b>. Ma dato che <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b> **=** <b>Z<sub>f</sub></b>, allora <b>X<sup>+</sup><sub>G</sub> ⊆ Z<sub>f</sub></b>. L'inclusione è dimostrata, infatti, al termine dell'algoritmo, <b>Z<sub>f</sub></b> deve contenere **tutto ciò che è derivabile da X** in **G**.
 
 ---
 ### DECOMPOSIZIONI CON JOIN SENZA PERDITA
@@ -243,7 +243,7 @@ Sia **R** uno schema di relazione e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., 
 
 ---
 
-**Dimostrazione ***r* ⊆** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>**:**
+**Dimostrazione *r* ⊆** <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>**:**
 
 Dimostriamo che ogni tupla di ***r*** compare anche in <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b>. Il join delle proiezioni infatti non perde mai tuple originali (può solo aggiungerne di altre). 
 
@@ -529,11 +529,11 @@ Applichiamo il ciclo di propagazione fino ad ottenere <b><i>r</i><sub>f</sub></b
 
 Per ogni tupla <b>t<sub>i<sub>f</sub></sub></b> nelle colonne di <b>R<sub>i</sub></b> restano sicuramente tutti <b>a<sub><i>j</i></sub></b> (per la costruzione di ***r***), quindi <b>t<sub>i<sub>f</sub></sub>[R<sub>i</sub>] = (a<sub><i>j<sub>1</sub></i></sub>, a<sub><i>j<sub>2</sub></i></sub>, ...)</b> . Cioè **la proiezione della tupla <b>t<sub>i</sub></b> sugli attributi del suo schema <b>R<sub>i</sub></b> contiene solo <b>a<sub><i>j</i></sub></b>**.
 
-Definiamo ora la tupla <b>t<sup>a</sup> = (a<sub><i>j<sub>1</sub></i></sub>, a<sub><i>j<sub>2</sub></i></sub>, ..., a<sub><i>j<sub>n</sub></i></sub>)</b> cioè la tupla su tutto **R** che ha solo <b>a<sub><i>j</i></sub></b>. Consideriamo poi il **join naturale** delle proiezioni delle tuple. Il join combina tuple che **coincidono sugli attributi in comune**:
+Definiamo ora la tupla <b>t<sup>a</sup></b> tale che <b>t<sup>a</sup>[R]= (a<sub><i>j<sub>1</sub></i></sub>, a<sub><i>j<sub>2</sub></i></sub>, ..., a<sub><i>j<sub>n</sub></i></sub>)</b> cioè la tupla su tutto **R** che ha solo <b>a<sub><i>j</i></sub></b>. Consideriamo poi il **join naturale** delle proiezioni delle tuple. Il join combina tuple che **coincidono sugli attributi in comune**:
 
 $$t_{1_f}[R_1] \bowtie t_{2_f}[R_2] \bowtie \dots \bowtie t_{k_f}[R_k]$$
 
-Osserviamo che, dato che ogni tupla <b>t<sub>i<sub>f</sub></sub></b> ha sicuramente <b>a<sub><i>j</i></sub></b> nelle colonne del sottoschema <b>R<sub>i</sub></b> corrispondente, sugli attributi comuni tra due sottoschemi <b>R<sub>i<sub>1</sub></sub></b> e <b>R<sub>i<sub>2</sub></sub></b> (usati per il join naturale) il valore è sempre <b>a<sub><i>j</i></sub></b>. Dunque le tuple sono compatibili e il join produce sicuramente la tupla che ha <b>a<sub><i>j</i></sub></b> ovunque. Quindi:
+Osserviamo che, dato che ogni tupla <b>t<sub>i<sub>f</sub></sub></b> ha sicuramente <b>a<sub><i>j</i></sub></b> nelle colonne del sottoschema <b>R<sub>i</sub></b> corrispondente, sugli attributi comuni tra due sottoschemi <b>R<sub>i<sub>1</sub></sub></b> e <b>R<sub>i<sub>2</sub></sub></b>, con <b>R<sub>i<sub>1</sub></sub></b> **∩** <b>R<sub>i<sub>2</sub></sub></b> **≠ Ø**  (con almeno un attributo in comune su cui fare il join) il valore è sempre <b>a<sub><i>j</i></sub></b>. Dunque le tuple sono compatibili e il join produce sicuramente la tupla che ha <b>a<sub><i>j</i></sub></b> ovunque. Quindi:
 
 $$t^a \in t_{1_f}[R_1] \bowtie \dots \bowtie t_{k_f}[R_k]$$
 
@@ -679,10 +679,15 @@ L’algoritmo calcola correttamente <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., 
 Dimostriamo separatamente le due proprietà:
 
 ---
-
-**1. ρ preserva F:**
+###### 1. ρ preserva F:
 
 Sia <b>G = ∪<sub>i=1</sub><sup>k</sup> π<sub>R<sub>i</sub></sub>(F)</b>, per verificare che **ρ** preserva **F** dobbiamo [[Decomposition#^7af50e|dimostrare]] che **F** e **G** siano due insiemi [[Functional Dependencies#INSIEMI EQUIVALENTI|equivalenti]]. 
+
+---
+
+**Prima inclusione:**
+
+Dimostriamo che  <b>F<sup>+</sup>⊆ G<sup>+</sup></b>:
 
 Sappiamo che per ogni **X → A ∈ F** si ha **XA ∈ ρ**, infatti dall'[[Decomposition#Algoritmo calcolo ρ|algoritmo]] notiamo che **XA** è uno dei sottoschemi di **R**:
 
@@ -690,21 +695,32 @@ Sappiamo che per ogni **X → A ∈ F** si ha **XA ∈ ρ**, infatti dall'[[Deco
 for every X → A ∈ F do: ρ := ρ ∪ (X ∪ A)
 ```
 
-Dunque, per [[Decomposition#DECOMPOSIZIONI CHE PRESERVANO LE DIPENDENZE|definizione]], **X → A ∈ G**, quindi <b>F ⊆ G</b>, e quindi <b>F<sup>+</sup> ⊆ G<sup>+</sup></b>.
+Dunque per [[Decomposition#DECOMPOSIZIONI CHE PRESERVANO LE DIPENDENZE|definizione]] di proiezione, se **XA ⊆** <b>R<sub>i</sub></b>, allora **X → A ∈ G**, quindi <b>F ⊆ G</b>, e quindi <b>F<sup>+</sup> ⊆ G<sup>+</sup></b>.
 
-> N.B. La chiusura è monotona (può solo crescere o restare uguale all'insieme di partenza): quindi se **G** contiene tutte le **DF** di **F** allora la sua chiusura <b>G<sup>+</sup></b> conterrà sicuramente tutte le **DF** in <b>F<sup>+</sup></b>.
+> N.B. La chiusura è **monotona** (può solo crescere o restare uguale all'insieme di partenza): quindi se **G** contiene tutte le **DF** di **F** allora la sua chiusura <b>G<sup>+</sup></b> conterrà sicuramente tutte le **DF** in <b>F<sup>+</sup></b>.
 
 ^de0ac5
 
-Inoltre, sempre per [[Decomposition#DECOMPOSIZIONI CHE PRESERVANO LE DIPENDENZE|definizione]], **G** è ottenuto proiettando **F** sui vari sottoschemi, quindi ogni **DF** in **G** proviene da <b>F<sup>+</sup></b>, dunque <b>G ⊆ F<sup>+</sup></b> e, per il [[Functional Dependencies#Lemma 2|lemma]]: <b>G<sup>+</sup>⊆ F<sup>+</sup></b>
+---
+
+**Seconda inclusione:**
+
+Dimostriamo che  <b>G<sup>+</sup>⊆ F<sup>+</sup></b>:
+
+Sempre per [[Decomposition#DECOMPOSIZIONI CHE PRESERVANO LE DIPENDENZE|definizione]], **G** è ottenuto proiettando **F** sui vari sottoschemi, quindi ogni **DF** in **G** proviene da <b>F<sup>+</sup></b>, dunque <b>G ⊆ F<sup>+</sup></b> e, per il [[Functional Dependencies#Lemma 2|lemma]]: <b>G<sup>+</sup>⊆ F<sup>+</sup></b>
+
+---
+
+**Conclusione:**
 
 Abbiamo dimostrato entrambe le inclusioni, dunque <b>F<sup>+</sup> = G<sup>+</sup></b>, **ρ preserva F**.
 
 ---
-
-**2. Ogni <b>R<sub>i</sub></b> in ρ è in 3NF:**
+###### 2. Ogni R<sub>i</sub> in ρ è in 3NF:
 
 Analizziamo i diversi casi che si possono presentare:
+
+---
 
 **Caso 1 (S ∈ ρ):**
 
@@ -718,6 +734,8 @@ end
 
 **S** è l'insieme degli attributi orfani. Per definizione, se un attributo non è determinato da nessuno, l’unico modo per “coprirlo” è che faccia parte della chiave. Quindi in ogni relazione **S**, tutti gli attributi sono **primi** (appartengono alla [[Relational Model#Chiave|chiave]]). Dunque se **S ∈ ρ**, ogni attributo in **S** fa parte della chiave e quindi, banalmente, **S** è in **[[3NF#DEFINIZIONE|3NF]]**.
 
+---
+
 **Caso 2 (R ∈ ρ):**
 
 ```r
@@ -725,12 +743,14 @@ if ∃ X → Y ∈ F | (X ∪ Y = R) then: ρ := ρ ∪ R
 ```
 
 Esiste una dipendenza funzionale **X → A ∈ F** che coinvolge tutti gli attributi di **R**. Poiché **F** è una [[Functional Dependencies#COPERTURA MINIMALE|copertura minimale]] (condizione necessaria affinché l'algoritmo funzioni) la dipendenza **X → A** è sicuramente della forma: **(R - A) → A** e quindi **R - A** è [[Functional Dependencies#CHIAVI|chiave]] nello schema **R**. 
-Prendendo una qualsiasi **Y → B ∈ F** con **YB ⊆ R**:
+Prendendo una qualsiasi **Y → B ∈** <b>F<sup>+</sup></b> con **YB ⊆ R**:
 
 - Se **B = A**, allora per **minimalità** **Y = R - A** in quanto non può esistere un sottoinsieme proprio della chiave candidata che determina **A**. Dunque **Y** è chiave candidata e la **DF** rispetta la **3NF**.
 - Se **B ≠ A**, allora **B ∈ R - A**, ovvero **B** appartiene a una chiave candidata, dunque **B** è un attributo primo e per questo la **DF** rispetta la **3NF**.
 
 Dunque anche in questo caso **ρ** è in **[[3NF#DEFINIZIONE|3NF]]**.
+
+---
 
 **Caso 3 (XA ∈ ρ):**
 
@@ -742,7 +762,7 @@ end
 ```
 
 Per ogni **DF** minimale **X → A ∈ F**, l’algoritmo costruisce il sottoschema **X ∪ A**. Poiché **F** è una [[Functional Dependencies#COPERTURA MINIMALE|copertura minimale]], non può esistere un sottoinsieme <b>X<sup>'</sup>⊆ X</b> tale che <b>X<sup>'</sup>→ A</b> dunque **X** è [[Functional Dependencies#CHIAVI|chiave]] nello schema **XA**.
-Prendendo una qualsiasi **Y → B ∈ F** con **YB ⊆ R**:
+Prendendo una qualsiasi **Y → B ∈** <b>F<sup>+</sup></b> con **YB ⊆ XA**:
 
 - Se **B = A**, allora per **minimalità** **Y = X** in quanto non può esistere un sottoinsieme proprio della chiave candidata che determina **A**. Dunque **Y** è chiave candidata e la **DF** rispetta la **3NF**.
 - Se **B ≠ A**, allora **B ∈ X**, ovvero **B** appartiene a una chiave candidata, dunque **B** è un attributo primo e per questo la **DF** rispetta la **3NF**.

@@ -847,6 +847,8 @@ Dunque se **F** è derivabile da <b>G<sup>+</sup></b> mediante gli assiomi e <b>
 
 $$G^{+} \xRightarrow {A} F\xRightarrow {A} F^{+}$$
 
+> N.B. <b>F<sup>+</sup></b> **⊆** <b>(F)<sup>A</sup></b>, **F ⊆** <b>(G<sup>+</sup>)<sup>A</sup></b> **=** <b>G<sup>+</sup></b> ([[Decomposition#^de0ac5|monotonia]]) e quindi <b>F<sup>+</sup></b> **⊆** <b>(G<sup>+</sup>)<sup>A</sup></b> **=** <b>G<sup>+</sup></b>.
+
 ---
 ### COPERTURA MINIMALE
 

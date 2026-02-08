@@ -174,20 +174,20 @@ Dimostriamo che <b>F<sup>A</sup> ⊆ F<sup>+</sup></b>:
 
 ---
 
-Indichiamo con <b>F<sub>i</sub></b> **l’insieme delle dipendenze funzionali ottenute dopo *i* applicazioni degli assiomi di Armstrong** a partire da **F**. Quindi:
+Indichiamo con <b>F<sub>j</sub></b> **l’insieme delle dipendenze funzionali ottenute dopo *j* applicazioni degli assiomi di Armstrong** a partire da **F**. Quindi:
 <b>F<sub>0</sub> = F</b> ...
 <b>F<sub>1</sub></b> = tutte le dipendenze ottenute da <b>F<sub>0</sub></b> applicando una volta uno qualsiasi dei tre assiomi...
 <b>F<sub>2</sub></b> = tutte quelle ottenute applicando ancora una volta uno qualsiasi dei tre assiomi su <b>F<sub>1</sub></b>...
 e così via.
 L’unione di tutti questi insiemi costituisce <b>F<sup>A</sup></b>:
 
-$$F^A = \bigcup_{i \ge 0} F_i$$
+$$F^A = \bigcup_{j \ge 0} F_j$$
 
 > In altre parole, <b>F<sup>A</sup></b> è il risultato di applicare **ricorsivamente** gli assiomi di Armstrong **fino a chiusura** cioè finché non si ottengono più nuove dipendenze.
 
 ---
 
-**Caso base (*i* = 0):**
+**Caso base (*j* = 0):**
 
 $$F_0​=F⊆F^+⟹F_0​⊆F^+$$
 
@@ -197,17 +197,17 @@ Per [[Functional Dependencies#CHIUSURA SEMANTICA|definizione]], tutte le dipende
 
 **Ipotesi induttiva:**
 
-$$F_i​⊆F^+$$
+$$F_j​⊆F^+$$
 
-Si assume che tutte le dipendenze ottenute con **al più *i* applicazioni** degli assiomi di Armstrong siano già in <b>F<sup>+</sup></b>.
+Si assume che tutte le dipendenze ottenute con **al più *j* applicazioni** degli assiomi di Armstrong siano già in <b>F<sup>+</sup></b>.
 
 ---
 
-**Passo induttivo (*i* > 0):**
+**Passo induttivo (*j* > 0):**
 
-$$F_{i+1​}⊆F^+$$
+$$F_{j+1​}⊆F^+$$
 
-Bisogna mostrare che anche ogni dipendenza in <b>F<sub>i+1</sub></b> è ottenuta applicando **una sola volta in più** uno dei tre assiomi di Armstrong su dipendenze già contenute in <b>F<sub>i</sub>​</b>.
+Bisogna mostrare che anche ogni dipendenza in <b>F<sub>j+1</sub></b> è ottenuta applicando **una sola volta in più** uno dei tre assiomi di Armstrong su dipendenze già contenute in <b>F<sub>j</sub>​</b>.
 
 Ora si considerano i tre casi in cui la nuova **X → Y** può essere stata ottenuta:
 
@@ -230,7 +230,7 @@ Dunque **X → Y**, se ottenuta per riflessività, è **una dipendenza logicamen
 
 **Caso 2:**
 
-**X → Y** è stata ottenuta applicando l’assioma dell'[[Functional Dependencies#Aumento (Augmentation)|aumento]] ad una dipendenza funzionale **V → W** in <b>F<sup>A</sup></b>, che a sua volta è stata ottenuta applicando ricorsivamente gli assiomi di Armstrong un numero di volte **≤ i−1** (quindi per ipotesi induttiva, **V → W ∈** <b>F<sup>+</sup></b>).
+**X → Y** è stata ottenuta applicando l’assioma dell'[[Functional Dependencies#Aumento (Augmentation)|aumento]] ad una dipendenza funzionale **V → W** in <b>F<sup>A</sup></b>, che a sua volta è stata ottenuta applicando ricorsivamente gli assiomi di Armstrong un numero di volte **≤ j−1** (quindi per ipotesi induttiva, **V → W ∈** <b>F<sup>+</sup></b>).
 
 Dunque si ha **X = VZ e Y = WZ** per qualche insieme di attributi **Z ∈ R**.
 
@@ -261,7 +261,7 @@ Dunque **X → Y** (**VZ → WZ**), se ottenuta per aumento su **V → W ∈** <
 **Caso 3:**
 
 **X → Y** è stata ottenuta applicando l’assioma della [[Functional Dependencies#Transitività (Transitivity)|transitività]] a due dipendenze funzionali **X → Z** e **Z → Y** in <b>F<sup>A</sup></b>, ottenute a loro volta applicando ricorsivamente gli assiomi di Armstrong un numero di
-volte **≤ i−1** (quindi per ipotesi induttiva, **X → Z** e **Z → Y ∈** <b>F<sup>+</sup></b>).
+volte **≤ j−1** (quindi per ipotesi induttiva, **X → Z** e **Z → Y ∈** <b>F<sup>+</sup></b>).
 
 Sia ***r*** un’istanza di **R** e siano ***t<sub>1</sub>*** e ***t<sub>2</sub>*** due tuple di ***r*** tali che:
 
@@ -541,21 +541,20 @@ L’algoritmo calcola correttamente la chiusura <b>X<sup>+</sup></b> di un insie
 
 **Dimostrazione:**
 
-Indichiamo con <b>Z<sub>0</sub></b> il valore iniziale di **Z** (<b>Z<sub>0</sub></b> **= X**) e con <b>Z<sub>i</sub></b> ed <b>S<sub>i</sub></b>, con  ***i* ≥ 1**, i valori di **Z** ed **S** dopo l’***i*-esima** esecuzione del corpo del ciclo. Facile vedere che, per ogni ***i***:
+Indichiamo con <b>Z<sub>0</sub></b> il valore iniziale di **Z** (<b>Z<sub>0</sub></b> **= X**) e con <b>Z<sub>j</sub></b> ed <b>S<sub>j</sub></b>, con ***j* ≥ 1**, i valori di **Z** ed **S** dopo la ***j*-esima** esecuzione del corpo del ciclo. Facile vedere che, per ogni ***j***:
 
-$$Z_i⊆ Z_{i+1}$$
+$$Z_j⊆ Z_{j+1}$$
 
-> Ricorda: In <b>Z<sub>i</sub></b> ci sono gli attributi aggiunti a **Z** fino alla ***i*-esima** iterazione. Alla fine di ogni iterazione aggiungiamo qualcosa a **Z** da **S**, ma **non eliminiamo mai** nessun attributo in **Z**.
+> Ricorda: In <b>Z<sub>j</sub></b> ci sono gli attributi aggiunti a **Z** fino alla ***j*-esima** iterazione. Alla fine di ogni iterazione aggiungiamo qualcosa a **Z** da **S**, ma **non eliminiamo mai** nessun attributo in **Z**.
 
-Sia ***j*** tale che <b>S<sub>j</sub></b> **⊆** <b>Z<sub>j</sub></b> (cioè <b>Z<sub>j</sub></b> **= valore di Z al termine dell'algoritmo =** <b>X<sup>+</sup></b>), dimostriamo che:
+Sia ***f*** tale che <b>S<sub>f</sub></b> **⊆** <b>Z<sub>f</sub></b> (cioè <b>Z<sub>f</sub></b> **= valore di Z al termine dell'algoritmo =** <b>X<sup>+</sup></b>), dimostriamo che:
 
-$$A \in Z_j  \iff A \in X^+$$
+$$A \in Z_f  \iff A \in X^+$$
 
 ---
+###### 1. Se A ∈ Z<sub>f</sub> allora A ∈ X<sup>+</sup> (⇒):
 
-**1. Se A ∈ <b>Z<sub>j</sub></b> allora A ∈ <b>X<sup>+</sup></b> (⇒):**
-
-**Caso base (*i* = 0):**
+**Caso base (*j* = 0):**
 
 $$Z_0​=X⊆X^+⟹Z_0​⊆X^+$$
 
@@ -565,35 +564,34 @@ Per [[Functional Dependencies#Riflessività (reflexivity)|riflessività]], tutti
 
 **Ipotesi induttiva:** 
 
-$$Z_{i-1}​⊆X^+$$
+$$Z_{j-1}​⊆X^+$$
 
-Si assume che tutti gli attributi ottenuti con **al più *i* - 1 iterazioni** dell'algoritmo siano già in <b>X<sup>+</sup></b>.
+Si assume che tutti gli attributi ottenuti con **al più *j* - 1 iterazioni** dell'algoritmo siano già in <b>X<sup>+</sup></b>.
 
 ---
 
-**Passo induttivo (*i* > 0):**
+**Passo induttivo (*j* > 0):**
 
-Sia **A** un attributo in **<b>Z<sub>i</sub></b> - <b>Z<sub>i-1</sub></b>** (ovvero aggiunto a **Z** durante l'***i*-esima** iterazione):
-Deve esistere, secondo l'[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]], una dipendenza **Y → V ∈ F** tale che <b>Y ⊆ Z<sub>i-1</sub></b> e **A ∈ V**.
-Poiché <b>Y ⊆ Z<sub>i-1</sub></b>, allora per l'**ipotesi induttiva**: <b>Y ⊆ X<sup>+</sup></b>.
+Sia **A** un attributo in **<b>Z<sub>j</sub></b> - <b>Z<sub>j-1</sub></b>** (ovvero aggiunto a **Z** durante la ***j*-esima** iterazione):
+Deve esistere, secondo l'[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]], una dipendenza **Y → V ∈ F** tale che <b>Y ⊆ Z<sub>j-1</sub></b> e **A ∈ V**.
+Poiché <b>Y ⊆ Z<sub>j-1</sub></b>, allora per l'**ipotesi induttiva**: <b>Y ⊆ X<sup>+</sup></b>.
 Pertanto, per il [[Functional Dependencies#Lemma 1|lemma]]: <b>Y ⊆ X<sup>+</sup></b> ⟹ **X → Y ∈** <b>F<sup>A</sup></b>.
 Per [[Functional Dependencies#Transitività (Transitivity)|transitività]]: Se **X → Y ∈** <b>F<sup>A</sup></b> e **Y → V ∈ F**, allora **X → V ∈** <b>F<sup>A</sup></b>.
 Pertanto, sempre per il [[Functional Dependencies#Lemma|lemma]]: **X → V ∈** <b>F<sup>A</sup></b> ⟹ <b>V ⊆ X<sup>+</sup></b>.
-Dunque, in quanto **A ∈ V** e <b>V ⊆ X<sup>+</sup></b>, allora <b>A ∈ X<sup>+</sup></b>, per ogni **A ∈ <b>Z<sub>i</sub></b> - <b>Z<sub>i-1</sub></b>**.
-Abbiamo  quindi dimostrato che <b>Z<sub>i</sub></b> - <b>Z<sub>i-1</sub></b> **⊆** <b>X<sup>+</sup></b>.
-Sapendo anche che, per l'ipotesi induttiva, <b>Z<sub>i-1</sub></b> **⊆** <b>X<sup>+</sup></b>, possiamo affermare che:
+Dunque, in quanto **A ∈ V** e <b>V ⊆ X<sup>+</sup></b>, allora <b>A ∈ X<sup>+</sup></b>, per ogni **A ∈ <b>Z<sub>j</sub></b> - <b>Z<sub>j-1</sub></b>**.
+Abbiamo  quindi dimostrato che <b>Z<sub>j</sub></b> - <b>Z<sub>j-1</sub></b> **⊆** <b>X<sup>+</sup></b>.
+Sapendo anche che, per l'ipotesi induttiva, <b>Z<sub>j-1</sub></b> **⊆** <b>X<sup>+</sup></b>, possiamo affermare che:
 
-$$Z_i​⊆X^+$$
+$$Z_j​⊆X^+$$
 
 ---
-
-**2. Se A ∈ <b>X<sup>+</sup></b> allora A ∈ <b>Z<sub>j</sub></b> (⇐):**
+###### 2. Se A ∈ X<sup>+</sup> allora A ∈ Z<sub>f</sub> (⇐):
 
 **Costruzione dell'istanza *r* :**
 
 Per poter dimostrare, si costruisce un’istanza artificiale **r** dello schema **R** con **solo due tuple**, così:
 ![[special instance 1.png]]
-Le due tuple sono **uguali su tutti gli attributi di** <b>Z<sub>j</sub></b>, ma **diverse su tutti gli altri attributi (R − <b>Z<sub>j</sub></b>)**.
+Le due tuple sono **uguali su tutti gli attributi di** <b>Z<sub>f</sub></b>, ma **diverse su tutti gli altri attributi (R − <b>Z<sub>f</sub></b>)**.
 
 ---
 
@@ -604,28 +602,28 @@ Data una qualsiasi dipendenza funzionale **V → W** in **F**:
 
 > Ricorda: Una dipendenza funzionale **V → W** in **F** è violata se <b>t<sub>1</sub>[V] = t<sub>2</sub>[V] e t<sub>1</sub>[W] ≠ t<sub>2</sub>[W]</b>.
 
-Se **V ⊄ <b>Z<sub>j</sub></b>** allora <b>t<sub>1</sub>[V] ≠ t<sub>2</sub>[V]</b> perché c'è almeno un attributo di **V** in **R − <b>Z<sub>j</sub></b>** cioè **V ∩ (R − <b>Z<sub>j</sub></b>) ≠ Ø** e quindi la dipendenza è soddisfatta. 
+Se **V ⊄ <b>Z<sub>f</sub></b>** allora <b>t<sub>1</sub>[V] ≠ t<sub>2</sub>[V]</b> perché c'è almeno un attributo di **V** in **R − <b>Z<sub>f</sub></b>** cioè **V ∩ (R − <b>Z<sub>f</sub></b>) ≠ Ø** e quindi la dipendenza è soddisfatta. 
 
-Se **V ⊆ <b>Z<sub>j</sub></b>** allora <b>t<sub>1</sub>[V] = t<sub>2</sub>[V]</b> quindi: se le due tuple avessero valori diversi su **W**, cioè **W ∩ (R − <b>Z<sub>j</sub></b>) ≠ Ø** la dipendenza non sarebbe soddisfatta (<b>t<sub>1</sub>[W] ≠ t<sub>2</sub>[W]</b>). Allo stesso tempo però si avrebbe anche che **<b>S<sub>j</sub></b> ⊄ <b>Z<sub>j</sub></b>**, ovvero <b>Z<sub>j</sub></b> non sarebbe il valore finale di **Z** (ma questo è in contraddizione con la nostra costruzione dell'istanza) infatti:
-L'[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]] costruisce <b>S<sub>j</sub></b> (l'insieme **S** all'ultima iterazione) come: 
+Se **V ⊆ <b>Z<sub>f</sub></b>** allora <b>t<sub>1</sub>[V] = t<sub>2</sub>[V]</b> quindi: se le due tuple avessero valori diversi su **W**, cioè **W ∩ (R − <b>Z<sub>f</sub></b>) ≠ Ø** la dipendenza non sarebbe soddisfatta (<b>t<sub>1</sub>[W] ≠ t<sub>2</sub>[W]</b>). Allo stesso tempo però si avrebbe anche che **<b>S<sub>f</sub></b> ⊄ <b>Z<sub>f</sub></b>**, ovvero <b>Z<sub>f</sub></b> non sarebbe il valore finale di **Z** (ma questo è in contraddizione con la nostra costruzione dell'istanza) infatti:
+L'[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]] costruisce <b>S<sub>f</sub></b> (l'insieme **S** all'ultima iterazione) come: 
 
-$$S_j​=\{\ A∣∃\ V→W∈F\ ∧\ V⊆Z_j\ ​∧\ A∈W\ \}$$
+$$S_f=\{\ A∣∃\ V→W∈F\ ∧\ V⊆Z_f\ ​∧\ A∈W\ \}$$
 
-> Ricorda: <b>S<sub>j</sub></b> contiene tutti gli attributi che devono essere aggiunti a **Z** perché derivano da **DF** applicabili a <b>Z<sub>j</sub></b>.
+> Ricorda: <b>S<sub>f</sub></b> contiene tutti gli attributi che devono essere aggiunti a **Z** perché derivano da **DF** applicabili a <b>Z<sub>f</sub></b>.
 
-Normalmente **<b>S<sub>j</sub></b> ⊆ <b>Z<sub>j</sub></b>** quindi non si dovrebbe avere una nuova iterazione e l'algoritmo dovrebbe terminare restituendo <b>Z<sub>j</sub></b>. Tuttavia in questo caso, prendendo **A** in **W ∩ (R − <b>Z<sub>j</sub></b>) ≠ Ø**:
+Normalmente **<b>S<sub>f</sub></b> ⊆ <b>Z<sub>f</sub></b>** quindi non si dovrebbe avere una nuova iterazione e l'algoritmo dovrebbe terminare restituendo <b>Z<sub>f</sub></b>. Tuttavia in questo caso, prendendo **A** in **W ∩ (R − <b>Z<sub>f</sub></b>) ≠ Ø**:
 
-$$ V \subseteq Z_j \ \land \  W \cap (R - Z_j) \neq \varnothing \ \Rightarrow \  S_j \not\subseteq Z_j \ \Rightarrow \  Z_{j+1} \neq Z_j $$
+$$ V \subseteq Z_f \ \land \  W \cap (R - Z_f) \neq \varnothing \ \Rightarrow \  S_f \not\subseteq Z_f \ \Rightarrow \  Z_{f+1} \neq Z_f $$
 
-Dato che **V ⊆ <b>Z<sub>j</sub></b>** in questo caso è vero, **V → W** sarebbe applicabile, quindi **A** dovrebbe entrare in <b>S<sub>j</sub></b>.
-Di conseguenza **Sⱼ ⊄ <b>Z<sub>j</sub></b>**, quindi **A entrerebbe in Z** all’iterazione successiva (<b>Z<sub>j+1</sub></b>):
-Ma abbiamo scelto <b>Z<sub>j</sub></b> come valore finale di **Z**, quindi per forza: **Sⱼ ⊆ <b>Z<sub>j</sub></b>**, siamo giunti a una contraddizione. 
+Dato che **V ⊆ <b>Z<sub>f</sub></b>** in questo caso è vero, **V → W** sarebbe applicabile, quindi **A** dovrebbe entrare in <b>S<sub>f</sub></b>.
+Di conseguenza <b>S<sub>f</sub></b> **⊄** <b>Z<sub>f</sub></b>, quindi **A entrerebbe in Z** all’iterazione successiva (<b>Z<sub>f+1</sub></b>):
+Ma abbiamo scelto <b>Z<sub>f</sub></b> come valore finale di **Z**, quindi per forza: <b>S<sub>f</sub></b> **⊆** <b>Z<sub>f</sub></b>, siamo giunti a una contraddizione. 
 
 Quindi la dipendenza **V → W** in **F** è soddisfatta anche quando le due tuple hanno valori uguali su V, e dunque l’istanza è legale.
 
 ---
 
-**Verifica che A ∈ <b>Z<sub>j</sub></b>:**
+**Verifica che A ∈ <b>Z<sub>f</sub></b>:**
 
 Abbiamo già mostrato che l’istanza ***r*** costruita **è legale**, cioè soddisfa **tutte** le dipendenze funzionali in **F** e quindi anche **tutte le dipendenze in** <b>F<sup>+</sup></b>.
 
@@ -636,9 +634,9 @@ $$X→A∈F^+$$
 Poiché ***r*** è legale, tutte le DF in <b>F<sup>+</sup></b> devono valere nell’istanza, quindi anche **X → A**, verifichiamo:
 Per l'[[Functional Dependencies#Algoritmo calcolo X<sup>+</sup>|algoritmo]]:
 
-$$Z_0 = X \subseteq Z_j$$
+$$Z_0 = X \subseteq Z_f$$
 
-E nella nostra costruzione le due tuple <b>t<sub>1</sub></b>​ e <b>t<sub>2</sub>​</b> sono **uguali su tutti gli attributi di <b>Z<sub>j</sub></b>​**. Dunque:
+E nella nostra costruzione le due tuple <b>t<sub>1</sub></b>​ e <b>t<sub>2</sub>​</b> sono **uguali su tutti gli attributi di <b>Z<sub>f</sub></b>​**. Dunque:
 
 $$t_1[X] = t_2[X]$$
 
@@ -647,7 +645,7 @@ Poiché ***r*** è legale, deve soddisfare anche:
 
 $$t_1[A] = t_2[A]$$
 
-Questo (data la [[special instance 1.png|costruzione]] di **r**) è possibile solo se **A ∈ <b>Z<sub>j</sub></b>**, in quanto se **A ∈ <b>R - Z<sub>j</sub></b>** avremmo <b>t<sub>1</sub>[A] ≠ t<sub>2</sub>[A]</b> e **X → A ∈ <b>F<sup>+</sup></b>** non sarebbe soddisfatta. Quindi **A ∈ <b>X<sup>+</sup></b>** **⇒** **A ∈ <b>Z<sub>j</sub></b>** è dimostrato.
+Questo (data la [[special instance 1.png|costruzione]] di **r**) è possibile solo se **A ∈ <b>Z<sub>f</sub></b>**, in quanto se **A ∈ <b>R - Z<sub>f</sub></b>** avremmo <b>t<sub>1</sub>[A] ≠ t<sub>2</sub>[A]</b> e **X → A ∈ <b>F<sup>+</sup></b>** non sarebbe soddisfatta. Quindi **A ∈ <b>X<sup>+</sup></b>** **⇒** **A ∈ <b>Z<sub>f</sub></b>** è dimostrato.
 
 ---
 ### CHIAVI

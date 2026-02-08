@@ -152,16 +152,86 @@ Ripetiamo il calcolo di **S** con il nuovo **Z**. Questo può produrre ulteriori
 Continuiamo finché **S** non aggiunge più nulla (cioè **S ⊆ Z**).
 
 ---
+##### Teorema sulla validità dell'algoritmo calcolo X<sup>+</sup><sub>G</sub>:
+
+L’algoritmo calcola correttamente <b>X<sup>+</sup><sub>G</sub></b> con <b>G=∪<sub>i=1</sub><sup>k</sup> π<sub>R<sub>i</sub></sub>(F)</b>.
+
+---
+
+**Dimostrazione:**
+
+Indichiamo con <b>Z<sub>0</sub></b> il valore iniziale di **Z** (<b>Z<sub>0</sub></b> **= X**) e con <b>Z<sub>j</sub></b> ed <b>S<sub>j</sub></b>, con ***j* ≥ 1**, i valori di **Z** ed **S** dopo la ***j*-esima** esecuzione del corpo del ciclo. Facile vedere che, per ogni ***j***:
+
+$$Z_j⊆ Z_{j+1}$$
+
+> Ricorda: In <b>Z<sub>j</sub></b> ci sono gli attributi aggiunti a **Z** fino alla ***j*-esima** iterazione. Alla fine di ogni iterazione aggiungiamo qualcosa a **Z** da **S**, ma **non eliminiamo mai** nessun attributo in **Z**.
+
+Sia ***f*** tale che <b>S<sub>f</sub></b> **⊆** <b>Z<sub>f</sub></b> (cioè <b>Z<sub>f</sub></b> **= valore di Z al termine dell'algoritmo =** <b>X<sup>+</sup><sub>G</sub></b>), dimostriamo che:
+
+$$Z_f = X^+_G$$
+
+---
+###### Prima inclusione:
+
+Dimostriamo che <b>Z<sub>f</sub> ⊆ X<sup>+</sup><sub>G</sub></b>:
+
+---
+
+**Caso base (*i* = 0):**
+
+$$Z_0​=X⊆X^+_G⟹Z_0​⊆X^+_G$$
+
+Per [[Functional Dependencies#Riflessività (reflexivity)|riflessività]], tutti gli attributi in **X** appartengono a <b>X<sup>+</sup><sub>G</sub></b>, perché <b>X<sup>+</sup><sub>G</sub></b> è l’insieme di _tutti_ gli attributi determinati in **G** a partire da **X**. Caso base verificato.
+
+---
+
+**Ipotesi induttiva:** 
+
+$$Z_j⊆X^+_G$$
+
+Si assume che tutti gli attributi ottenuti con **al più *j* iterazioni** dell'algoritmo siano già in <b>X<sup>+</sup><sub>G</sub></b>.
+
+---
+
+**Passo induttivo (*j* > 0):**
+
+$$Z_{j+1​}⊆X^+_G$$
+
+Bisogna mostrare che anche ogni attributo in <b>Z<sub>j+1</sub></b> è contenuto in <b>X<sup>+</sup><sub>G</sub></b>, dunque che ogni attributo in <b>Z<sub>j</sub> ∪ S<sub>j</sub></b> è contenuto in <b>X<sup>+</sup><sub>G</sub></b> (dato che per l'algoritmo: <b>Z<sub>j+1</sub></b> = <b>Z<sub>j</sub> ∪ S<sub>j</sub></b>).
+
+Se **A ∈** <b>Z<sub>j</sub></b> allora per ipotesi induttiva **A ⊆** <b>X<sup>+</sup><sub>G</sub></b>, dunque in questo caso il passo è dimostrato.
+
+Se **A ∈** <b>S<sub>j</sub></b> allora per definizione di <b>S<sub>j</sub></b> esiste un indice ***i*** **≤ k** tale che <b>A ∈ [(Z<sub>j</sub> ∩ R<sub>i</sub>)<sup>+</sup><sub>F</sub> ∩ R<sub>i</sub>]</b>. Dunque, per definizione di [[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|chiusura]], se **A ∈** <b>S<sub>j</sub></b> allora <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ F<sup>+</sup></b>, con <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ⊆ R<sub>i</sub></b>. Ciò significa che **A** è derivabile da <b>(Z<sub>j</sub> ∩ R<sub>i</sub>)​</b> usando dipendenze che coinvolgono solo attributi di <b>R<sub>i</sub></b>​. Tali dipendenze appartengono sicuramente alla proiezione <b>π<sub>R<sub>i</sub></sub>(F) = </b>**{ X → Y | X → Y ∈ <b>F<sup>+</sup></b>∧ XY ⊆ R<sub>i</sub> }**, quindi, per definizione, appartengono a **G** (ricordiamo che <b>G=∪<sub>i=1</sub><sup>k</sup> π<sub>R<sub>i</sub></sub>(F)</b>). Dunque, se <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ G</b> e <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ⊆ Z<sub>j</sub> ⊆ X<sup>+</sup><sub>G</sub></b> allora **A ⊆** <b>X<sup>+</sup><sub>G</sub></b>. Anche in questo caso il passo è dimostrato.
+
+Abbiamo dimostrato che l’algoritmo non introduce attributi “a caso”. Ogni attributo che aggiunge è davvero derivabile da **X** usando le dipendenze in **G**, quindi <b>Z<sub>f</sub> ⊆ X<sup>+</sup><sub>G</sub></b>.
+
+---
+###### Seconda inclusione:
+
+Dimostriamo che <b>X<sup>+</sup><sub>G</sub> ⊆ Z<sub>f</sub></b>:
+
+---
+
+L’algoritmo parte da (<b>Z<sub>0</sub></b> **= X**) e poi aggiunge attributi senza mai rimuoverne. Quindi alla fine sarà sempre valida la condizione:  
+
+$$X \subseteq Z_f$$
+L’algoritmo si ferma solo quando non riesce più ad aggiungere attributi applicando le dipendenze funzionali in G. Questo significa che, se esistesse una dipendenza **Y → A ∈ G** con <b>Y ⊆ Z<sub>f</sub></b> ma **A ∉** <b>Z<sub>f</sub></b>, l’algoritmo potrebbe ancora aggiungere **A** a <b>Z<sub>f</sub></b> e quindi **non sarebbe terminato**. Poiché è terminato (abbiamo raggiunto <b>Z<sub>f</sub></b>), una situazione del genere non può esistere e quindi possiamo dire che <b>Z<sub>f</sub></b> è già chiuso, cioè:  
+
+$$(Z_f)_G^+ = Z_f$$
+
+Una proprietà generale della chiusura è: se <b>X ⊆ Y</b> allora <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>Y<sup>+</sup><sub>G</sub></b>. Qui sappiamo che **X** **⊆** <b>Z<sub>f</sub></b>, quindi: <b>X<sup>+</sup><sub>G</sub></b> **⊆** <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b>. Ma dato che <b>(Z<sub>f</sub>)<sup>+</sup><sub>G</sub></b> **=** <b>Z<sub>f</sub></b>, allora <b>X<sup>+</sup><sub>G</sub> ⊆ Z<sub>f</sub></b>. L'inclusione è dimostrata, infatti, al termine dell'algoritmo, <b>Z<sub>f</sub></b> deve contenere **tutto ciò che è derivabile da X** in **G**.
+
+---
 ### DECOMPOSIZIONI CON JOIN SENZA PERDITA
 
 Sia **R** uno schema di relazione. Una decomposizione <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> di **R** ha un [[Relational Algebra#INNER JOIN (⨝)|join]] senza perdita se per ogni istanza legale ***r*** di **R** si ha:
 
-$$r = \pi_{R_1}(r)⨝\pi_{R_2}(r)⨝...⨝\pi_{R_k}(r)$$
+$$r = \pi_{R_1}(r)⨝\pi_{R_2}(r)⨝...⨝\pi_{R_k}(r) = m_\rho(r)$$
 
 > Ogni <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> è un insieme di **tuple** dato dalla [[Relational Algebra#PROIEZIONE (π)|proiezione]] dell’istanza ***r*** sul sottoschema <b>R<sub>i</sub></b>. Contiene solo le tuple di ***r*** che hanno tutti gli attributi in <b>R<sub>i</sub></b>.
 
 ---
-##### Teorema sulle decomposizioni con lossless join 
+##### Teorema sulle decomposizioni con join senza perdita
 
 Sia **R** uno schema di relazione e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> una decomposizione di **R**. Per ogni istanza legale ***r*** di **R**, indicato con <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **=** <b>π<sub>R<sub>1</sub></sub>(<i>r</i>)</b> **⨝** <b>π<sub>R<sub>2</sub></sub>(<i>r</i>)</b> **⨝** **...** **⨝** <b>π<sub>R<sub>k</sub></sub>(<i>r</i>)</b> si ha:
 
@@ -295,7 +365,7 @@ else: ρ non ha un lossless join
 - **Se non esiste una riga in *r* con tutti <b>a<sub><i>j</i></sub></b>** : la decomposizione è **con perdita**, perché non si riesce a ricostruire le tuple originali senza generare simboli spuri.
 
 ---
-##### Esempio:
+###### Esempio:
 
 **R = ABCD**
 **F = { A → B, C → D, B → C }**
@@ -447,17 +517,37 @@ L’algoritmo verifica correttamente se una decomposizione **ρ** di **R** ha un
 
 **Dimostrazione:**
 
-Occorre dimostrare che **ρ** ha un join senza perdita (<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **= *r*** per ogni ***r*** legale) **se e solo se**, quando l’[[Decomposition#Algoritmo verifica join senza perdita|algoritmo]] termina, la tabella ***r*** ha una tupla con tutte <b>a<sub><i>j</i></sub></b>.
+Occorre dimostrare che: **se** **ρ** ha un join senza perdita (<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **= *r*** per ogni ***r*** legale), **allora**, quando l’[[Decomposition#Algoritmo verifica join senza perdita|algoritmo]] termina, la tabella ***r*** ha una tupla con tutte <b>a<sub><i>j</i></sub></b>.
 
-**Supponiamo per assurdo** che **ρ** abbia un join senza perdita (<b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **= *r***), ma che quando l’algoritmo termina la tabella ***r*** **non abbia nessuna riga con tutti** <b>a<sub><i>j</i></sub></b>.
+Costruiamo <b><i>r</i><sub>0</sub></b>, ovvero l'stanza ***r*** nella fase iniziale dell'algoritmo:
 
-L’algoritmo termina solo quando non ci sono più violazioni delle dipendenze funzionali di **F**. Quindi la tabella ***r*** che otteniamo alla fine è un’istanza legale di **R**, cioè soddisfa tutte le **FD**.
+- creiamo una tupla <b>t<sub>i<sub>0</sub></sub></b> per ogni <b>R<sub>i</sub></b>
+- inseriamo <b>a<sub><i>j</i></sub></b> nelle colonne degli attributi di <b>R<sub>i</sub></b>
+- inseriamo simboli distinti <b>b<sub><i>ij</i></sub></b> nelle altre colonne.
 
-Durante l’algoritmo, i simboli <b>a<sub><i>j</i></sub></b> non vengono mai trasformati in simboli <b>b<sub><i>ij</i></sub></b> (per il funzionamento proprio dell'algoritmo). Ogni riga della tabella, fin dall’inizio, rappresenta la proiezione <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> e contiene i suoi <b>a<sub><i>j</i></sub></b> originali. Quindi, al termine, ciascuna proiezione mantiene ancora i suoi <b>a<sub><i>j</i></sub></b>.
+Applichiamo il ciclo di propagazione fino ad ottenere <b><i>r</i><sub>f</sub></b>, ovvero l'stanza ***r*** nella fase finale dell'algoritmo. 
 
-Se ogni proiezione <b>π<sub>R<sub>i</sub></sub>(<i>r</i>)</b> contiene i suoi <b>a<sub><i>j</i></sub></b>, allora il join <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> deve contenere almeno una tupla con tutti i simboli <b>a<sub><i>j</i></sub></b>. Ma questa tupla con tutti <b>a<sub><i>j</i></sub></b> **non compare** nella tabella finale (per ipotesi).
+Per ogni tupla <b>t<sub>i<sub>f</sub></sub></b> nelle colonne di <b>R<sub>i</sub></b> restano sicuramente tutti <b>a<sub><i>j</i></sub></b> (per la costruzione di ***r***), quindi <b>t<sub>i<sub>f</sub></sub>[R<sub>i</sub>] = (a<sub><i>j<sub>1</sub></i></sub>, a<sub><i>j<sub>2</sub></i></sub>, ...)</b> . Cioè **la proiezione della tupla <b>t<sub>i</sub></b> sugli attributi del suo schema <b>R<sub>i</sub></b> contiene solo <b>a<sub><i>j</i></sub></b>**.
 
-**Contraddizione:** da un lato, l’ipotesi dice che <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **= *r***. Dall’altro, abbiamo dedotto che <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> deve contenere una tupla con tutti <b>a<sub><i>j</i></sub></b>, che però non è presente in ***r***. Quindi <b><i>m</i><sub>ρ</sub>(<i>r</i>)</b> **≠ *r*** (se la decomposizione fosse davvero senza perdita, il join dovrebbe ricostruire esattamente ***r*** e non un'altra istanza).
+Definiamo ora la tupla <b>t<sup>a</sup> = (a<sub><i>j<sub>1</sub></i></sub>, a<sub><i>j<sub>2</sub></i></sub>, ..., a<sub><i>j<sub>n</sub></i></sub>)</b> cioè la tupla su tutto **R** che ha solo <b>a<sub><i>j</i></sub></b>. Consideriamo poi il **join naturale** delle proiezioni delle tuple. Il join combina tuple che **coincidono sugli attributi in comune**:
+
+$$t_{1_f}[R_1] \bowtie t_{2_f}[R_2] \bowtie \dots \bowtie t_{k_f}[R_k]$$
+
+Osserviamo che, dato che ogni tupla <b>t<sub>i<sub>f</sub></sub></b> ha sicuramente <b>a<sub><i>j</i></sub></b> nelle colonne del sottoschema <b>R<sub>i</sub></b> corrispondente, sugli attributi comuni tra due sottoschemi <b>R<sub>i<sub>1</sub></sub></b> e <b>R<sub>i<sub>2</sub></sub></b> (usati per il join naturale) il valore è sempre <b>a<sub><i>j</i></sub></b>. Dunque le tuple sono compatibili e il join produce sicuramente la tupla che ha <b>a<sub><i>j</i></sub></b> ovunque. Quindi:
+
+$$t^a \in t_{1_f}[R_1] \bowtie \dots \bowtie t_{k_f}[R_k]$$
+
+Inoltre, per [[Decomposition#DECOMPOSIZIONI CON JOIN SENZA PERDITA|definizione]], sappiamo che:
+
+$$m_\rho(r_f) = \pi_{R_1}(r_f) \bowtie \dots \bowtie \pi_{R_k}(r_f)$$
+
+Ora <b>t<sub>i<sub>f</sub></sub>[R<sub>i</sub>]</b> è una delle tuple contenute nella corrispondente proiezione <b>π<sub>R<sub>i</sub></sub>(<i>r</i><sub>f</sub>)</b>, di conseguenza il join delle sole <b>t<sub>i<sub>f</sub></sub>[R<sub>i</sub>]</b> produce un sottoinsieme del join di **tutte** le proiezioni. Quindi:
+
+$$t_{1_f}[R_1] \bowtie \dots \bowtie t_{k_f}[R_k] \subseteq \pi_{R_1}(r_f) \bowtie \dots \bowtie \pi_{R_k}(r_f)$$
+
+Cioè <b>t<sup>a</sup> ∈ <i>m</i><sub>ρ</sub>(<i>r</i><sub>f</sub>)</b>. 
+
+Abbiamo infine che <b><i>r</i><sub>f</sub></b> è **legale** (soddisfa **F**, perché l'algoritmo ha applicato e soddisfatto tutte le dipendenze) e **ρ** è lossless. Per definizione di lossless: <b><i>r</i><sub>f</sub> = <i>m</i><sub>ρ</sub>(<i>r</i><sub>f</sub>)</b>. Dunque se <b>t<sup>a</sup> ∈ <i>m</i><sub>ρ</sub>(<i>r</i><sub>f</sub>)</b> e <b><i>r</i><sub>f</sub> = <i>m</i><sub>ρ</sub>(<i>r</i><sub>f</sub>)</b> allora possiamo concludere che <b>t<sup>a</sup> ∈ <i>r</i><sub>f</sub></b>, cioè **in <b><i>r</i><sub>f</sub></b> esiste una riga con tutti <b>a<sub><i>j</i></sub></b>** (l'algoritmo è corretto).
 
 ---
 ### CALCOLO DELLA DECOMPOSIZIONE

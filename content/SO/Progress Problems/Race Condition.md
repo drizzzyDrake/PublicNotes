@@ -6,6 +6,4 @@ Una **race condition** è una condizione in cui **il comportamento di un program
 - è tipicamente prevenuta tramite **lock, semafori, mutex o altre primitive di sincronizzazione**;
 - **non blocca il sistema** come un deadlock, ma compromette la correttezza dei dati o del programma.
 
-Se vuoi, posso anche farla **in versione brevissima, da memoria d’esame**, nello stesso stile della nota sulla starvation.
-
 ---

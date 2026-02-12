@@ -17,7 +17,7 @@ $$\bigcup_{i=1}^{k} R_i = R$$
 ---
 ### DECOMPOSIZIONI CHE PRESERVANO LE DIPENDENZE
 
-Sia **R** uno schema di relazione. **F** un insieme di dipendenze funzionali su **R** e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> decomposizione di **R**, diciamo che **ρ** preserva **R** se:
+Sia **R** uno schema di relazione. **F** un insieme di dipendenze funzionali su **R** e <b>ρ = {R<sub>1</sub>, R<sub>2</sub>, ..., R<sub>k</sub>}</b> decomposizione di **R**, diciamo che **ρ** preserva **F** se:
 
 $$F\equiv\bigcup_{i=1}^{k} \pi_{R_i} (F)$$
 
@@ -201,7 +201,7 @@ Bisogna mostrare che anche ogni attributo in <b>Z<sub>j+1</sub></b> è contenuto
 
 Se **A ∈** <b>Z<sub>j</sub></b> allora per ipotesi induttiva **A ⊆** <b>X<sup>+</sup><sub>G</sub></b>, dunque in questo caso il passo è dimostrato.
 
-Se **A ∈** <b>S<sub>j</sub></b> allora per definizione di <b>S<sub>j</sub></b> esiste un indice ***i*** **≤ k** tale che <b>A ∈ [(Z<sub>j</sub> ∩ R<sub>i</sub>)<sup>+</sup><sub>F</sub> ∩ R<sub>i</sub>]</b>. Dunque, per definizione di [[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|chiusura]], se **A ∈** <b>S<sub>j</sub></b> allora <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ F<sup>+</sup></b>, con <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ⊆ R<sub>i</sub></b>. Ciò significa che **A** è derivabile da <b>(Z<sub>j</sub> ∩ R<sub>i</sub>)​</b> usando dipendenze che coinvolgono solo attributi di <b>R<sub>i</sub></b>​. Tali dipendenze appartengono sicuramente alla proiezione <b>π<sub>R<sub>i</sub></sub>(F) = </b>**{ X → Y | X → Y ∈ <b>F<sup>+</sup></b>∧ XY ⊆ R<sub>i</sub> }**, quindi, per definizione, appartengono a **G** (ricordiamo che <b>G=∪<sub>i=1</sub><sup>k</sup> π<sub>R<sub>i</sub></sub>(F)</b>). Dunque, se <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ G</b> e <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ⊆ Z<sub>j</sub> ⊆ X<sup>+</sup><sub>G</sub></b> allora **A ⊆** <b>X<sup>+</sup><sub>G</sub></b>. Anche in questo caso il passo è dimostrato.
+Se **A ∈** <b>S<sub>j</sub></b> allora per definizione di <b>S<sub>j</sub></b> esiste un indice ***i*** **≤ k** tale che <b>A ∈ [(Z<sub>j</sub> ∩ R<sub>i</sub>)<sup>+</sup><sub>F</sub> ∩ R<sub>i</sub>]</b>. Dunque, per definizione di [[Functional Dependencies#CHIUSURA DI UN INSIEME DI ATTRIBUTI|chiusura]], se **A ∈** <b>S<sub>j</sub></b> allora <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ F<sup>+</sup></b>, con <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ∪ A ⊆ R<sub>i</sub></b>. Ciò significa che **A** è derivabile da <b>(Z<sub>j</sub> ∩ R<sub>i</sub>)​</b> usando dipendenze che coinvolgono solo attributi di <b>R<sub>i</sub></b>​. Tali dipendenze appartengono sicuramente alla proiezione <b>π<sub>R<sub>i</sub></sub>(F) = </b>**{ X → Y | X → Y ∈ <b>F<sup>+</sup></b>∧ XY ⊆ R<sub>i</sub> }**, (in questo caso **X =** <b>(Z<sub>j</sub> ∩ R<sub>i</sub>)​</b> e **Y = A**) quindi, per definizione, appartengono a **G** (ricordiamo che <b>G=∪<sub>i=1</sub><sup>k</sup> π<sub>R<sub>i</sub></sub>(F)</b>). Dunque, se <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) → A ∈ G</b> e <b>(Z<sub>j</sub> ∩ R<sub>i</sub>) ⊆ Z<sub>j</sub> ⊆ X<sup>+</sup><sub>G</sub></b> allora **A ⊆** <b>X<sup>+</sup><sub>G</sub></b>. Anche in questo caso il passo è dimostrato.
 
 Abbiamo dimostrato che l’algoritmo non introduce attributi “a caso”. Ogni attributo che aggiunge è davvero derivabile da **X** usando le dipendenze in **G**, quindi <b>Z<sub>f</sub> ⊆ X<sup>+</sup><sub>G</sub></b>.
 

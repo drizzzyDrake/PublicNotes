@@ -2,7 +2,7 @@ La **starvation** è una condizione in cui **un processo rimane in attesa indefi
 
 - l’attesa è **potenzialmente infinita**;
 - le risorse **esistono**, ma vengono assegnate sempre ad altri processi;
-- **non è un deadlock**: il sistema continua a funzionare e altri processi avanzano;
+- **non è un [[Deadlock|deadlock]]**: il sistema continua a funzionare e altri processi avanzano;
 - è tipicamente causata da **priorità sbilanciate** o algoritmi non equi.
 
 ---

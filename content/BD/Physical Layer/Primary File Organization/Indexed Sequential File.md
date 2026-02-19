@@ -3,7 +3,7 @@ Un **indexed sequential file (ISAM)** è un file fisico che combina i vantaggi d
 ---
 ### STRUTTURA
 
-Un **ISAM (Indexed Sequential Access Method)** prevede l'utilizzo di un **file primario** che contiene i record e un **file indice** separato. Il file primario è un file sequenziale diviso in **partizioni (o intervalli)**. Ogni partizione del file primario occupa 1 o più **blocchi (pagine)** di dimensione fissa. Ogni blocco contiene:
+Un **ISAM (Indexed Sequential Access Method)** prevede l'utilizzo di un **file primario** che contiene i record e un **file indice** separato. Il file primario è un file sequenziale diviso in **partizioni (o intervalli)**. Ogni partizione del file primario occupa **1 blocco di dimensione fissa**. Ogni blocco contiene:
 
 - un **header** (metadati, bitmap degli slot)
 - una collezione di **record**
@@ -21,7 +21,7 @@ L’**indice** stesso è un file sequenziale ordinato per chiave **K** di ricerc
 ### TIPI DI INDICE
 
 - **Dense index:** contiene un’entry per **ogni valore possibile** della chiave (1 partizione = 1 record, quindi 1 entry per record)
-- **Sparse index:** contiene un’entry solo per **alcuni valori della chiave** (1 partizione = 1 o più blocchi, quindi 1 entri per blocco o per gruppo di blocchi)
+- **Sparse index:** contiene un’entry solo per **alcuni valori della chiave** (1 partizione = 1 blocco, quindi 1 entri per blocco)
 
 > N.B. Il dense index ha accessi più veloci ma risulta molto più pesante e complesso rispetto a uno sparse index, che invece è molto più piccolo.
 

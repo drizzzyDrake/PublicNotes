@@ -27,11 +27,11 @@ Poiché interrupt e trap possono verificarsi in qualunque momento, il kernel dev
 
 Una sequenza di istruzioni è detta **atomica** se viene eseguita completamente senza possibilità di interruzione. L’atomicità è fondamentale per proteggere dati condivisi del kernel.
 
-La **sincronizzazione** è l’insieme di tecniche che permettono a più processi o routine kernel di cooperare correttamente, evitando condizioni di gara. Il kernel utilizza meccanismi come:
+La **sincronizzazione** è l’insieme di tecniche che permettono a più processi o routine kernel di cooperare correttamente, evitando [[Race Condition|race condition]]. Il kernel utilizza meccanismi come:
 
 - istruzioni atomiche fornite dall’hardware
-- lock e mutex
-- semafori
+- [[Lock|lock]] e mutex
+- [[Semaphore|semafori]]
 
 Grazie a questi meccanismi, il sistema operativo può gestire correttamente trap sincrone, interrupt asincroni e concorrenza tra processi.
 
@@ -40,7 +40,7 @@ Grazie a questi meccanismi, il sistema operativo può gestire correttamente trap
 
 Quando la routine kernel termina:
 
-- il kernel decide quale processo deve riprendere l’esecuzione (scheduler)
+- il kernel decide quale processo deve riprendere l’esecuzione ([[Scheduler|scheduler]])
 - la CPU ripristina il contesto del processo scelto
 - la CPU torna in **user mode**
 

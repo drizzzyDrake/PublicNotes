@@ -53,7 +53,7 @@ Effetto:
 Nei sistemi Windows la creazione avviene **in un solo passo**.
 
 ```
-pawn()  → crea il processo con il nuovo programma
+spawn()  → crea il processo con il nuovo programma
 ```
 
 ---

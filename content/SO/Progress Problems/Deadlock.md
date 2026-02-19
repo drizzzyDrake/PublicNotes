@@ -74,3 +74,16 @@ Consideriamo il seguente RAG:
 Supponiamo che venga soddisfatta la pretesa del thread <b>t<sub>4</sub></b>. In tal caso, si andrebbe a creare uno **stato insicuro** poiché, nel caso in cui anche il thread <b>t<sub>3</sub></b> vada a richiedere la risorsa <b>r<sub>2</sub></b> (quindi trasformando l’arco di pretesa in un arco di richiesta) si andrebbe a creare un deadlock. Dunque tale pretesa non verrebbe soddisfatta.
 
 ---
+
+**Algoritmo del banchiere:**
+
+L'algoritmo del banchiere è una strategia di **evitamento del deadlock** (stallo) utilizzata dai sistemi operativi per gestire l'allocazione delle risorse. Il nome deriva dall'analogia con una banca: il banchiere non presta mai denaro se non è certo di poter soddisfare le richieste future di tutti i suoi clienti, evitando di restare senza liquidità. 
+
+L'algoritmo decide se concedere o meno una risorsa a un processo simulando l'allocazione e verificando se il sistema rimane in uno **stato sicuro**. Ogni processo deve dichiarare in anticipo il **numero massimo** di risorse di cui potrebbe aver bisogno durante la sua esecuzione. Quando un processo richiede risorse, il sistema controlla se la richiesta è inferiore o uguale alla necessità massima dichiarata e se le risorse sono effettivamente disponibili.
+
+Infine il sistema simula l'assegnazione e cerca una **sequenza sicura** di esecuzione (un ordine in cui tutti i processi possono terminare uno dopo l'altro).
+
+- Stato Sicuro: esiste almeno una sequenza che non presenta deadlock.
+- Stato Non Sicuro: non esiste tale sequenza (la richiesta viene sospesa).
+
+---

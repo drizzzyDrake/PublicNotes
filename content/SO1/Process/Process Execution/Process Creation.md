@@ -2,7 +2,7 @@ Indipendentemente dal sistema operativo, la creazione di un [[Process|processo]]
 
 1. **Richiesta di creazione:** fatta da un altro processo (padre) o dal sistema.
 2. **Creazione del [[PCB]]:** assegnazione PID e inizializzazione dello **[[Execution State|stato]]**.
-3. **Allocazione risorse:** **[[SO/Process/Virtual Memory|memoria]]** (codice, dati, stack, heap), file e **[[IO Devices|dispositivi]]**.
+3. **Allocazione risorse:** **[[SO1/Process/Virtual Memory|memoria]]** (codice, dati, stack, heap), file e **[[IO Devices|dispositivi]]**.
 4. **Caricamento del [[Program|programma]]:** il codice eseguibile viene caricato in memoria.
 5. **Inserimento nello [[Scheduler|scheduler]]:** stato = **Ready**, il processo attende la CPU.
 

@@ -1,60 +1,73 @@
-# === Percorsi ===
-$vault = "C:\Users\giuli\Desktop\Obsidian\UniNotes"
-$quartz = "C:\Users\giuli\Desktop\Obsidian\PublicNotes\content"
+# === Percorsi Dinamici (Funziona per ogni utente) ===
+$basePath = "C:\Users\$($env:USERNAME)\Desktop\Obsidian"
+$vault = Join-Path $basePath "UniNotes"
+$publicNotes = Join-Path $basePath "PublicNotes"
+$quartzContent = Join-Path $publicNotes "content"
+
+# Configurazione Automatica Git (Risolve l'errore dell'email)
+$gitEmail = "giuliodionisi@icloud.com" #
+$gitUser = "drizzzyDrake"
 
 # Cartelle da sincronizzare
-$folders = @("ADE", "BD", "MDP", "SO")
+$folders = @("ADE", "BD1", "MDP", "SO1")
 
-Write-Host "Sync in corso..."
+Write-Host "--- Inizio Sync per $gitUser ---" -ForegroundColor Cyan
+
+# Verifichiamo e configuriamo Git
+git config --global user.email $gitEmail
+git config --global user.name $gitUser
 
 foreach ($folder in $folders) {
     $src = Join-Path $vault $folder
-    $dest = Join-Path $quartz $folder
+    $dest = Join-Path $quartzContent $folder
 
-    Write-Host "Copio $folder → $dest"
-
-    # Cancella destinazione
-    if (Test-Path $dest) {
-        Remove-Item $dest -Recurse -Force
+    if (-not (Test-Path $src)) {
+        Write-Warning "Origine non trovata: $src. Salto..."
+        continue
     }
 
-    # Ricrea destinazione
-    New-Item -ItemType Directory -Path $dest | Out-Null
+    Write-Host "Sincronizzo $folder..." -ForegroundColor Yellow
 
-    # Copia tutto tranne .obsidian e _Images
-    robocopy $src $dest /E /XD ".obsidian" "_Images"
+    # /NFL /NDL /NJH /NJS rendono l'output più pulito
+    robocopy $src $dest /MIR /XD ".obsidian" "_Images" /R:2 /W:5 /NFL /NDL /NJH /NJS
 }
 
 # === Copia IMMAGINI ===
 $imagesSrc = Join-Path $vault "_Images"
-$imagesDest = Join-Path $quartz "_Images"
+$imagesDest = Join-Path $quartzContent "_Images"
 
-Write-Host "Copio immagini → $imagesDest"
+Write-Host "Sincronizzo Immagini..." -ForegroundColor Yellow
 
 foreach ($folder in $folders) {
     $srcImg = Join-Path $imagesSrc ($folder + "-images")
     $destImg = Join-Path $imagesDest ($folder + "-images")
 
     if (Test-Path $srcImg) {
-        if (Test-Path $destImg) {
-            Remove-Item $destImg -Recurse -Force
-        }
-
-        New-Item -ItemType Directory -Path $destImg | Out-Null
-        robocopy $srcImg $destImg /E
+        robocopy $srcImg $destImg /MIR /R:2 /W:5 /NFL /NDL /NJH /NJS
     }
 }
 
-Write-Host "Build Quartz..."
+# === Build Quartz ===
+Write-Host "Build Quartz in corso..." -ForegroundColor Cyan
+Set-Location $publicNotes
+
+if (-not (Test-Path "node_modules")) {
+    Write-Host "Moduli mancanti, installazione in corso..."
+    npm install
+}
 
 npx quartz build
 
-Write-Host "Commit & push..."
+# === Git Commit & Push ===
+Write-Host "Invio modifiche a GitHub..." -ForegroundColor Cyan
+if (Test-Path ".git") {
+    git add .
+    # Messaggio personalizzato con il tuo nome
+    $commitMsg = "Sync + build [$gitUser] - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+    git commit -m $commitMsg --allow-empty
+    git push origin main
+} else {
+    Write-Error "Errore: La cartella $publicNotes non è un repository Git!"
+}
 
-Set-Location "C:\Users\giuli\Desktop\Obsidian\PublicNotes"
-git add .
-git commit -m "Sync + build $(Get-Date)" --allow-empty
-git push origin main
-
-Write-Host "Sync completato!"
-
+Write-Host "--- Sync completato con successo! ---" -ForegroundColor Green

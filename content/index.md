@@ -9,15 +9,15 @@ Sono Giulio, studente universitario di Informatica presso la Sapienza, e questo 
 
 ---
 
-### SO — Sistemi Operativi
+### SO1 — Sistemi Operativi
 Appunti, concetti chiave, esercizi e approfondimenti sui sistemi operativi.  
-👉 [Entra nel vault SO](./SO/)
+👉 [Entra nel vault SO1](./SO1/)
 
 ---
 
-### BD — Basi di Dati
+### BD1 — Basi di Dati
 Schema, query, teoria, normalizzazione, esercizi e progetti.  
-👉 [Entra nel vault BD](./BD/)
+👉 [Entra nel vault BD1](./BD1/)
 
 ---
 

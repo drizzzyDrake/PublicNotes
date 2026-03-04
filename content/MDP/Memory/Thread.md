@@ -1,3 +1,3 @@
-In Java, un **[[SO/Process/Process Synchronization/Thread|thread]]** è un'unità di esecuzione che permette di eseguire più operazioni contemporaneamente (concorrente). Ogni programma Java, per impostazione predefinita, inizia con un **thread principale** (main thread) che esegue il metodo `main`. Tuttavia, è possibile creare **altri thread** per eseguire operazioni in parallelo, migliorando le prestazioni e la reattività dell'applicazione. 
+In Java, un **[[SO1/Process/Process Synchronization/Thread|thread]]** è un'unità di esecuzione che permette di eseguire più operazioni contemporaneamente (concorrente). Ogni programma Java, per impostazione predefinita, inizia con un **thread principale** (main thread) che esegue il metodo `main`. Tuttavia, è possibile creare **altri thread** per eseguire operazioni in parallelo, migliorando le prestazioni e la reattività dell'applicazione. 
 
 ---

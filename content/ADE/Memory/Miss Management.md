@@ -30,7 +30,7 @@ La cache **non è abbastanza grande** per contenere tutti i blocchi richiesti. A
 ---
 ### 2. STALLO DELLA PIPELINE
 
-Durante una miss, il processore va in [[Data Hazard#Stallo della pipeline|stallo]]: tutti i registri temporanei e gli stati visibili al programmatore vengono congelati. Il processore resta in attesa finché il dato richiesto non viene [[Memory Hierarchy#RICERCA DEI DATI|recuperato]] dalla memoria.
+Durante una miss, il processore va in [[Data Hazard#Stallo della pipeline|stallo]]: tutti i registri temporanei e gli stati visibili al programmatore vengono congelati. Il processore resta in attesa finché il dato richiesto non viene [[ADE/Memory/Memory Hierarchy#RICERCA DEI DATI|recuperato]] dalla memoria.
 
 - Nei processori in-order, tutte le istruzioni successive entrano in stallo.
 - Nei processori out-of-order, è possibile eseguire altre istruzioni non dipendenti dal dato in attesa.

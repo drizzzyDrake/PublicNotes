@@ -24,7 +24,7 @@ Il **modello di Von Neumann** è un modello storico e concettualmente semplice, 
 Un **modello di architettura di un calcolatore** descrive la struttura logica del sistema e generalmente comprende i seguenti componenti principali:
 
 - [[CPU]]
-- [[BD/Physical Layer/Memory Hierarchy|Memoria]]
+- [[BD1/Physical Layer/Memory Hierarchy|Memoria]]
 - [[System Bus]]
 - [[IO Devices|Dispositivi I/O]]
 

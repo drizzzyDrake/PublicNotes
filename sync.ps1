@@ -39,12 +39,21 @@ $imagesDest = Join-Path $quartzContent "_Images"
 Write-Host "Sincronizzo Immagini..." -ForegroundColor Yellow
 
 foreach ($folder in $folders) {
-    $srcImg = Join-Path $imagesSrc ($folder + "-images")
-    $destImg = Join-Path $imagesDest ($folder + "-images")
+    $src = Join-Path $vault $folder
+    $dest = Join-Path $quartzContent $folder
 
-    if (Test-Path $srcImg) {
-        robocopy $srcImg $destImg /MIR /R:2 /W:5 /NFL /NDL /NJH /NJS
+    if (-not (Test-Path $src)) {
+        Write-Warning "Origine non trovata: $src. Salto..."
+        continue
     }
+
+    if (-not (Test-Path $dest)) {
+        New-Item -ItemType Directory -Path $dest | Out-Null
+    }
+
+    Write-Host "Sincronizzo $folder..." -ForegroundColor Yellow
+
+    robocopy $src $dest /MIR /XD ".obsidian" "_Images" /R:2 /W:5 /NFL /NDL /NJH /NJS
 }
 
 # === Build Quartz ===

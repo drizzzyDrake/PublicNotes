@@ -9,7 +9,7 @@ $gitEmail = "giuliodionisi@icloud.com" #
 $gitUser = "drizzzyDrake"
 
 # Cartelle da sincronizzare
-$folders = @("ADE", "BD1", "MDP", "SO1")
+$folders = @("ADE", "BD1", "MDP", "SO1", "RE")
 
 Write-Host "--- Inizio Sync per $gitUser ---" -ForegroundColor Cyan
 
@@ -63,7 +63,7 @@ Write-Host "Invio modifiche a GitHub..." -ForegroundColor Cyan
 if (Test-Path ".git") {
     git add .
     # Messaggio personalizzato con il tuo nome
-    $commitMsg = "Sync + build [$gitUser] - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+    $commitMsg = "Sync + build - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
     git commit -m $commitMsg --allow-empty
     git push origin main
 } else {

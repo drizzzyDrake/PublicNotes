@@ -1,4 +1,4 @@
-Nel passaggio dal **datapath a [[Datapath Single-Cycle|singolo ciclo]]** al **datapath a pipeline**, sono stati aggiunti diversi elementi per supportare la suddivisione in stadi e gestire il flusso corretto di dati e segnali di controllo:
+wNel passaggio dal **datapath a [[Datapath Single-Cycle|singolo ciclo]]** al **datapath a pipeline**, sono stati aggiunti diversi elementi per supportare la suddivisione in stadi e gestire il flusso corretto di dati e segnali di controllo:
 
 ---
 ### SUDDIVISIONE IN STADI

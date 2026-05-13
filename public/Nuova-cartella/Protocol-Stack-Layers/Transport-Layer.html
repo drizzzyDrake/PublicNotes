@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Transport Layer</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Drizzy Notes"/><meta property="og:title" content="Transport Layer"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Transport Layer"/><meta name="twitter:description" content="Il livello di trasporto è il cuore logico della comunicazione end-to-end."/><meta property="og:description" content="Il livello di trasporto è il cuore logico della comunicazione end-to-end."/><meta property="og:image:alt" content="Il livello di trasporto è il cuore logico della comunicazione end-to-end."/><meta property="twitter:domain" content="https://drizzzydrake.github.io/PublicNotes/"/><meta property="og:url" content="https://https//drizzzydrake.github.io/PublicNotes/Nuova-cartella/Protocol-Stack-Layers/Transport-Layer"/><meta property="twitter:url" content="https://https//drizzzydrake.github.io/PublicNotes/Nuova-cartella/Protocol-Stack-Layers/Transport-Layer"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Il livello di trasporto è il cuore logico della comunicazione end-to-end."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxVdGVudGVcXERlc2t0b3BcXE9ic2lkaWFuXFxQdWJsaWNOb3Rlc1xccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://https://drizzzydrake.github.io/PublicNotes//index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://https://drizzzydrake.github.io/PublicNotes//Nuova-cartella/Protocol-Stack-Layers/Transport-Layer-og-image.webp"/><meta property="og:image:url" content="https://https://drizzzydrake.github.io/PublicNotes//Nuova-cartella/Protocol-Stack-Layers/Transport-Layer-og-image.webp"/><meta name="twitter:image" content="https://https://drizzzydrake.github.io/PublicNotes//Nuova-cartella/Protocol-Stack-Layers/Transport-Layer-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Nuova-cartella/Protocol-Stack-Layers/Transport-Layer"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Drizzy Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-227"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-227" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../Nuova-cartella/">Nuova cartella</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../Nuova-cartella/Protocol-Stack-Layers/">Protocol Stack Layers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Transport Layer</a></div></nav><h1 class="article-title">Transport Layer</h1><p show-comma="true" class="content-meta"><time datetime="2026-05-13T14:58:47.000Z">May 13, 2026</time><span>31 min read</span></p></div></div><article class="popover-hint"><p>Il <strong>livello di trasporto</strong> è il cuore logico della comunicazione end-to-end. Rappresenta il ponte tra i processi applicativi in esecuzione su host differenti, fornendo un canale di trasferimento dati indipendente dalla tecnologia della rete sottostante. Qui il software organizza i dati in unità chiamate <strong>segmenti</strong> (nel protocollo TCP) o <strong>datagrammi</strong> (nel protocollo UDP).</p>
+<hr/>
+<h3 id="protocollo-udp">PROTOCOLLO UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#protocollo-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>UDP (User Datagram Protocol)</strong> è un protocollo di trasporto <strong>connectionless</strong> e <strong>best effort</strong>: non stabilisce alcuna connessione preliminare tra mittente e destinatario, non garantisce la consegna dei pacchetti né l’ordine di arrivo, e non implementa controllo della congestione. Ogni segmento UDP viene gestito in modo indipendente. In cambio offre latenza molto bassa, semplicità implementativa e un header ridotto (8 byte).</p>
+<blockquote>
+<p><strong>Casi d’uso tipici</strong>: streaming multimediale (tolleranti alla perdita, sensibili alla velocità), DNS, SNMP, HTTP/3. Se serve affidabilità su UDP (come in HTTP/3), essa va implementata a livello applicativo.</p>
+</blockquote>
+<hr/>
+<h4 id="formato-dei-datagrammi-udp">Formato dei datagrammi UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#formato-dei-datagrammi-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il datagramma UDP è composto <strong>da un header di 64 bit diviso in quattro campi</strong> da 16 bit ciascuno, seguito dai dati (payload):</p>
+<p><img src="../../_Images/RE-images/udp-segment-format.png" width="auto" height="auto" alt/></p>
+<ul>
+<li><strong>numeri di porta</strong>: identificano le socket mittente e destinatario</li>
+<li><strong>lunghezza del segmento</strong>: lunghezza totale del segmento in byte (header + dati)</li>
+<li><strong>checksum</strong>: usato per rilevare errori di trasmissione.</li>
+</ul>
+<hr/>
+<h4 id="internet-checksum">Internet checksum<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#internet-checksum" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il <strong>checksum</strong> (somma di controllo) è un valore di 16 bit inserito nell’intestazione (header) di un pacchetto dati. Il suo scopo è permettere al destinatario di verificare se i dati sono stati corrotti durante il viaggio sulla rete. Viene scelto perché è estremamente veloce da calcolare via software, anche se non è il metodo più sicuro in assoluto.</p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Supponiamo di dover inviare due blocchi di dati (Dato A e Dato B):</p>
+<p>Il sistema operativo del mittente prepara il checksum da inserire nel datagramma. Innanzitutto somma i blocchi a 16 bit tra loro.</p>
+<ul>
+<li>Dato A: <code>1110 0110 0110 0110</code> (E666)</li>
+<li>Dato B: <code>1101 0101 0101 0101</code> (D555)</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>   1110 0110 0110 0110 +</span></span>
+<span data-line><span>   1101 0101 0101 0101 =</span></span>
+<span data-line><span>------------------------</span></span>
+<span data-line><span> 1 1011 1011 1011 1011  </span></span></code></pre></figure>
+<p>Poiché il checksum deve essere di soli 16 bit, il bit di riporto a sinistra (wraparound) non si butta via, ma si somma al risultato:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>   1011 1011 1011 1011 +</span></span>
+<span data-line><span>                     1 =</span></span>
+<span data-line><span>------------------------</span></span>
+<span data-line><span>   1011 1011 1011 1100  </span></span></code></pre></figure>
+<p>Per ottenere il Checksum vero e proprio, si invertono tutti i bit (0 diventa 1, 1 diventa 0):</p>
+<ul>
+<li>Somma iniziale di A e di B: <code>1011 1011 1011 1100</code></li>
+<li>Checksum corrispondente: <code>0100 0100 0100 0011</code></li>
+</ul>
+<p>L’inversione serve a facilitare la verifica da parte del destinatario. Quando il pacchetto arriva a destinazione, il ricevente somma tutto: <strong>dati ricevuti + checksum ricevuto</strong>. Se i dati sono corretti, la somma di un numero e del suo inverso darà come risultato una <strong>sequenza di soli 1</strong>.</p>
+<ul>
+<li>Se il risultato è <code>1111 1111 1111 1111</code>, i dati sono accettati.</li>
+<li>Se compare anche un solo <code>0</code>, il pacchetto viene scartato perché corrotto.</li>
+</ul>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Il checksum è una protezione debole perché si basa su una semplice somma aritmetica. Questo espone il sistema a tre problemi principali:</p>
+<ul>
+<li>Errori compensativi: se un bit passa da 0 a 1 in un punto, e un altro bit passa da 1 a 0 altrove (cambiamento simmetrico), la somma totale non cambia. Il destinatario riceverà dati sbagliati ma il checksum risulterà comunque valido.</li>
+<li>Ordine dei dati: la somma è commutativa (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>). Se i blocchi di dati arrivano scambiati di ordine, il checksum non se ne accorge.</li>
+<li>Inserimento di zeri: se vengono aggiunti dei blocchi composti solo da zeri, la somma non cambia e l’errore passa inosservato.</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h4 id="multiplexing-e-demultiplexing-udp">Multiplexing e Demultiplexing UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multiplexing-e-demultiplexing-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Vediamo come avvengono <a href="../../Protocol-Stack#multiplexing-e-demultiplexing" class="internal alias" data-slug="Protocol-Stack">multiplexing e demultiplexing</a> senza connessione a livello di trasporto. In UDP, una <a href="../../Application-Layer#socket-udp" class="internal alias" data-slug="Application-Layer">socket</a> è identificata <strong>univocamente da una coppia</strong>:</p>
+<ul>
+<li>indirizzo IP di destinazione</li>
+<li>numero di porta di destinazione</li>
+</ul>
+<p>Questo significa che due datagrammi provenienti da host o porte sorgente diversi, ma diretti allo stesso IP e alla stessa porta, vengono consegnati alla <strong>stessa socket</strong> e quindi allo stesso processo.</p>
+<hr/>
+<h5 id="come-avviene-il-demultiplexing-udp">Come avviene il demultiplexing UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#come-avviene-il-demultiplexing-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Il server non distingue da chi arriva il datagramma in base alla socket: quella informazione la recupera dal contenuto del segmento (tramite <code>recvfrom()</code>). Il <strong>numero di porta sorgente</strong> non serve per il demultiplexing, ma funge da <strong>indirizzo di ritorno</strong>: il server lo estrae dal datagramma ricevuto e lo usa come <strong>porta destinazione nella risposta</strong>. L’indirizzo di ritorno completo è quindi (IP sorgente + porta sorgente).</p>
+<p><img src="../../_Images/RE-images/demultiplexing-udp.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Il processo nell’Host A con porta 19157 invia a Host B porta 46428. Il livello di trasporto di A costruisce il datagramma con:</p>
+<ul>
+<li>porta sorgente: 19157</li>
+<li>porta destinazione: 46428</li>
+</ul>
+<p>All’arrivo, B esamina solo la porta destinazione (46428) e consegna il segmento alla socket corrispondente. Se B vuole rispondere, usa 19157 come porta destinazione.</p>
+</div>
+</blockquote>
+<hr/>
+<h5 id="come-avviene-il-multiplexing-udp">Come avviene il multiplexing UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#come-avviene-il-multiplexing-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Quando più processi applicativi inviano dati contemporaneamente tramite socket UDP distinte, il livello di trasporto raccoglie tutti questi flussi in uscita ed esegue il <strong>multiplexing</strong>: per ciascuna socket preleva il payload, costruisce un segmento UDP aggiungendo l’header (porta sorgente,
+porta destinazione, lunghezza, checksum) e passa il segmento risultante al livello di rete (IP) per l’instradamento.</p>
+<blockquote>
+<p>N.B. Ogni segmento UDP è <strong>autonomo e indipendente</strong>: porta con sé tutte le informazioni di indirizzamento necessarie e non ha alcuna relazione con i segmenti precedenti o successivi della stessa socket. Non esiste uno stato di connessione che leghi i datagrammi tra loro.</p>
+</blockquote>
+<hr/>
+<h5 id="assegnazione-delle-porte">Assegnazione delle porte<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#assegnazione-delle-porte" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li><strong>Lato client</strong>: la porta viene assegnata automaticamente dal sistema operativo (range da 1024 a 65535) al momento della creazione della socket, senza che il programmatore la specifichi.</li>
+<li><strong>Lato server</strong>: la porta viene assegnata esplicitamente dal programmatore tramite <code>bind()</code>, in modo che i client sappiano dove inviare i datagrammi. Se il server implementa un protocollo noto, deve usare la porta riservata corrispondente (es. DNS → 53).</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Important</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Le porte da 0 a 1023 sono riservate a <strong>protocolli noti (well-known ports)</strong> e non devono essere usate da applicazioni proprietarie. Alcuni esempi sono: la porta 25 per SMTP, la porta 53 per DNS, la porta 80 per HTTP e la porta 443 per HTTPS.</p>
+</div>
+</blockquote>
+<hr/>
+<h4 id="comunicazione-udp">Comunicazione UDP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comunicazione-udp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Per comprendere come UDP trasporta i dati, è utile seguire il percorso completo di un datagramma dal momento in cui il livello di trasporto lo riceve dal processo applicativo, fino alla sua consegna al destinatario. La programmazione pratica di questo scambio avviene tramite le <strong><a href="../../Application-Layer#socket-udp" class="internal alias" data-slug="Application-Layer">socket UDP</a></strong>, l’interfaccia tra il livello applicativo e quello di trasporto.</p>
+<hr/>
+<h5 id="azioni-del-mittente">Azioni del mittente<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#azioni-del-mittente" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Quando il processo applicativo chiama <code>sendto()</code> sulla propria socket, il controllo passa al livello di trasporto che esegue le seguenti operazioni:</p>
+<ul>
+<li><strong>Riceve il messaggio</strong> dal livello applicativo tramite la socket</li>
+<li><strong>Aggiunge l’header UDP</strong>: imposta i quattro campi (porta sorgente, porta destinazione, lunghezza, checksum)</li>
+<li><strong>Calcola il checksum</strong> sull’intero segmento (header + dati + pseudo-header IP)</li>
+<li><strong>Crea il datagramma UDP</strong> (header + payload)</li>
+<li><strong>Passa il datagramma al livello di rete (IP)</strong> per l’instradamento verso l’host destinatario</li>
+</ul>
+<blockquote>
+<p>N.B. Il numero di porta sorgente (quello del client) non viene scelto dal programmatore ma assegnato automaticamente dal sistema operativo. Solo la porta del server viene specificata esplicitamente tramite <code>bind()</code>.</p>
+</blockquote>
+<hr/>
+<h5 id="azioni-del-destinatario">Azioni del destinatario<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#azioni-del-destinatario" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Quando un segmento UDP arriva all’host destinatario:</p>
+<ul>
+<li><strong>Riceve il datagramma da IP</strong></li>
+<li><strong>Controlla il checksum</strong>: se il checksum non corrisponde, il datagramma viene scartato silenziosamente (UDP non invia notifiche di errore)</li>
+<li><strong>Demultiplexa</strong> il segmento: identifica la socket corretta tramite il numero di porta di destinazione</li>
+<li><strong>Consegna il payload</strong> al processo applicativo attraverso la socket, insieme all’indirizzo sorgente (IP + porta) che il processo potrà usare per rispondere</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Warning</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Se nessun processo è in ascolto sulla porta di destinazione, il sistema operativo scarta il datagramma e invia un messaggio ICMP di tipo “port unreachable” al mittente.</p>
+</div>
+</blockquote>
+<hr/>
+<h3 id="protocollo-tcp">PROTOCOLLO TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#protocollo-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Il <strong>TCP (Transmission Control Protocol)</strong> è il principale protocollo del livello di trasporto della suite Internet. Si distingue per la sua natura <strong>connection-oriented</strong> e per la capacità di trasformare un canale di rete intrinsecamente inaffidabile (come il livello IP) in un servizio di comunicazione robusto e ordinato.</p>
+<blockquote>
+<p><strong>Casi d’uso tipici</strong>: è usato dove l’integrità dei dati è fondamentale, ad esempio in protocolli come HTTP/1.1, HTTP/2, FTP, SMTP, ecc.</p>
+</blockquote>
+<hr/>
+<h4 id="caratteristiche-fondamentali">Caratteristiche fondamentali<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#caratteristiche-fondamentali" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il funzionamento del TCP si basa su alcuni pilastri tecnici che garantiscono l’integrità della comunicazione tra due host:</p>
+<ul>
+<li><strong>Orientamento alla Connessione:</strong> La trasmissione dei dati è preceduta da una fase di sincronizzazione chiamata <strong>three-way handshake</strong>. Questo processo permette a client e server di concordare parametri fondamentali e stabilire lo stato della connessione.</li>
+<li><strong>Affidabilità e Integrità:</strong> Il protocollo garantisce che ogni byte inviato arrivi a destinazione senza errori, duplicazioni o perdite. Ciò avviene tramite l’uso <strong>ACK</strong> e meccanismi di ritrasmissione.</li>
+<li><strong>Consegna Ordinata:</strong> Anche se i pacchetti IP del livello d rete sottostante possono seguire percorsi diversi e arrivare fuori ordine, il TCP ricostruisce l’esatta sequenza originale basandosi sui numeri di sequenza inseriti nell’intestazione (header) dei segmenti TCP.</li>
+<li><strong>Punto a punto:</strong> La connessione avviene esclusivamente tra un singolo mittente e un singolo destinatario, Il TCP non gestisce comunicazioni multicast o broadcast.</li>
+<li><strong>Gestione End-to-End:</strong> Lo stato della connessione risiede unicamente negli host (sistemi periferici). I router e gli switch intermedi non sono consapevoli delle connessioni TCP e trattano i pacchetti come semplici datagrammi IP.</li>
+<li><strong>Full-Duplex:</strong> Il flusso di dati è bidirezionale e simultaneo tra i due processi comunicanti.</li>
+<li><strong>Buffer di Invio e Ricezione:</strong> Gli host utilizzano porzioni di memoria (buffer) per stoccare temporaneamente i dati. Il buffer di invio trattiene i dati finché non vengono confermati dal destinatario, mentre quello di ricezione ospita i segmenti in arrivo finché l’applicazione non è pronta a leggerli.</li>
+</ul>
+<hr/>
+<h4 id="formato-dei-segmenti-tcp">Formato dei segmenti TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#formato-dei-segmenti-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il segmento TCP è composto da due parti principali: un’intestazione, generalmente di 20 byte, e un campo dati, contenente i byte provenienti dall’applicazione del livello superiore. La dimensione massima del campo dati è regolata dalla <strong>Maximum Segment Size (MSS)</strong>: nel caso di file di grandi dimensioni, TCP frammenta i dati in blocchi di dimensione pari all’MSS, ad eccezione dell’ultimo segmento, che risulta generalmente più piccolo.</p>
+<p><img src="../../_Images/RE-images/tcp-segment-format.png" width="auto" height="auto" alt/></p>
+<ul>
+<li><strong>numeri di porta</strong>: identificano le socket mittente e destinatario</li>
+<li><strong>lunghezza del segmento</strong>: lunghezza totale del segmento in byte (header + dati)</li>
+<li><strong>numero di sequenza e numero di acknowledgment</strong>: il numero di sequenza identifica il primo byte del campo dati all’interno del flusso di byte complessivo, mentre il numero di acknowledgment indica il prossimo byte atteso dal mittente, realizzando un sistema di acknowledgment cumulativo.</li>
+<li><strong>lunghezza dell’intestazione</strong>: campo a 4 bit che specifica la lunghezza dell’intestazione TCP in multipli di 32 bit. Il valore tipico è <strong>20 byte</strong>, ma può variare in presenza del campo opzioni.</li>
+<li><strong>campo delle flag</strong>: composto da 6 bit, ciascuno con una funzione specifica: <strong>ACK</strong>: indica che il campo di acknowledgment contiene un valore valido, <strong>RST, SYN, FIN</strong>: utilizzati per la gestione dell’apertura e della chiusura della connessione, <strong>PSH</strong>: segnala al destinatario di consegnare immediatamente i dati al livello superiore, <strong>URG</strong>: indica la presenza di dati urgenti, la cui posizione è segnalata dal <strong>campo puntatore ai dati urgenti</strong> (16 bit).</li>
+<li><strong>finestra di ricezione</strong>: indica il numero di byte che il destinatario è disposto ad accettare in un dato momento.</li>
+<li><strong>checksum</strong>: usato per rilevare errori di trasmissione.</li>
+<li><strong>opzioni</strong>: campo facoltativo e di lunghezza variabile, impiegato per negoziare parametri quali la <strong>MSS</strong>, il fattore di scala della finestra nelle reti ad alta velocità e il time-stamping.</li>
+</ul>
+<hr/>
+<h4 id="multiplexing-e-demultiplexing-tcp">Multiplexing e Demultiplexing TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multiplexing-e-demultiplexing-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Vediamo come avvengono <a href="../../Protocol-Stack#multiplexing-e-demultiplexing" class="internal alias" data-slug="Protocol-Stack">multiplexing e demultiplexing</a> con connessione a livello di trasporto. A differenza di UDP, in TCP una <a href="../../Application-Layer#socket-tcp" class="internal alias" data-slug="Application-Layer">socket</a> è identificata <strong>univocamente da una quaterna</strong>:</p>
+<ul>
+<li>indirizzo IP sorgente</li>
+<li>numero di porta sorgente</li>
+<li>indirizzo IP destinazione</li>
+<li>numero di porta destinazione</li>
+</ul>
+<p>Questo significa che due segmenti TCP in arrivo con la <strong>stessa porta destinazione</strong> ma con IP sorgente o porta sorgente diversi vengono diretti a <strong>socket distinte</strong>, e quindi a processi (o thread) distinti. È proprio questo meccanismo che permette al server di gestire connessioni simultanee
+da client diversi.</p>
+<hr/>
+<h5 id="come-avviene-il-demultiplexing-tcp">Come avviene il demultiplexing TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#come-avviene-il-demultiplexing-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Quando il server riceve un segmento TCP, il livello di trasporto esamina tutti e quattro i valori della quaterna e individua la socket di connessione corrispondente. Esiste però un caso speciale: i segmenti che trasportano la <strong>richiesta iniziale di connessione</strong> (bit SYN = 1) vengono diretti alla <strong>socket di benvenuto</strong> (<code>serverSocket</code>), che è sempre in ascolto sulla porta nota del server. Una volta completato l’handshake a tre vie attraverso la socket di benvenuto, il server crea una nuova <code>connectionSocket</code> identificata dalla quaterna, e tutti i segmenti successivi di quella connessione vengono diretti esclusivamente a quella socket.</p>
+<p><img src="../../_Images/RE-images/demultiplexing-tcp.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>L’Host C apre due connessioni HTTP verso il server B (porta 80), usando le porte sorgente 26145 e 7532. L’Host A apre anch’esso una connessione verso B usando la porta sorgente 26145. Nonostante A e C usino la stessa porta sorgente (26145), il server B le distingue senza ambiguità tramite l’indirizzo IP sorgente, che è diverso. Risultato: tre socket di connessione distinte, tutte con porta destinazione 80.</p>
+</div>
+</blockquote>
+<hr/>
+<h5 id="come-avviene-il-multiplexing-tcp">Come avviene il multiplexing TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#come-avviene-il-multiplexing-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>In TCP il multiplexing funziona allo stesso modo concettuale di UDP, ma con una differenza sostanziale: i dati in uscita <strong>non sono pacchetti autonomi</strong> ma fanno parte di <strong>flussi di byte appartenenti a connessioni stabilite</strong>. Per ciascuna <code>connectionSocket</code> attiva, il livello di
+trasporto raccoglie i byte in uscita, li impacchetta in segmenti TCP aggiungendo l’header completo (inclusa la quaterna di indirizzamento, numero di sequenza, numero di acknowledgment, ecc.) e li passa al livello di rete.</p>
+<blockquote>
+<p>N.B. Poiché ogni connessione TCP è identificata dalla sua quaterna univoca, il livello di trasporto sa esattamente quali valori inserire nell’header di ciascun segmento in uscita, garantendo che il destinatario possa effettuare il demultiplexing corretto all’arrivo.</p>
+</blockquote>
+<hr/>
+<h5 id="assegnazione-delle-porte-1">Assegnazione delle porte<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#assegnazione-delle-porte-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li><strong>Lato client</strong>: la porta sorgente viene assegnata automaticamente dal sistema operativo al momento di <code>connect()</code>, senza che il programmatore la specifichi.</li>
+<li><strong>Lato server</strong>: la porta viene assegnata esplicitamente tramite <code>bind()</code> prima di <code>listen()</code>. La socket di benvenuto rimane fissa su quella porta. Le socket di connessione create da <code>accept()</code> ereditano la stessa porta destinazione ma sono identificate dalla quaterna completa.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Important</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Le porte da 0 a 1023 sono riservate a <strong>protocolli noti (well-known ports)</strong> e non devono essere usate da applicazioni proprietarie. Alcuni esempi sono: la porta 25 per SMTP, la porta 53 per DNS, la porta 80 per HTTP e la porta 443 per HTTPS.</p>
+</div>
+</blockquote>
+<hr/>
+<h4 id="trasferimento-dati-affidabile-in-tcp">Trasferimento dati affidabile in TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#trasferimento-dati-affidabile-in-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il servizio IP sottostante a TCP è intrinsecamente inaffidabile: non garantisce la consegna ordinata né l’integrità dei datagrammi, che possono andare persi, arrivare in ordine casuale o con bit alterati. TCP ha il compito di costruire, al di sopra di questo servizio best-effort, un <a href="../../Reliable-Data-Transfer" class="internal alias" data-slug="Reliable-Data-Transfer">servizio di trasporto affidabile</a> che garantisca al processo ricevente un flusso di byte privo di alterazioni, buchi, duplicazioni e fuori sequenza.</p>
+<hr/>
+<h5 id="numeri-di-sequenza-e-di-acknowledgment">Numeri di sequenza e di acknowledgment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#numeri-di-sequenza-e-di-acknowledgment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>TCP tratta il flusso di dati come una sequenza ordinata di byte, non come una serie di segmenti distinti. Il numero di sequenza di ciascun segmento corrisponde pertanto alla posizione del primo byte trasportato all’interno del flusso complessivo.</p>
+<p><img src="../../_Images/RE-images/mss-file-division.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Considerando un file da 500.000 byte con MSS di 1000 byte, TCP produce 500 segmenti: al primo viene assegnato il numero di sequenza 0, al secondo 1000, al terzo 2000, e così via.</p>
+</div>
+</blockquote>
+<p>Inoltre, poiché il TCP è <strong>full-duplex</strong>, ogni host inserisce nei segmenti inviati il numero di acknowledgment: il numero di sequenza del prossimo byte che si aspetta di ricevere dall’altro lato della connessione. Il meccanismo di riscontro del TCP eredita e ottimizza i concetti teorici dei protocolli a finestra scorrevole:</p>
+<ul>
+<li><strong>Natura cumulativa</strong>(simile a <a href="../../Reliable-Data-Transfer#go-back-n-gbn" class="internal alias" data-slug="Reliable-Data-Transfer">Go-Back-N</a>): il TCP utilizza un <strong>acknowledgment cumulativo</strong> dove viene riscontrato solo l’ultimo byte ricevuto in modo contiguo. Se un destinatario riceve i byte 0-999 e poi i byte 2.000-2.999 (perdendo il segmento intermedio), l’ACK continuerà a indicare 1.000. Come nel GBN, il mittente tiene traccia solo di <strong>SendBase</strong> e del prossimo byte da inviare, ma a differenza di quest’ultimo, TCP non ritrasmette necessariamente i segmenti successivi se un ACK cumulativo ne copre la ricezione.</li>
+<li><strong>Gestione del fuori ordine</strong> (simile a <a href="../../Reliable-Data-Transfer#ripetizione-selettiva-sr" class="internal alias" data-slug="Reliable-Data-Transfer">Selective Repeat</a>): i segmenti che arrivano correttamente ma fuori ordine vengono <strong>bufferizzati</strong> (memorizzati) invece che scartati. Questo rende il recupero degli errori un <strong>ibrido tra GBN e SR</strong>, poiché evita di ritrasmettere dati già presenti nel buffer del destinatario, ottimizzando l’uso della banda.</li>
+<li><strong>Estensione SACK (Selective Acknowledgment)</strong>: tramite questa opzione (RFC 2018), il TCP può avvicinarsi ulteriormente al comportamento di un protocollo <strong>SR puro</strong>. Il destinatario notifica esplicitamente al mittente quali blocchi “isolati” ha ricevuto correttamente, permettendo di ritrasmettere <em>solo</em> i segmenti effettivamente mancanti anziché ripartire dal <code>SendBase</code>.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Attention</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>I numeri di sequenza iniziali in TCP (<strong>Initial Sequence Number - ISN</strong>) non partono da zero, ma vengono scelti in modo <strong>casuale</strong> da entrambi gli host durante il handshake. Questa misura di sicurezza previene due problemi: l’intercettazione e la predizione dei pacchetti da parte di esterni (TCP Sequence Prediction Attack) e il rischio che segmenti ritardatari di una vecchia connessione, ancora circolanti in rete, vengano erroneamente accettati come parte di una nuova sessione tra gli stessi host.</p>
+</div>
+</blockquote>
+<hr/>
+<h6 id="esempio-con-telnet">Esempio con Telnet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#esempio-con-telnet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p><img src="../../_Images/RE-images/telnet-connection-example.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Analizziamo il funzionamento dei numeri di sequenza e di acknowledgment attraverso un esempio pratico con Telnet. Supponendo che il client (Host A) abbia numero di sequenza iniziale (ISN) 42 e il server (Host B) 79, lo scambio si articola in tre segmenti:</p>
+<ul>
+<li><strong>Client → Server</strong>: il client invia la parola ‘Giulio’ con Seq=42 e ACK=79, indicando di attendere il byte 79 dal server.</li>
+<li><strong>Server → Client</strong>: il server invia ‘Aura’ con Seq=79 e ACK=48, confermando la ricezione del byte 42 e richiedendo il 48 (42 + 6 byte di ‘Giulio’). In questo segmento l’acknowledgment è trasportato insieme ai dati, tecnica definita <strong>piggybacking</strong>.</li>
+<li><strong>Client → Server</strong>: il client invia un segmento privo di dati con Seq=48 e ACK=83, confermando la ricezione della parola ‘Aura’ e attestando di attendere il byte 83.</li>
+</ul>
+<p>Questo esempio evidenzia come TCP gestisca in modo elegante la bidirezionalità del flusso, combinando dati e acknowledgment all’interno degli stessi segmenti ogni volta che ciò sia possibile.</p>
+</div>
+</blockquote>
+<hr/>
+<h5 id="timeout-e-stima-dellrtt">Timeout e stima dell’RTT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#timeout-e-stima-dellrtt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>TCP, analogamente al <a href="../../Reliable-Data-Transfer#rdt30-protocollo-ad-alternanza-di-bit" class="internal alias" data-slug="Reliable-Data-Transfer">protocollo rdt</a>, si avvale di un meccanismo di timeout e ritrasmissione per recuperare i segmenti persi durante la trasmissione. Sebbene il principio sia concettualmente semplice, la sua implementazione pratica solleva alcune questioni fondamentali: come stimare correttamente il tempo di andata e ritorno (<a href="../../Web#4ea32e" class="internal alias" data-slug="Web">RTT</a>), quale durata assegnare all’intervallo di timeout e se associare un timer a ogni singolo segmento non ancora riscontrato.</p>
+<hr/>
+<h6 id="stima-dellrtt">Stima dell’RTT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#stima-dellrtt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Il punto di partenza per la gestione del timeout è la misurazione del cosiddetto <strong>SampleRTT</strong>, ovvero il tempo che intercorre tra l’invio di un segmento e la ricezione del relativo acknowledgment. Per ragioni di efficienza, la maggior parte delle implementazioni TCP non misura un SampleRTT per ogni segmento trasmesso, bensì mantiene attiva una sola misurazione per volta, ottenendo approssimativamente un nuovo campione per ogni RTT trascorso. È importante sottolineare che TCP non calcola mai il SampleRTT per i segmenti ritrasmessi, ma esclusivamente per quelli inviati una sola volta. Poiché i singoli campioni possono risultare atipici a causa della congestione nei router e del variabile carico sui sistemi periferici, TCP calcola una media ponderata denominata <strong>EstimatedRTT</strong>, aggiornata secondo la seguente formula:</p>
+<p><strong>EstimatedRTT = (1 – α) × EstimatedRTT + α × SampleRTT</strong></p>
+<p>Il valore raccomandato da RFC 6298 per il parametro <strong>α</strong> è <strong>0,125</strong> (ovvero 1/8), per cui la formula diventa:</p>
+<p><strong>EstimatedRTT = 0,875 × EstimatedRTT + 0,125 × SampleRTT</strong></p>
+<p>Questa formula realizza una <strong>media mobile esponenziale ponderata (EWMA)</strong>: i campioni più recenti ricevono un peso proporzionalmente maggiore rispetto a quelli più vecchi, poiché riflettono in modo più accurato le condizioni attuali della rete. Il termine esponenziale indica che il peso attribuito ai campioni passati decresce esponenzialmente a ogni aggiornamento.</p>
+<hr/>
+<h6 id="stima-della-variabilità-dellrtt">Stima della variabilità dell’RTT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#stima-della-variabilità-dellrtt" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Oltre alla stima del valore medio, TCP necessita di una misura della variabilità dell’RTT, definita come <strong>DevRTT</strong> e calcolata anch’essa come EWMA, secondo la formula:</p>
+<p><strong>DevRTT = (1 – β) × DevRTT + β × | SampleRTT - EstimatedRTT |</strong></p>
+<p>DevRTT rappresenta quindi la deviazione media tra i campioni misurati e il valore stimato. Quando le fluttuazioni di SampleRTT sono contenute, DevRTT assume valori piccoli. Al contrario, in presenza di variazioni significative, DevRTT risulta elevato. Il valore suggerito per <strong>β</strong> è <strong>0,25</strong>.</p>
+<hr/>
+<h6 id="impostazione-e-gestione-dellintervallo-di-timeout">Impostazione e gestione dell’intervallo di timeout<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#impostazione-e-gestione-dellintervallo-di-timeout" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Sulla base dei valori di EstimatedRTT e DevRTT, TCP determina l’intervallo di timeout di ritrasmissione (<strong>TimeoutInterval</strong>) secondo la formula:</p>
+<p><strong>TimeoutInterval = EstimatedRTT + 4 × DevRTT</strong></p>
+<p>Questa formula risponde a un preciso criterio di bilanciamento: il timeout non può essere inferiore a EstimatedRTT, poiché ciò genererebbe ritrasmissioni inutili, ma non deve nemmeno essere eccessivamente superiore, per evitare ritardi significativi nel recupero dei segmenti perduti. Il contributo di DevRTT, moltiplicato per 4, funge da margine di sicurezza adattivo: è ampio quando le fluttuazioni sono elevate e ridotto quando il flusso è stabile. RFC 6298 raccomanda un valore iniziale di TimeoutInterval pari a <strong>1 secondo</strong>. In caso di timeout, l’intervallo viene <strong>raddoppiato</strong>, così da evitare scadenze premature relative a segmenti successivi per i quali l’acknowledgment potrebbe arrivare a breve. Non appena un nuovo segmento viene riscontrato e EstimatedRTT viene aggiornato, TimeoutInterval viene ricalcolato secondo la formula sopra indicata, riadattandosi dinamicamente alle condizioni correnti della rete.</p>
+<hr/>
+<h5 id="gestione-della-perdita-timeout-e-ritrasmissione">Gestione della perdita: timeout e ritrasmissione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gestione-della-perdita-timeout-e-ritrasmissione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Stabiliti i meccanismi di numerazione e riscontro dei dati e le modalità di stima dell’RTT, occorre affrontare il problema centrale del trasferimento affidabile: come reagire quando un segmento non raggiunge la destinazione. TCP si avvale di timeout e ritrasmissioni rapida che, combinate tra loro, consentono di rilevare e recuperare le perdite in modo efficiente, minimizzando sia le ritrasmissioni inutili sia i ritardi end-to-end.</p>
+<hr/>
+<h6 id="struttura-del-mittente-tcp-semplificato">Struttura del mittente TCP semplificato<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#struttura-del-mittente-tcp-semplificato" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Per raggiungere questo obiettivo, TCP gestisce tre eventi principali legati alla trasmissione e ritrasmissione dei dati.</p>
+<ul>
+<li>Il <strong>primo evento</strong> si verifica quando i dati provengono dall’applicazione: TCP incapsula i dati in un segmento, assegna il numero di sequenza corrispondente al primo byte del segmento nel flusso complessivo, avvia il timer se non è già attivo e passa il segmento al livello IP. Il timer è concettualmente associato al segmento più vecchio ancora privo di acknowledgment, e il suo intervallo di scadenza è il <strong>TimeoutInterval</strong> calcolato a partire da <strong>EstimatedRTT</strong> e <strong>DevRTT</strong>.</li>
+<li>Il <strong>secondo evento</strong> è la scadenza del timer (timeout): TCP ritrasmette il segmento con il numero di sequenza più basso tra quelli privi di acknowledgment e riavvia il timer.</li>
+<li>Il <strong>terzo evento</strong> è la ricezione di un ACK con valore y valido: TCP confronta y con la variabile <strong>SendBase</strong>, che rappresenta il numero di sequenza del byte più vecchio ancora privo di riscontro (ACK). Se y è maggiore di SendBase, significa che il destinatario ha ricevuto tutti i segmenti tra SendBase e y, SendBase viene aggiornato quindi a y e, se esistono ancora segmenti (dopo y) senza acknowledgment, il timer viene riavviato.</li>
+</ul>
+<hr/>
+<h6 id="scenari-esemplificativi">Scenari esemplificativi<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scenari-esemplificativi" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Chiariamo il funzionamento del meccanismo attraverso 3 diversi scenari:</p>
+<p><img src="../../_Images/RE-images/tcp-ack-loss-retransmission.png" width="auto" height="auto" alt/></p>
+<p>Nel <strong>primo scenario</strong>, il segmento inviato da A viene ricevuto correttamente da B, ma l’ACK di ritorno si perde in rete. Alla scadenza del timer, A ritrasmette il segmento. L’host B, riconoscendo dal numero di sequenza che i dati erano già stati ricevuti, scarta silenziosamente il duplicato.</p>
+<p><img src="../../_Images/RE-images/tcp-out-of-timeout-retransmission.png" width="auto" height="auto" alt/></p>
+<p>Nel <strong>secondo scenario</strong>, A invia due segmenti consecutivi. Entrambi giungono a B, che risponde con due ACK distinti. Tuttavia, nessuno dei due raggiunge A prima del timeout. Alla scadenza, A ritrasmette solo il primo segmento. Il secondo non viene ritrasmesso poiché il suo ACK potrebbe arrivare prima del nuovo timeout, grazie alla natura cumulativa degli acknowledgment.</p>
+<p><img src="../../_Images/RE-images/tcp-ack-loss-cumulative-retransmission.png" width="auto" height="auto" alt/></p>
+<p>Nel <strong>terzo scenario</strong>, l’ACK del primo segmento va perduto, ma prima che il timer scada A riceve un <strong>ACK cumulativo</strong> con numero 120, che attesta la ricezione corretta di tutti i byte fino al 119. In questo caso nessuno dei due segmenti viene ritrasmesso, dimostrando l’efficienza del meccanismo di acknowledgment cumulativo.</p>
+<hr/>
+<h6 id="ritrasmissione-rapida-fast-retransmit">Ritrasmissione rapida (fast retransmit)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ritrasmissione-rapida-fast-retransmit" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p><img src="../../_Images/RE-images/tcp-fast-retransmission.png" width="auto" height="auto" alt/></p>
+<p>Un limite del solo meccanismo di timeout è che il periodo di attesa può risultare relativamente lungo, aumentando il ritardo end-to-end in caso di perdita di segmenti. TCP risolve questo problema attraverso la <strong>ritrasmissione rapida</strong>, basata sul rilevamento di ACK duplicati. Quando il destinatario riceve un segmento con numero di sequenza superiore a quello atteso, rileva un buco nel flusso e reagisce inviando immediatamente un ACK duplicato per l’ultimo byte ricevuto in ordine. Il mittente, ricevendo <strong>tre ACK duplicati</strong> per lo stesso segmento, interpreta questo segnale come indice quasi certo della perdita del segmento immediatamente successivo e procede alla sua ritrasmissione <strong>prima ancora che il timer scada</strong>. La soglia di tre ACK duplicati è scelta per distinguere la perdita effettiva dal semplice riordinamento dei segmenti in rete.</p>
+<hr/>
+<h5 id="controllo-del-flusso">Controllo del flusso<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controllo-del-flusso" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Il <strong>controllo di flusso</strong> (flow-control service) è un meccanismo offerto da TCP per impedire che il mittente saturi il buffer di ricezione del destinatario inviando dati a una velocità superiore a quella con cui l’applicazione ricevente è in grado di leggerli. Si tratta di un servizio di confronto tra la frequenza di invio del mittente e la frequenza di lettura del ricevente.</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Caution</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>È importante distinguere il controllo di flusso dal <strong>controllo di congestione</strong>: sebbene entrambi comportino il rallentamento del mittente, il primo è causato dalla limitata capacità del buffer del destinatario, il secondo dalla congestione nella rete IP.</p>
+</div>
+</blockquote>
+<hr/>
+<h6 id="buffer-di-ricezione">Buffer di ricezione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#buffer-di-ricezione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p><img src="../../_Images/RE-images/tcp-buffer.png" width="auto" height="auto" alt/></p>
+<p>Ogni host coinvolto in una connessione TCP alloca un <strong>buffer di ricezione</strong> di dimensione <strong>RcvBuffer</strong>. Per garantire che questo buffer non vada in overflow, deve essere sempre rispettata la condizione:
+<strong>LastByteRcvd - LastByteRead ≤ RcvBuffer</strong>. La quantità di spazio libero disponibile nel buffer è espressa dalla <strong>finestra di ricezione</strong> (<strong>rwnd</strong>), definita come: <strong>rwnd = RcvBuffer − [LastByteRcvd − LastByteRead]</strong>. Essendo lo spazio disponibile variabile nel tempo, <strong>rwnd</strong> è una grandezza dinamica.</p>
+<hr/>
+<h6 id="funzionamento">Funzionamento<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#funzionamento" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h6>
+<p>Il destinatario comunica il valore corrente di <strong>rwnd</strong> al mittente scrivendolo nell’apposito campo di ogni segmento inviato. Il mittente, a sua volta, mantiene traccia di due variabili:</p>
+<ul>
+<li><strong>LastByteSent</strong>: ultimo byte trasmesso.</li>
+<li><strong>LastByteAcked</strong>: ultimo byte riscontrato (ACK ricevuto).</li>
+</ul>
+<p>La differenza tra queste due variabili rappresenta la quantità di dati trasmessi ma non ancora confermati. Per non mandare in overflow il buffer del ricevente, il mittente deve rispettare per tutta la durata della connessione il vincolo: <strong>LastByteSent − LastByteAcked ≤ rwnd</strong>.</p>
+<hr/>
+<h4 id="gestione-della-connessione-tcp">Gestione della connessione TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gestione-della-connessione-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Diamo un’occhiata più approfondita a come viene stabilita e rilasciata una connessione TCP:</p>
+<hr/>
+<h5 id="apertura-della-connessione-handshake-a-tre-vie">Apertura della connessione: handshake a tre vie<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#apertura-della-connessione-handshake-a-tre-vie" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><img src="../../_Images/RE-images/three-way-handshake-tcp.png" width="auto" height="auto" alt/></p>
+<p>La procedura di apertura di una connessione TCP prevede lo scambio di tre segmenti tra client e server (che compongono l’handshake a tre vie):</p>
+<ol>
+<li><strong>Segmento SYN:</strong> (client → server) Il client invia un segmento speciale privo di dati applicativi con il bit <code>SYN = 1</code> e un numero di sequenza iniziale scelto casualmente (<code>client_isn</code>) nel campo apposito (SYN sta per synchronize).</li>
+<li><strong>Segmento SYNACK:</strong> (server → client) Il server riceve il SYN, alloca buffer e variabili TCP per la connessione, e risponde con un segmento detto <strong>SYNACK</strong>, caratterizzato da: campo <code>SYN = 1</code>, campo <code>ACK = client_isn + 1</code> e proprio numero di sequenza iniziale (<code>server_isn</code>).</li>
+<li><strong>Conferma finale:</strong> (client → server) Il client alloca buffer e variabili, e invia un terzo segmento con: <code>SYN = 0</code> (connessione già stabilita) e <code>ACK = server_isn + 1</code>.</li>
+</ol>
+<p>Il campo dati di questo terzo segmento può già contenere dati applicativi. Al termine dei tre passi la connessione è <strong>pienamente operativa</strong> e i successivi segmenti avranno sempre <code>SYN = 0</code>.</p>
+<hr/>
+<h5 id="chiusura-della-connessione">Chiusura della connessione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#chiusura-della-connessione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><img src="../../_Images/RE-images/tcp-connection-end.png" width="auto" height="auto" alt/></p>
+<p>Ciascuno dei due host può avviare la chiusura della connessione, con conseguente de-allocazione di buffer e variabili. La sequenza tipica, con chiusura iniziata dal client, è la seguente:</p>
+<ol>
+<li>Il client invia un segmento con <strong><code>FIN = 1</code></strong> al server (FIN sta per finish).</li>
+<li>Il server invia un <strong>ACK</strong> in risposta.</li>
+<li>Il server invia a sua volta un segmento con <strong><code>FIN = 1</code></strong>.</li>
+<li>Il client risponde con un <strong>ACK</strong> finale ed entra in uno stato di attesa temporizzata (<strong>TIME_WAIT</strong>) prima di rilasciare le risorse.</li>
+</ol>
+<hr/>
+<h5 id="stati-tcp-del-client">Stati TCP del client<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#stati-tcp-del-client" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>La sequenza degli stati visitati dal lato client durante l’intero ciclo di vita della connessione:</p>
+<p><img src="../../_Images/RE-images/client-TCP-fsm.png" width="auto" height="auto" alt/></p>
+<p>Lo stato <code>TIME_WAIT</code> garantisce che l’ultimo ACK, se perso, possa essere ritrasmesso. Al suo termine, le risorse (inclusi i numeri di porta) vengono rilasciate.</p>
+<hr/>
+<h5 id="stati-tcp-del-server">Stati TCP del server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#stati-tcp-del-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>La sequenza degli stati visitati dal lato server:</p>
+<p><img src="../../_Images/RE-images/server-TCP-fsm.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Important</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Quando un host riceve un segmento TCP destinato a una porta su cui non è attiva alcuna socket, risponde con un segmento di <strong>reset</strong> (<code>RST = 1</code>), comunicando alla sorgente che non esiste una socket corrispondente. In modo analogo, UDP risponde con un datagramma <strong>ICMP</strong> in caso di porta di destinazione non attiva.</p>
+</div>
+</blockquote>
+<hr/>
+<h5 id="scansione-delle-porte-con-nmap">Scansione delle Porte con nmap<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scansione-delle-porte-con-nmap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Lo strumento <strong>nmap</strong> sfrutta i meccanismi di gestione della connessione TCP per rilevare lo stato delle porte di un host remoto. Inviando un segmento SYN alla porta bersaglio, interpreta la risposta come segue:</p>
+<ul>
+<li><strong>SYNACK ricevuto</strong>: porta <strong>aperta</strong> (applicazione in ascolto)</li>
+<li><strong>RST ricevuto</strong>: porta <strong>chiusa</strong> (nessuna applicazione, ma host raggiungibile)</li>
+<li><strong>Nessuna risposta</strong>: porta probabilmente <strong>bloccata da firewall</strong></li>
+</ul>
+<p>Nmap è inoltre in grado di rilevare porte UDP aperte, configurazioni di firewall e versioni di sistemi operativi e applicazioni, sfruttando la manipolazione dei segmenti di gestione TCP.</p>
+<hr/>
+<h4 id="controllo-di-congestione-tcp">Controllo di congestione TCP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controllo-di-congestione-tcp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>TCP adotta un approccio di controllo di congestione <strong>end-to-end</strong>, senza alcun supporto esplicito dal livello di rete. Il meccanismo si basa su una variabile aggiuntiva mantenuta dal mittente: la <strong>finestra di congestione</strong> (<strong>cwnd</strong>), che limita la quantità di dati trasmessi ma non ancora riscontrati secondo il vincolo: <strong>LastByteSent - LastByteAcked ≤ min(cwnd, rwnd)</strong>. La velocità di trasmissione risultante è approssimativamente <strong>cwnd/RTT byte/s</strong>. I mittenti TCP determinano la loro velocità di trasmissione in modo da non congestionare la rete e allo stesso tempo utilizzare tutta la banda disponibile. Questo è possibile grazie ad un algoritmo che funziona sulla base di tre principi:</p>
+<ul>
+<li>Un <a href="../../Transport-Layer#gestione-della-perdita-timeout-e-ritrasmissione" class="internal alias" data-slug="Transport-Layer">evento di perdita</a> di un segmento, ovvero un timeout o la ricezione di tre ACK duplicati, implica congestione e quindi riduzione del tasso trasmissivo.</li>
+<li>Un ACK non duplicato indica che la rete sta consegnando i segmenti del mittente al ricevente e quindi il tasso di trasmissione del mittente può essere aumentato (stato buono della rete).</li>
+<li>Rilevamento continuo della larghezza di banda, aumentando progressivamente la velocità fino al rilevamento della congestione, per poi ridurla e riprendere la fase di sondaggio.</li>
+</ul>
+<p>TCP è pertanto definito <strong>auto-temporizzato</strong> (self-clocking), poiché sono gli stessi acknowledgment a scandire la crescita della finestra. L’algoritmo di congestione di TCP Reno è diviso in tre fasi:</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Important</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>TCP Reno</strong> è una delle versioni più classiche del protocollo TCP e basa il suo funzionamento in fase di congestion avoidance (prevenzione della congestione) sull’algoritmo <strong>AIMD</strong> (Additive Increase, Multiplicative Decrease). L’obiettivo di questo meccanismo è esplorare la banda disponibile in modo cauto ma costante (+ 1 MSS ogni RTT), reagendo però drasticamente ai segnali di congestione per evitare il collasso della rete (- cwnd/2).</p>
+</div>
+</blockquote>
+<hr/>
+<h5 id="slow-start">Slow Start<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#slow-start" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>All’inizio di ogni connessione TCP, <strong>cwnd</strong> viene inizializzata a <strong>1 MSS</strong>. Nonostante il nome, la fase di slow start è caratterizzata da una crescita <strong>esponenziale</strong>: per ogni segmento riscontrato (ACK), cwnd viene incrementata di 1 MSS, con il risultato di un raddoppio della finestra a ogni RTT. La sequenza è quindi la seguente: viene inviato 1 segmento, poi 2, poi 4, e così via.</p>
+<p><img src="../../_Images/RE-images/slow-start-tcp.png" width="auto" height="auto" alt/></p>
+<p>La fase di slow start termina in uno dei tre modi seguenti:</p>
+<ul>
+<li><strong>In caso di timeout</strong>: cwnd viene riportata a 1 MSS e <strong>ssthresh</strong> (soglia di slow start) viene impostata a <strong>cwnd/2</strong> (metà del valore che aveva la finestra di congestione quando la congestione è stata rilevata).</li>
+<li><strong>In caso di raggiungimento di ssthresh</strong>: quando <strong>cwnd ≥ ssthresh</strong>, TCP passa alla fase di <strong>congestion avoidance</strong>. Infatti, sotto la soglia <strong>ssthresh</strong>, la crescita di cwnd deve essere <strong>esponenziale</strong> per occupare rapidamente la banda libera. Invece, oltrepassata la soglia, la crescita deve diventare <strong>lineare</strong> per sondare con cautela il limite della rete senza intasarla.</li>
+<li><strong>In caso di ricezione di tre ACK duplicati</strong> (perdita di segmento): come prima cosa TCP opera una <a href="../../Transport-Layer#ritrasmissione-rapida-fast-retransmit" class="internal alias" data-slug="Transport-Layer">ritrasmissione rapida</a> e poi entra nella fase di <strong>fast recovery</strong>.</li>
+</ul>
+<hr/>
+<h5 id="congestion-avoidance">Congestion Avoidance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#congestion-avoidance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>In questa fase, il TCP è vicino al limite della capacità di rete e adotta un approccio conservativo. La crescita diventa <strong>lineare</strong>: la cwnd aumenta di solo 1 MSS per ogni RTT completo (ovvero aumenta di una piccola frazione per ogni ACK ricevuto).</p>
+<ul>
+<li><strong>In caso di timeout:</strong> la soglia ssthresh viene dimezzata e la cwnd torna a <strong>1 MSS</strong>, ritornando quindi in fase di <strong>slow start</strong>.</li>
+<li><strong>In caso di tre ACK duplicati:</strong> la reazione è moderata. La cwnd viene dimezzata (aggiungendo 3 MSS di bonus per gli ACK già ricevuti), si aggiorna la soglia ssthresh a cwnd/2 e si entra nella fase di <strong>fast recovery</strong>.</li>
+</ul>
+<hr/>
+<h5 id="fast-recovery">Fast Recovery<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fast-recovery" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Questa fase serve a gestire perdite isolate senza abbattere le prestazioni della rete. La finestra continua a fluttuare leggermente mentre si aspetta la conferma del pacchetto perso.</p>
+<ul>
+<li><strong>Se arrivano altri ACK duplicati:</strong> la cwnd aumenta di 1 MSS per ogni duplicato, poiché ogni ACK è un segnale che un pacchetto ha lasciato la rete ed è arrivato a destinazione.</li>
+<li><strong>Se arriva il “new ACK” (non duplicato):</strong> la fase termina. La cwnd si sgonfia e si assesta al valore di <strong>ssthresh</strong>, proseguendo in fase di <strong>congestion avoidance</strong>.</li>
+<li><strong>In caso di timeout:</strong> il meccanismo fallisce e si torna drasticamente a <strong>slow start</strong> con cwnd = 1.</li>
+</ul>
+<hr/>
+<h5 id="esempio">Esempio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#esempio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><img src="../../_Images/RE-images/tcp-reno-example.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout example" data-callout="example">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Example</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Il grafico mostra l’evoluzione di una connessione TCP Reno:</p>
+<ul>
+<li>All’inizio (turni 1 - 5), vediamo la <strong>slow start</strong> che sale rapidamente fino alla ssthresh (8).</li>
+<li>Superata la soglia (turni 5 - 9), la pendenza cala: siamo in <strong>congestion avoidance</strong>.</li>
+<li>Al turno 9 si verifica un <strong>timeout</strong> (forse un cavo scollegato o un router completamente intasato). La finestra crolla immediatamente a <strong>1</strong> e la soglia di sicurezza viene abbassata a <strong>6</strong> (la metà del valore 12 raggiunto).</li>
+<li>Il mittente riparte quindi con pazienza (turni 10 - 17): risale esponenzialmente fino a 6 e poi linearmente.</li>
+<li>Al turno 17, però, accade qualcosa di diverso: non un timeout, ma la ricezione di <strong>3 ACK duplicati</strong> (fast retransmit). Il TCP capisce che la rete non è morta, ma ha solo perso un pezzo. Invece di crollare a 1, la soglia viene portata a <strong>5</strong> (metà di 10) e la finestra scende a 8 (5 + 3), siamo in fase di <strong>fast recovery</strong>.</li>
+<li>Nel grafico vedi che tra il turno 18 e 19 la linea ha un piccolo sbalzo verso l’alto: sono gli ACK duplicati extra che gonfiano la finestra.</li>
+<li>Infine, al turno 20 arriva il <strong>new ACK</strong>: il “buco” è tappato. La finestra si riassesta sulla ssthresh ricalcolata (5) e la trasmissione prosegue linearmente, evitando di dover ricominciare da capo come era successo al turno 10.</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h5 id="fairness-equità">Fairness (equità)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fairness-equità" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><img src="../../_Images/RE-images/fairness-bottleneck.png" width="680" height="auto" alt/></p>
+<p>Il concetto di <strong>fairness</strong> (equità) si riferisce alla capacità di un protocollo di distribuire <strong>equamente</strong> le risorse di rete tra diverse connessioni. Se <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.82em;"></span><span class="mord mathnormal sizing reset-size6 size7" style="margin-right:0.07153em;">K</span></span></span></span> connessioni TCP condividono un unico collegamento collo di bottiglia con capacità <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.82em;"></span><span class="mord mathnormal sizing reset-size6 size7" style="margin-right:0.00773em;">R</span></span></span></span>, il meccanismo è considerato equo se ogni connessione ottiene mediamente una velocità di trasmissione pari a <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.3em;"></span><span class="mord mathnormal sizing reset-size6 size7" style="margin-right:0.00773em;">R</span><span class="mord sizing reset-size6 size7">/</span><span class="mord mathnormal sizing reset-size6 size7" style="margin-right:0.07153em;">K</span></span></span></span>.</p>
+<p><img src="../../_Images/RE-images/aimd-fairness.png" width="auto" height="auto" alt/></p>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Il meccanismo AIMD è fair? </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Rispondiamo utilizzando un grafico che memorizza ad ogni istante il throughput di due connessioni TCP sullo stesso cavo:</p>
+<ul>
+<li><strong>Asse delle ascisse x :</strong> throughput della connessione 1.</li>
+<li><strong>Asse delle ordinate y :</strong> throughput della connessione 2.</li>
+<li><strong>Linea di pieno utilizzo x + y = R :</strong> rappresenta il vincolo di capacità del collegamento. Qualsiasi punto sopra questa linea indica uno stato di congestione con conseguente perdita di pacchetti.</li>
+<li><strong>Linea di equa condivisione x = y :</strong> rappresenta la condizione ideale in cui entrambe le connessioni ottengono esattamente la stessa porzione di banda (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord">/2</span></span></span></span>).</li>
+</ul>
+<p>Comportamento del sistema:</p>
+<ul>
+<li>
+<p><strong>Fase A <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> B : incremento additivo</strong>: partendo dal punto <strong>A</strong>, notiamo che la connessione 1 è più veloce della 2 (più a destra che in alto nel grafico). Poiché siamo sotto la linea di pieno utilizzo, entrambe le connessioni aumentano la velocità della stessa quantità (1 MSS ogni RTT). Graficamente, ci si sposta con un angolo di <strong>45 gradi</strong>. Poiché l’incremento è identico per entrambe (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>), la pendenza della retta è pari a 1.</p>
+</li>
+<li>
+<p><strong>Fase B <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> C : decremento moltiplicativo</strong>: al punto <strong>B</strong>, la somma dei throughput supera la capacità <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> (linea azzurra). TCP rileva la perdita e dimezza le finestre di congestione (cwnd = cwnd/2). Graficamente, ci spostiamo verso l’origine (0,0). Poiché il taglio è percentuale (50%), la connessione 1 (più veloce) subisce una riduzione assoluta maggiore rispetto alla connessione 2. Questo punisce chi occupa più spazio, riducendo il divario tra le due.</p>
+</li>
+<li>
+<p><strong>Fase C <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> D e oltre : convergenza</strong>: dal punto <strong>C</strong>, le connessioni ricominciano a crescere a 45 gradi verso il punto <strong>D</strong>. Ogni volta che il sistema tocca il limite della banda e dimezza, il salto indietro sposta il punto di lavoro sempre più vicino alla linea di equa condivisione (la bisettrice). Nel tempo, i throughput delle due connessioni oscilleranno attorno al punto di equilibrio ideale, garantendo una spartizione equa delle risorse.</p>
+</li>
+</ul>
+</div>
+</blockquote>
+<hr/></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-95" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#protocollo-udp" data-for="protocollo-udp">PROTOCOLLO UDP</a></li><li class="depth-0"><a href="#protocollo-tcp" data-for="protocollo-tcp">PROTOCOLLO TCP</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

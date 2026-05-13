@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Drizzy Notes</title>
+      <link>https://https://drizzzydrake.github.io/PublicNotes/</link>
+      <description>Last 10 notes on Drizzy Notes</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>index</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/</guid>
+    <description><![CDATA[ --- title: Home enableToc: false --- Benvenuto Sono Giulio, studente universitario di Informatica presso la Sapienza, e questo è il mio spazio di studio: --- SO1 — Sistemi Operativi Appunti, concetti chiave, esercizi e approfondimenti sui sistemi operativi. ]]></description>
+    <pubDate>Wed, 13 May 2026 15:08:16 GMT</pubDate>
+  </item><item>
+    <title>Datapath Pipeline</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/ADE/CPU/Datapath-Pipeline</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/ADE/CPU/Datapath-Pipeline</guid>
+    <description><![CDATA[ wNel passaggio dal datapath a singolo ciclo al datapath a pipeline, sono stati aggiunti diversi elementi per supportare la suddivisione in stadi e gestire il flusso corretto di dati e segnali di controllo: SUDDIVISIONE IN STADI Registri di pipeline: I registri di pipeline sono stati aggiunti tra ogn... ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>Data Delivery</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Data-Delivery</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Data-Delivery</guid>
+    <description><![CDATA[ Il Data Delivery è il processo complessivo mediante il quale l’informazione (sotto forma di pacchetti o frame) viene trasferita attraverso un’infrastruttura di rete dal sistema sorgente al sistema destinazione. ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>Internet</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Internet</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Internet</guid>
+    <description><![CDATA[ Internet è una rete che collega le reti, il nome stesso deriva da inter-networking. ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>DNS</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/DNS</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/DNS</guid>
+    <description><![CDATA[ Gli host Internet possono essere identificati in due modi distinti: tramite hostname (es. ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>E-mail</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/E-mail</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/E-mail</guid>
+    <description><![CDATA[ La posta elettronica, meglio conosciuta come e-mail (electronic mail), è un servizio internet che ti permette di inviare e ricevere messaggi digitali in modo quasi istantaneo e asincrono. ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>File Sharing</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/File-Sharing</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/File-Sharing</guid>
+    <description><![CDATA[ Il File Sharing (condivisione di file) è il servizio di rete che permette la distribuzione e l’accesso a risorse digitali (documenti, file multimediali, software) tra più utenti o dispositivi attraverso una rete (Internet o LAN). ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>Web</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/Web</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network-Applications/Web</guid>
+    <description><![CDATA[ Il Web è un’applicazione di rete di tipo client-server, distribuita su scala globale, che utilizza l’infrastruttura di Internet per consentire il reperimento e la fruizione di contenuti ipertestuali e multimediali (risorse), identificati univocamente tramite URL, trasferiti attraverso il protocollo ... ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>Network</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Network</guid>
+    <description><![CDATA[ Una rete è un’infrastruttura composta da dispositivi detti nodi della rete in grado di scambiarsi informazioni tramite dei mezzi di comunicazione, wireless o cablati, detti link (o collegamenti). ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item><item>
+    <title>Application Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Protocol-Stack-Layers/Application-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/Nuova-cartella/Protocol-Stack-Layers/Application-Layer</guid>
+    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
+    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

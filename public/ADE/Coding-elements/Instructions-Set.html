@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Instructions Set</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Drizzy Notes"/><meta property="og:title" content="Instructions Set"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Instructions Set"/><meta name="twitter:description" content="SET BASE Le istruzioni del set base definiscono le operazioni fondamentali per il calcolo, il controllo del flusso e l’accesso alla memoria."/><meta property="og:description" content="SET BASE Le istruzioni del set base definiscono le operazioni fondamentali per il calcolo, il controllo del flusso e l’accesso alla memoria."/><meta property="og:image:alt" content="SET BASE Le istruzioni del set base definiscono le operazioni fondamentali per il calcolo, il controllo del flusso e l’accesso alla memoria."/><meta property="twitter:domain" content="https://drizzzydrake.github.io/PublicNotes/"/><meta property="og:url" content="https://https//drizzzydrake.github.io/PublicNotes/ADE/Coding-elements/Instructions-Set"/><meta property="twitter:url" content="https://https//drizzzydrake.github.io/PublicNotes/ADE/Coding-elements/Instructions-Set"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="SET BASE Le istruzioni del set base definiscono le operazioni fondamentali per il calcolo, il controllo del flusso e l’accesso alla memoria."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxVdGVudGVcXERlc2t0b3BcXE9ic2lkaWFuXFxQdWJsaWNOb3Rlc1xccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://https://drizzzydrake.github.io/PublicNotes//index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://https://drizzzydrake.github.io/PublicNotes//ADE/Coding-elements/Instructions-Set-og-image.webp"/><meta property="og:image:url" content="https://https://drizzzydrake.github.io/PublicNotes//ADE/Coding-elements/Instructions-Set-og-image.webp"/><meta name="twitter:image" content="https://https://drizzzydrake.github.io/PublicNotes//ADE/Coding-elements/Instructions-Set-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="ADE/Coding-elements/Instructions-Set"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Drizzy Notes</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-32"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-32" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../ADE/">ADE</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../ADE/Coding-elements/">Coding elements</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Instructions Set</a></div></nav><h1 class="article-title">Instructions Set</h1><p show-comma="true" class="content-meta"><time datetime="2026-01-08T18:05:34.000Z">Jan 08, 2026</time><span>10 min read</span></p></div></div><article class="popover-hint"><h3 id="set-base">SET BASE<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#set-base" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Le istruzioni del set base definiscono le operazioni fondamentali per il calcolo, il controllo del flusso e l’accesso alla memoria.</p>
+<hr/>
+<h4 id="operazioni-aritmetiche-e-logiche">OPERAZIONI ARITMETICHE E LOGICHE<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-aritmetiche-e-logiche" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<h5 id="operazioni-sui-registri-formato-r">Operazioni sui Registri (<a href="../../ADE/Instructions-Execution/Instruction-Formats#1-formato-r-register-register" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato R</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-sui-registri-formato-r" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>ADD</strong><br/>
+<em>Sintassi</em>: <code>add rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Somma <code>rs1</code> e <code>rs2</code> → <code>rd = rs1 + rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>add x5, x1, x2  # x5 = x1 + x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>SUB</strong><br/>
+<em>Sintassi</em>: <code>sub rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Sottrae <code>rs2</code> da <code>rs1</code> → <code>rd = rs1 - rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sub x5, x1, x2  # x5 = x1 - x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLL</strong> (Shift Left Logical)</p>
+<p><em>Sintassi</em>: <code>sll rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Shifta a sinistra <code>rs1</code> di un numero di bit specificato da <code>rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sll x5, x1, x2  # x5 = x1 &lt;&lt; (rs2)</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLT</strong> (Set Less Than, signed)</p>
+<p><em>Sintassi</em>: <code>slt rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Se <code>rs1</code> &lt; <code>rs2</code> (con segno) allora <code>rd = 1</code>, altrimenti 0<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>slt x5, x1, x2  # x5 = (x1 &lt; x2) ? 1 : 0</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLTU</strong> (Set Less Than, unsigned)</p>
+<p><em>Sintassi</em>: <code>sltu rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Confronto senza segno<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sltu x5, x1, x2  # x5 = (x1 &lt; x2) in unsigned ? 1 : 0</span></span></code></pre></figure>
+<hr/>
+<p><strong>XOR</strong></p>
+<p><em>Sintassi</em>: <code>xor rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Operazione bitwise XOR tra <code>rs1</code> e <code>rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>xor x5, x1, x2  # x5 = x1 ^ x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>SRL</strong> (Shift Right Logical)</p>
+<p><em>Sintassi</em>: <code>srl rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Shift logico a destra<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>srl x5, x1, x2  # x5 = x1 >> (rs2) (riempimento con 0)</span></span></code></pre></figure>
+<hr/>
+<p><strong>SRA</strong> (Shift Right Arithmetic)</p>
+<p><em>Sintassi</em>: <code>sra rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Shift aritmetico a destra (mantiene il segno)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sra x5, x1, x2  # x5 = x1 >> (rs2) preservando il bit del segno</span></span></code></pre></figure>
+<hr/>
+<p><strong>OR</strong></p>
+<p><em>Sintassi</em>: <code>or rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Operazione bitwise OR<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>or x5, x1, x2  # x5 = x1 | x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>AND</strong></p>
+<p><em>Sintassi</em>: <code>and rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Operazione bitwise AND<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>and x5, x1, x2  # x5 = x1 &amp; x2</span></span></code></pre></figure>
+<hr/>
+<h5 id="operazioni-con-immediati-formato-i">Operazioni con Immediati (<a href="../../ADE/Instructions-Execution/Instruction-Formats#2-formato-i-immediate-register" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato I</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-con-immediati-formato-i" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>ADDI</strong></p>
+<p><em>Sintassi</em>: <code>addi rd, rs1, imm</code><br/>
+<em>Descrizione</em>: Somma il registro <code>rs1</code> con un valore immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>addi x5, x1, 10  # x5 = x1 + 10</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLTI</strong></p>
+<p><em>Sintassi</em>: <code>slti rd, rs1, imm</code><br/>
+<em>Descrizione</em>: Imposta <code>rd = 1</code> se <code>rs1</code> è minore di <code>imm</code> (signed)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>slti x5, x1, 20  # x5 = (x1 &lt; 20) ? 1 : 0</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLTIU</strong></p>
+<p><em>Sintassi</em>: <code>sltiu rd, rs1, imm</code><br/>
+<em>Descrizione</em>: Confronto senza segno con immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sltiu x5, x1, 20  # confronto unsigned</span></span></code></pre></figure>
+<hr/>
+<p><strong>XORI</strong></p>
+<p><em>Sintassi</em>: <code>xori rd, rs1, imm</code><br/>
+<em>Descrizione</em>: XOR tra <code>rs1</code> e l’immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>xori x5, x1, 0xFF</span></span></code></pre></figure>
+<hr/>
+<p><strong>ORI</strong></p>
+<p><em>Sintassi</em>: <code>ori rd, rs1, imm</code><br/>
+<em>Descrizione</em>: OR bitwise con immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>ori x5, x1, 0xF0</span></span></code></pre></figure>
+<hr/>
+<p><strong>ANDI</strong></p>
+<p><em>Sintassi</em>: <code>andi rd, rs1, imm</code><br/>
+<em>Descrizione</em>: AND bitwise con immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>andi x5, x1, 0x0F</span></span></code></pre></figure>
+<hr/>
+<p><strong>SLLI</strong></p>
+<p><em>Sintassi</em>: <code>slli rd, rs1, shamt</code><br/>
+<em>Descrizione</em>: Shift logico a sinistra con immediato di shift (shamt)
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>slli x5, x1, 3  # x5 = x1 &lt;&lt; 3</span></span></code></pre></figure>
+<hr/>
+<p><strong>SRLI / SRAI</strong></p>
+<p><em>Sintassi</em>: <code>srli rd, rs1, shamt</code> e <code>srai rd, rs1, shamt</code><br/>
+<em>Descrizione</em>: Shift logico o aritmetico a destra con immediato<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>srli x5, x1, 2  # x5 = x1 >> 2 (logical) </span></span>
+<span data-line><span>srai x5, x1, 2  # x5 = x1 >> 2 (arithmetic)</span></span></code></pre></figure>
+<hr/>
+<h5 id="operazioni-speciali-formato-u">Operazioni Speciali (<a href="../../ADE/Instructions-Execution/Instruction-Formats#5-formato-u-upper-immediate" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato U</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-speciali-formato-u" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>LUI</strong> (Load Upper Immediate)</p>
+<p><em>Sintassi</em>: <code>lui rd, imm20</code><br/>
+<em>Descrizione</em>: Carica un immediato di 20 bit nella parte alta del registro (il resto viene posto a 0)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>lui x5, 0x12345  # x5 = 0x12345000</span></span></code></pre></figure>
+<hr/>
+<p><strong>AUIPC</strong> (Add Upper Immediate to PC)</p>
+<p><em>Sintassi</em>: <code>auipc rd, imm20</code><br/>
+<em>Descrizione</em>: Calcola <code>rd = PC + (imm20 &lt;&lt; 12)</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>auipc x5, 0x1  # x5 = PC + 0x1000</span></span></code></pre></figure>
+<hr/>
+<h4 id="controllo-di-flusso">CONTROLLO DI FLUSSO<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#controllo-di-flusso" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<h5 id="branch-salti-condizionati---formato-b">Branch (Salti condizionati - <a href="../../ADE/Instructions-Execution/Instruction-Formats#4-formato-b-branch" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato B</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#branch-salti-condizionati---formato-b" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>BEQ</strong></p>
+<p><em>Sintassi</em>: <code>beq rs1, rs2, offset</code><br/>
+<em>Descrizione</em>: Salta se <code>rs1 == rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>beq x1, x2, label</span></span></code></pre></figure>
+<hr/>
+<p><strong>BNE</strong></p>
+<p><em>Sintassi</em>: <code>bne rs1, rs2, offset</code><br/>
+<em>Descrizione</em>: Salta se <code>rs1 != rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>bne x1, x2, label</span></span></code></pre></figure>
+<hr/>
+<p><strong>BLT</strong> e <strong>BGE</strong> (signed)</p>
+<p><em>Sintassi</em>: <code>blt rs1, rs2, offset</code> / <code>bge rs1, rs2, offset</code><br/>
+<em>Descrizione</em>: Salta se <code>rs1 &lt; rs2</code> (signed) o se <code>rs1 >= rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>blt x1, x2, label  # se x1 &lt; x2 </span></span>
+<span data-line><span>bge x1, x2, label  # se x1 >= x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>BLTU</strong> e <strong>BGEU</strong> (unsigned)</p>
+<p><em>Sintassi</em>: <code>bltu rs1, rs2, offset</code> / <code>bgeu rs1, rs2, offset</code><br/>
+<em>Descrizione</em>: Confronti senza segno<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>bltu x1, x2, label  # confronto unsigned </span></span>
+<span data-line><span>bgeu x1, x2, label</span></span></code></pre></figure>
+<hr/>
+<h5 id="jump-salti-incondizionati---formato-j">Jump (Salti Incondizionati - <a href="../../ADE/Instructions-Execution/Instruction-Formats#6-formato-j-jump" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato J</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#jump-salti-incondizionati---formato-j" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>JAL</strong> (Jump and Link)</p>
+<p><em>Sintassi</em>: <code>jal rd, label</code><br/>
+<em>Descrizione</em>: Salta a <code>label</code> e memorizza il return address in <code>rd</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>jal x1, func  # x1 = PC + 4 *, salto a func</span></span></code></pre></figure>
+<p>_*(PC + 4 perché al ritorno della funzione si va ad eseguire l’istruzione successiva a quella memorizzata in x1)</p>
+<hr/>
+<p><strong>JALR</strong> (Jump and Link Register)</p>
+<p><em>Sintassi</em>: <code>jalr rd, imm(rs1)</code><br/>
+<em>Descrizione</em>: Salto indiretto: calcola l’indirizzo target come <code>(rs1 + imm)</code>, salta all’indirizzo target e memorizza il return address in <code>rd</code>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>jalr x1, 0(x2)  # x1 = PC + 4, salto all'indirizzo contenuto in x2 + 0</span></span></code></pre></figure>
+<hr/>
+<h4 id="accesso-alla-memoria">ACCESSO ALLA MEMORIA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#accesso-alla-memoria" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<h5 id="istruzioni-di-caricamento-load--formato-i">Istruzioni di Caricamento (Load – <a href="../../ADE/Instructions-Execution/Instruction-Formats#2-formato-i-immediate-register" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato I</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#istruzioni-di-caricamento-load--formato-i" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>LB, LH, LW</strong></p>
+<p><em>Sintassi</em>: <code>lb rd, offset(rs1)</code>; analogamente per <code>lh</code> (halfword) e <code>lw</code> (word)<br/>
+<em>Descrizione</em>: Carica 8, 16 o 32 bit da memoria in segno esteso<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>lw x5, 0(x1)  # x5 = Mem[x1 + 0]</span></span></code></pre></figure>
+<hr/>
+<p><strong>LBU, LHU</strong></p>
+<p><em>Sintassi</em>: <code>lbu rd, offset(rs1)</code>; <code>lhu</code> per halfword senza segno<br/>
+<em>Descrizione</em>: Carica il dato senza segno<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>lbu x5, 0(x1)</span></span></code></pre></figure>
+<hr/>
+<h5 id="istruzioni-di-memorizzazione-store-formato-s">Istruzioni di Memorizzazione (Store –<a href="../../ADE/Instructions-Execution/Instruction-Formats#3-formato-s-store" class="internal alias" data-slug="ADE/Instructions-Execution/Instruction-Formats">Formato S</a>)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#istruzioni-di-memorizzazione-store-formato-s" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>SB, SH, SW</strong></p>
+<p><em>Sintassi</em>: <code>sb rs2, offset(rs1)</code>; analogamente per <code>sh</code> (halfword) e <code>sw</code> (word)<br/>
+<em>Descrizione</em>: Memorizza 8, 16 o 32 bit in memoria<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sw x5, 0(x1)  # Mem[x1+0] = x5</span></span></code></pre></figure>
+<hr/>
+<h5 id="istruzioni-di-sincronizzazione-e-ambiente">Istruzioni di Sincronizzazione e Ambiente<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#istruzioni-di-sincronizzazione-e-ambiente" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p><strong>FENCE</strong></p>
+<p><em>Sintassi</em>: <code>fence [pred], [succ]</code><br/>
+<em>Descrizione</em>: Garantisce l’ordine delle operazioni di memoria<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fence</span></span></code></pre></figure>
+<hr/>
+<p><strong>FENCE.I</strong></p>
+<p><em>Sintassi</em>: <code>fence.i</code><br/>
+<em>Descrizione</em>: Sincronizza le istruzioni cache (utile dopo modifiche alla memoria contenente codice)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fence.i</span></span></code></pre></figure>
+<hr/>
+<p><strong>ECALL</strong> e <strong>EBREAK</strong></p>
+<p><em>Descrizione</em>: Chiamata al sistema (ECALL) ed interruzione per debug (EBREAK)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>ecall ebreak</span></span></code></pre></figure>
+<hr/>
+<h4 id="tabella-riassuntiva---set-base">TABELLA RIASSUNTIVA - SET BASE<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva---set-base" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Categoria</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>ADD</td><td>Aritmetica</td><td>Somma due registri</td></tr><tr><td>SUB</td><td>Aritmetica</td><td>Sottrazione tra registri</td></tr><tr><td>SLL</td><td>Shift</td><td>Shift logico a sinistra</td></tr><tr><td>SLT / SLTU</td><td>Confronto</td><td>Setta se minore (signed/unsigned)</td></tr><tr><td>XOR</td><td>Logica</td><td>XOR bitwise</td></tr><tr><td>SRL / SRA</td><td>Shift</td><td>Shift logico / aritmetico a destra</td></tr><tr><td>OR</td><td>Logica</td><td>OR bitwise</td></tr><tr><td>AND</td><td>Logica</td><td>AND bitwise</td></tr><tr><td>ADDI</td><td>Aritmetica</td><td>Somma con immediato</td></tr><tr><td>SLTI/SLTIU</td><td>Confronto</td><td>Set less than con immediato (signed/unsigned)</td></tr><tr><td>XORI, ORI, ANDI</td><td>Logica</td><td>Operazioni logiche con immediato</td></tr><tr><td>SLLI, SRLI, SRAI</td><td>Shift</td><td>Shift con immediato</td></tr><tr><td>LUI</td><td>Speciale</td><td>Carica immediato nella parte alta</td></tr><tr><td>AUIPC</td><td>Speciale</td><td>PC-relative address calcolo</td></tr><tr><td>JAL, JALR</td><td>Salti</td><td>Salti incondizionati con link</td></tr><tr><td>BEQ, BNE, BLT, BGE, BLTU, BGEU</td><td>Branch</td><td>Salti condizionati</td></tr><tr><td>LB, LH, LW, LBU, LHU</td><td>Caricamento</td><td>Caricamento dati da memoria</td></tr><tr><td>SB, SH, SW</td><td>Memorizzazione</td><td>Scrittura in memoria</td></tr><tr><td>FENCE, FENCE.I</td><td>Sincronizzazione</td><td>Controllo ordine memoria/instr.</td></tr><tr><td>ECALL, EBREAK</td><td>Ambiente</td><td>Chiamate di sistema e debug</td></tr></tbody></table></div>
+<hr/>
+<h3 id="estensione-m">ESTENSIONE M<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estensione-m" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Le istruzioni dell’estensione <strong>M</strong> aggiungono operazioni aritmetiche per la moltiplicazione e la divisione intera.</p>
+<hr/>
+<p><strong>MUL</strong></p>
+<p><em>Sintassi</em>: <code>mul rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Moltiplicazione a 32/64 bit (parte bassa del risultato)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>mul x5, x1, x2  # x5 = (x1 * x2) lower part</span></span></code></pre></figure>
+<hr/>
+<p><strong>MULH</strong></p>
+<p><em>Sintassi</em>: <code>mulh rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Moltiplicazione che restituisce la parte alta del prodotto (signed)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>mulh x5, x1, x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>MULHSU</strong></p>
+<p><em>Sintassi</em>: <code>mulhsu rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Moltiplicazione tra un operando signed e uno unsigned, parte alta<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>mulhsu x5, x1, x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>MULHU</strong></p>
+<p><em>Sintassi</em>: <code>mulhu rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Moltiplicazione unsigned, parte alta<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>mulhu x5, x1, x2</span></span></code></pre></figure>
+<hr/>
+<p><strong>DIV</strong></p>
+<p><em>Sintassi</em>: <code>div rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Divisione intera signed<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>div x5, x1, x2  # x5 = x1 / x2 (signed)</span></span></code></pre></figure>
+<hr/>
+<p><strong>DIVU</strong></p>
+<p><em>Sintassi</em>: <code>divu rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Divisione intera unsigned<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>divu x5, x1, x2  # divisione unsigned</span></span></code></pre></figure>
+<hr/>
+<p><strong>REM</strong></p>
+<p><em>Sintassi</em>: <code>rem rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Resto della divisione signed<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>rem x5, x1, x2  # x5 = x1 % x2 (signed)</span></span></code></pre></figure>
+<hr/>
+<p><strong>REMU</strong></p>
+<p><em>Sintassi</em>: <code>remu rd, rs1, rs2</code><br/>
+<em>Descrizione</em>: Resto della divisione unsigned<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>remu x5, x1, x2</span></span></code></pre></figure>
+<hr/>
+<h4 id="tabella-riassuntiva--estensione-m">Tabella Riassuntiva – Estensione M<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva--estensione-m" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>MUL</td><td>Moltiplicazione (parte bassa)</td></tr><tr><td>MULH</td><td>Moltiplicazione (parte alta, signed)</td></tr><tr><td>MULHSU</td><td>Moltiplicazione (mixed signed/unsigned, parte alta)</td></tr><tr><td>MULHU</td><td>Moltiplicazione (unsigned, parte alta)</td></tr><tr><td>DIV</td><td>Divisione signed</td></tr><tr><td>DIVU</td><td>Divisione unsigned</td></tr><tr><td>REM</td><td>Resto signed</td></tr><tr><td>REMU</td><td>Resto unsigned</td></tr></tbody></table></div>
+<hr/>
+<h3 id="estensione-a">ESTENSIONE A<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estensione-a" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Questa estensione abilita operazioni atomiche per la sincronizzazione in ambienti multithread. Questa guida è per operazioni a 32 bit (RV32A), per sistemi a 64 bit (RV64A) esistono equivalenti con suffisso <code>.d</code> (per “doubleword”).</p>
+<hr/>
+<p><strong>LR.W</strong> (Load-Reserved Word)</p>
+<p><em>Sintassi</em>: <code>lr.w rd, (rs1)</code><br/>
+<em>Descrizione</em>: Carica il valore da memoria marcandolo per un’operazione atomica<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>lr.w x5, (x1)</span></span></code></pre></figure>
+<hr/>
+<p><strong>SC.W</strong> (Store-Conditional Word)</p>
+<p><em>Sintassi</em>: <code>sc.w rd, rs2, (rs1)</code><br/>
+<em>Descrizione</em>: Memorizza in memoria solo se la “riserva” è valida; <code>rd</code> viene impostato a 0 se riuscito<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>sc.w x5, x2, (x1)  # se riuscito, x5 = 0</span></span></code></pre></figure>
+<hr/>
+<p><strong>AMOSWAP.W</strong></p>
+<p><em>Sintassi</em>: <code>amoswap.w rd, rs2, (rs1)</code><br/>
+<em>Descrizione</em>: Scambia atomicamente il contenuto di memoria con <code>rs2</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>amoswap.w x5, x2, (x1)</span></span></code></pre></figure>
+<hr/>
+<p><strong>AMOADD.W, AMOXOR.W, AMOAND.W, AMOOR.W</strong></p>
+<p><em>Sintassi</em>: <code>amoadd.w rd, rs2, (rs1)</code><br/>
+<em>Descrizione</em>: Eseguono rispettivamente somma, XOR, AND e OR atomico<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>amoadd.w x5, x2, (x1)  # Somma atomica</span></span></code></pre></figure>
+<hr/>
+<p><strong>AMOMIN.W, AMOMAX.W, AMOMINU.W, AMOMAXU.W</strong></p>
+<p><em>Sintassi</em>: <code>amomin.w rd, rs2, (rs1)</code><br/>
+<em>Descrizione</em>: Operazioni atomiche per ottenere il minimo/massimo (signed/unsigned)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>amomin.w x5, x2, (x1)</span></span></code></pre></figure>
+<hr/>
+<h4 id="tabella-riassuntiva--estensione-a">Tabella Riassuntiva – Estensione A<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva--estensione-a" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>LR.W / LR.D</td><td>Carica riservato (word/double)</td></tr><tr><td>SC.W / SC.D</td><td>Store condizionale (word/double)</td></tr><tr><td>AMOSWAP.W / AMOSWAP.D</td><td>Scambio atomico</td></tr><tr><td>AMOADD, AMOXOR, AMOAND, AMOOR</td><td>Operazioni aritmetiche/logiche atomiche</td></tr><tr><td>AMOMIN, AMOMAX, AMOMINU, AMOMAXU</td><td>Operazioni min/max atomiche</td></tr></tbody></table></div>
+<hr/>
+<h3 id="estensione-f">ESTENSIONE F<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estensione-f" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Questa estensione introduce operazioni in virgola mobile a 32 bit.</p>
+<hr/>
+<h4 id="operazioni-di-caricamentosalvataggio">Operazioni di Caricamento/Salvataggio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-di-caricamentosalvataggio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>FLW</strong></p>
+<p><em>Sintassi</em>: <code>flw fd, offset(rs1)</code><br/>
+<em>Descrizione</em>: Carica un numero in virgola mobile a 32 bit<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>flw f5, 0(x1)</span></span></code></pre></figure>
+<hr/>
+<p><strong>FSW</strong></p>
+<p><em>Sintassi</em>: <code>fsw fs, offset(rs1)</code><br/>
+<em>Descrizione</em>: Salva un numero in virgola mobile a 32 bit in memoria<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fsw f5, 0(x1)</span></span></code></pre></figure>
+<hr/>
+<h4 id="operazioni-aritmetiche"><strong>Operazioni Aritmetiche</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-aritmetiche" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>FADD.S, FSUB.S, FMUL.S, FDIV.S</strong></p>
+<p><em>Sintassi</em>: <code>fadd.s fd, fs1, fs2</code> (analoghe per le altre)<br/>
+<em>Descrizione</em>: Somma, sottrazione, moltiplicazione e divisione in precisione singola<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fadd.s f5, f1, f2  # f5 = f1 + f2 (single precision)</span></span></code></pre></figure>
+<hr/>
+<p><strong>FSQRT.S</strong></p>
+<p><em>Sintassi</em>: <code>fsqrt.s fd, fs</code><br/>
+<em>Descrizione</em>: Calcola la radice quadrata<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fsqrt.s f5, f1</span></span></code></pre></figure>
+<hr/>
+<h4 id="operazioni-di-conversione-e-comparazione">Operazioni di Conversione e Comparazione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operazioni-di-conversione-e-comparazione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>FCVT.W.S, FCVT.S.W</strong></p>
+<p><em>Descrizione</em>: Conversioni tra interi e floating-point</p>
+<hr/>
+<p><strong>FEQ.S, FLT.S, FLE.S</strong></p>
+<p><em>Descrizione</em>: Comparazioni tra valori in virgola mobile</p>
+<hr/>
+<p><strong>FCLASS.S</strong></p>
+<p><em>Descrizione</em>: Classifica il numero in virgola mobile (NaN, infinito, ecc.)</p>
+<hr/>
+<h4 id="tabella-riassuntiva--estensione-f">Tabella Riassuntiva – Estensione F<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva--estensione-f" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>FLW / FSW</td><td>Caricamento/Salvataggio di valori float</td></tr><tr><td>FADD.S, FSUB.S, FMUL.S, FDIV.S</td><td>Operazioni aritmetiche float (singola precisione)</td></tr><tr><td>FSQRT.S</td><td>Radice quadrata float</td></tr><tr><td>FCVT.*, FEQ.S, FLT.S, FLE.S, FCLASS.S</td><td>Conversioni e comparazioni float</td></tr></tbody></table></div>
+<hr/>
+<h3 id="estensione-d">ESTENSIONE D<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estensione-d" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Simile all’estensione F, ma per operazioni in doppia precisione (64 bit).</p>
+<hr/>
+<p><strong>FLD / FSD</strong></p>
+<p><em>Sintassi</em>: <code>fld fd, offset(rs1)</code> / <code>fsd fs, offset(rs1)</code><br/>
+<em>Descrizione</em>: Carica/Salva un double dalla/in memoria<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fld f5, 0(x1) fsd f5, 0(x1)</span></span></code></pre></figure>
+<hr/>
+<p><strong>FADD.D, FSUB.D, FMUL.D, FDIV.D, FSQRT.D</strong></p>
+<p><em>Descrizione</em>: Operazioni aritmetiche per double precision<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>fadd.d f5, f1, f2  # f5 = f1 + f2 in double precision</span></span></code></pre></figure>
+<hr/>
+<p>Conversioni e comparazioni:<br/>
+<strong>FCVT.S.D, FCVT.D.S, FCVT.W.D, FCVT.D.W, FCVT.WU.D, FCVT.D.WU, FEQ.D, FLT.D, FLE.D, FCLASS.D</strong></p>
+<hr/>
+<h4 id="tabella-riassuntiva--estensione-d">Tabella Riassuntiva – Estensione D<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva--estensione-d" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>FLD / FSD</td><td>Caricamento/Salvataggio double</td></tr><tr><td>FADD.D, FSUB.D, FMUL.D, FDIV.D, FSQRT.D</td><td>Operazioni aritmetiche double</td></tr><tr><td>Conversioni e Comparazioni</td><td>FCVT.*, FEQ.D, FLT.D, FLE.D, FCLASS.D</td></tr></tbody></table></div>
+<hr/>
+<h3 id="estensione-c">ESTENSIONE C<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#estensione-c" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>L’estensione <strong>C</strong> riduce la dimensione del codice traducendo le istruzioni in un formato a 16 bit. Esistono molte varianti; ecco alcune tra le più comuni:</p>
+<hr/>
+<p><strong>C.ADDI</strong></p>
+<p><em>Descrizione</em>: Versione compressa di <code>addi</code><br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>c.addi x1, 1  # equivalente ad addi</span></span></code></pre></figure>
+<hr/>
+<p><strong>C.ADDI4SPN</strong></p>
+<p><em>Descrizione</em>: Aggiunge un immediato al registro stack pointer (per allocare spazio nello stack)<br/>
+<em>Esempio</em>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="assembly" data-theme="github-light github-dark"><code data-language="assembly" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>c.addi4spn x2, 8  # modifica lo stack pointer</span></span></code></pre></figure>
+<hr/>
+<p><strong>C.LW, C.LD</strong></p>
+<p><em>Descrizione</em>: Caricamento compresso di word/doubleword</p>
+<hr/>
+<p><strong>C.SW, C.SD</strong></p>
+<p><em>Descrizione</em>: Salvataggio compresso</p>
+<hr/>
+<p><strong>C.J</strong> e <strong>C.JAL</strong></p>
+<p><em>Descrizione</em>: Salti compressi (incondizionati)</p>
+<hr/>
+<p><strong>C.BEQZ</strong> e <strong>C.BNEZ</strong></p>
+<p><em>Descrizione</em>: Salti condizionati compressi (basati su zero)</p>
+<hr/>
+<p><strong>C.SLLI, C.LI, C.ADDI16SP, C.LUI</strong></p>
+<p><em>Descrizione</em>: Istruzioni compresse per immediati e operazioni speciali</p>
+<hr/>
+<p>L’insieme completo delle istruzioni compresse è numeroso e le loro codifiche dipendono da specifici campi all’interno dell’istruzione a 16 bit. Per ogni istruzione esiste un’equivalenza (o un’interpretazione compressa) dell’istruzione standard.</p>
+<hr/>
+<h4 id="tabella-riassuntiva--estensione-c-alcuni-esempi">Tabella Riassuntiva – Estensione C (alcuni esempi)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabella-riassuntiva--estensione-c-alcuni-esempi" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Istruzione</th><th>Descrizione breve</th></tr></thead><tbody><tr><td>C.ADDI</td><td>Aggiunge un immediato (compressa)</td></tr><tr><td>C.ADDI4SPN</td><td>Aggiunge immediato allo stack pointer</td></tr><tr><td>C.LW / C.LD</td><td>Caricamento compresso da memoria</td></tr><tr><td>C.SW / C.SD</td><td>Salvataggio compresso in memoria</td></tr><tr><td>C.J / C.JAL</td><td>Salti incondizionati compressi</td></tr><tr><td>C.BEQZ / C.BNEZ</td><td>Branch compressi in base al confronto con zero</td></tr><tr><td>C.SLLI, C.LI, C.ADDI16SP, C.LUI</td><td>Operazioni immediata e speciali in formato compresso</td></tr></tbody></table></div>
+<hr/></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-11" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#set-base" data-for="set-base">SET BASE</a></li><li class="depth-0"><a href="#estensione-m" data-for="estensione-m">ESTENSIONE M</a></li><li class="depth-0"><a href="#estensione-a" data-for="estensione-a">ESTENSIONE A</a></li><li class="depth-0"><a href="#estensione-f" data-for="estensione-f">ESTENSIONE F</a></li><li class="depth-0"><a href="#estensione-d" data-for="estensione-d">ESTENSIONE D</a></li><li class="depth-0"><a href="#estensione-c" data-for="estensione-c">ESTENSIONE C</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>Backlinks</h3><ul id="list-2" class="overflow"><li><a href="../../ADE/Architecture/Computer-Architecture" class="internal">Computer Architecture</a></li><li><a href="../../ADE/CPU/CPU" class="internal">CPU</a></li><li><a href="../../ADE/CPU/Datapath-Single-Cycle" class="internal">Datapath Single-Cycle</a></li><li><a href="../../ADE/Coding-elements/Exstensions" class="internal">Exstensions</a></li><li><a href="../../ADE/Coding-elements/Logical-constructs" class="internal">Logical constructs</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

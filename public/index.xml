@@ -6,6 +6,12 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Internet</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</guid>
+    <description><![CDATA[ Internet è una rete che collega le reti, il nome stesso deriva da inter-networking. ]]></description>
+    <pubDate>Sun, 17 May 2026 17:20:56 GMT</pubDate>
+  </item><item>
     <title>index</title>
     <link>https://https://drizzzydrake.github.io/PublicNotes/</link>
     <guid>https://https://drizzzydrake.github.io/PublicNotes/</guid>
@@ -22,12 +28,6 @@
     <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Data-Delivery</link>
     <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Data-Delivery</guid>
     <description><![CDATA[ Il Data Delivery è il processo complessivo mediante il quale l’informazione (sotto forma di pacchetti o frame) viene trasferita attraverso un’infrastruttura di rete dal sistema sorgente al sistema destinazione. ]]></description>
-    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
-  </item><item>
-    <title>Internet</title>
-    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</link>
-    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</guid>
-    <description><![CDATA[ Internet è una rete che collega le reti, il nome stesso deriva da inter-networking. ]]></description>
     <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
   </item><item>
     <title>DNS</title>

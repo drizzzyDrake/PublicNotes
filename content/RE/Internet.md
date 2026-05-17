@@ -1,4 +1,4 @@
-**Internet è una rete che collega le [[Network|reti]]**, il nome stesso deriva da inter-networking. È una "rete di reti" globale, pubblica e decentralizzata che utilizza un linguaggio comune chiamato **protocollo TCP/IP** per permettere a miliardi di dispositivi di comunicare tra loro, indipendentemente da dove si trovino o da che tipo di hardware utilizzino.
+Internet è una rete che collega le [[Network|reti]], il nome stesso deriva da inter-networking. È una "rete di reti" globale, pubblica e decentralizzata che utilizza un linguaggio comune chiamato **protocollo TCP/IP** per permettere a miliardi di dispositivi di comunicare tra loro, indipendentemente da dove si trovino o da che tipo di hardware utilizzino.
 
 ---
 ### ZONE DI INTERNET

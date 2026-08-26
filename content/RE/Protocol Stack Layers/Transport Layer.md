@@ -79,7 +79,7 @@ Questo significa che due datagrammi provenienti da host o porte sorgente diversi
 
 Il server non distingue da chi arriva il datagramma in base alla socket: quella informazione la recupera dal contenuto del segmento (tramite `recvfrom()`). Il **numero di porta sorgente** non serve per il demultiplexing, ma funge da **indirizzo di ritorno**: il server lo estrae dal datagramma ricevuto e lo usa come **porta destinazione nella risposta**. L'indirizzo di ritorno completo è quindi (IP sorgente + porta sorgente).
 
-![[demultiplexing udp.png]]
+![[demultiplexing udp.png|700]]
 
 > [!example]
 > Il processo nell'Host A con porta 19157 invia a Host B porta 46428. Il livello di trasporto di A costruisce il datagramma con:
@@ -477,7 +477,7 @@ Questa fase serve a gestire perdite isolate senza abbattere le prestazioni della
 
 ![[fairness bottleneck.png|680]]
 
-Il concetto di **fairness** (equità) si riferisce alla capacità di un protocollo di distribuire **equamente** le risorse di rete tra diverse connessioni. Se $\large K$ connessioni TCP condividono un unico collegamento collo di bottiglia con capacità $\large R$, il meccanismo è considerato equo se ogni connessione ottiene mediamente una velocità di trasmissione pari a $\large R/K$.
+Il concetto di **fairness** (equità) si riferisce alla capacità di un protocollo di distribuire **equamente** le risorse di rete tra diverse connessioni. Se $\displaystyle K$ connessioni TCP condividono un unico collegamento collo di bottiglia con capacità $\displaystyle R$, il meccanismo è considerato equo se ogni connessione ottiene mediamente una velocità di trasmissione pari a $\displaystyle R/K$.
 
 ![[aimd fairness.png]]
 

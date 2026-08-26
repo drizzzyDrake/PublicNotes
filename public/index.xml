@@ -6,6 +6,18 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Netwotk Security</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</guid>
+    <description><![CDATA[ La sicurezza di rete comprende l’insieme delle tecniche e dei meccanismi progettati per proteggere le comunicazioni e le risorse di rete da accessi non autorizzati, intercettazioni e manipolazioni. ]]></description>
+    <pubDate>Tue, 18 Aug 2026 15:36:42 GMT</pubDate>
+  </item><item>
+    <title>Data Link Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</guid>
+    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
+    <pubDate>Fri, 07 Aug 2026 12:18:58 GMT</pubDate>
+  </item><item>
     <title>Internet</title>
     <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</link>
     <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Internet</guid>
@@ -52,18 +64,6 @@
     <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Network-Applications/Web</link>
     <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Network-Applications/Web</guid>
     <description><![CDATA[ Il Web è un’applicazione di rete di tipo client-server, distribuita su scala globale, che utilizza l’infrastruttura di Internet per consentire il reperimento e la fruizione di contenuti ipertestuali e multimediali (risorse), identificati univocamente tramite URL, trasferiti attraverso il protocollo ... ]]></description>
-    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
-  </item><item>
-    <title>Network</title>
-    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Network</link>
-    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Network</guid>
-    <description><![CDATA[ Una rete è un’infrastruttura composta da dispositivi detti nodi della rete in grado di scambiarsi informazioni tramite dei mezzi di comunicazione, wireless o cablati, detti link (o collegamenti). ]]></description>
-    <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
-  </item><item>
-    <title>Application Layer</title>
-    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</link>
-    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</guid>
-    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
     <pubDate>Wed, 13 May 2026 14:58:47 GMT</pubDate>
   </item>
     </channel>

@@ -3,7 +3,7 @@ Una rete è un’infrastruttura composta da dispositivi detti **nodi** della ret
 ![[nodes.png]]
 
 ---
-### NODI
+### NODI (NODES)
 
 I nodi costituenti una rete vengono differenziati in due macro-categorie:
 
@@ -13,7 +13,7 @@ I nodi costituenti una rete vengono differenziati in due macro-categorie:
 Situati ai margini della rete (**network edge**), sono i dispositivi che ospitano le applicazioni e interagiscono direttamente con l'utente o con altri servizi.
 
 - **Host (Client):** dispositivi finali (computer, smartphone, IoT) che iniziano richieste di servizio o eseguono applicazioni locali. 
-- **Server:** sistemi ad alte prestazioni e alta disponibilità progettati per rispondere alle richieste dei client. Forniscono risorse condivise, dati o servizi computazionali (es. Web server, Database server).
+- **Server:** sistemi ad alte prestazioni e altaA disponibilità progettati per rispondere alle richieste dei client. Forniscono risorse condivise, dati o servizi computazionali (es. Web server, Database server).
 
 ---
 #### Dispositivi di Interconnessione (Intermediate Systems)
@@ -25,19 +25,19 @@ Situati nel nucleo della rete (**network core**), hanno il compito di inoltrare 
 - **Modem (Modulatore/Demodulatore):** dispositivo che effettua la conversione di segnale tra il dominio digitale (bit della rete locale) e quello analogico (onde elettromagnetiche del mezzo trasmissivo, come fibra o rame), permettendo l'accesso alla rete del provider (ISP).
 
 ---
-### LINK
+### COLLEGAMENTI (LINKS)
 
 Alla base di qualsiasi sistema di comunicazione digitale vi è il bit, l'unità elementare di informazione, che si propaga fisicamente tra un trasmettitore e un ricevitore attraverso un mezzo trasmissivo. Il collegamento fisico è dunque il substrato concreto che rende possibile questa propagazione. I supporti fisici si dividono in guidati e non guidati, in base alla natura del mezzo attraverso cui il segnale si propaga.
 
 ---  
-#### Bandwidth $\large B$
+#### Bandwidth $\displaystyle B$
 
-La **larghezza di banda** (bandwidth), che indichiamo con $\large B$, è la quantità, espressa in Hz, che rappresenta l'ampiezza dell'intervallo di frequenze utilizzato dal sistema trasmissivo. Maggiore è tale valore, maggiore è la quantità di informazione veicolabile attraverso il mezzo fisico.
+La **larghezza di banda** (bandwidth), che indichiamo con $\displaystyle B$, è la quantità, espressa in Hz, che rappresenta l'ampiezza dell'intervallo di frequenze utilizzato dal sistema trasmissivo. Maggiore è tale valore, maggiore è la quantità di informazione veicolabile attraverso il mezzo fisico.
 
 ---
-#### Transmission Rate $\large R$
+#### Transmission Rate $\displaystyle R$
 
-Il **transmission rate** (o bit rate), che indichiamo con $\large R$, è la quantità (espressa in b/s) di bit al secondo che un link garantisce di trasmettere. Tale quantità è proporzionale alla larghezza di banda (in Hz).
+Il **transmission rate** (o bit rate), che indichiamo con $\displaystyle R$, è la quantità (espressa in b/s) di bit al secondo che un link garantisce di trasmettere. Tale quantità è proporzionale alla larghezza di banda (in Hz).
 
 ---
 #### Supporti guidati
@@ -97,12 +97,12 @@ I collegamenti satellitari consentono di raggiungere aree geografiche altrimenti
 Le reti possono essere classificate in base alla loro estensione geografica, seguendo una gerarchia che va dallo spazio personale fino all'intera superficie del pianeta. Di seguito sono analizzate nel dettaglio le principali tipologie:
 
 ---
-#### PAN
+#### Personal Area Network
 
 La **Personal Area Network (PAN)** rappresenta il livello più intimo della connettività, limitandosi solitamente allo spazio vitale di un singolo individuo. Con un raggio d'azione che raramente supera i 10 metri, queste reti servono a mettere in comunicazione dispositivi personali come smartphone, cuffie wireless e smartwatch. L'esempio più comune di tecnologia PAN è il **Bluetooth**, che permette uno scambio dati rapido e a basso consumo energetico tra periferiche vicine.
 
 ---
-#### LAN
+#### Local Area Network
 
 La **Local Area Network (LAN)** è l'ossatura digitale di case, uffici e piccoli edifici. Una LAN è tipicamente una rete privata dove ogni dispositivo (terminale) possiede un indirizzo univoco per essere identificato. Esistono due configurazioni principali:
 
@@ -110,12 +110,12 @@ La **Local Area Network (LAN)** è l'ossatura digitale di case, uffici e piccoli
 - **LAN con switch:** un'architettura più moderna e performante in cui i dispositivi sono collegati a uno o più switch, i quali gestiscono il traffico in modo intelligente dirigendo i pacchetti di dati solo al destinatario corretto, riducendo le collisioni e migliorando l'efficienza.
 
 ---
-#### MAN 
+#### Metropolitan Area Network
 
 Quando la rete deve coprire un'intera area urbana, si parla di **Metropolitan Area Network (MAN)**. Queste reti sono progettate per interconnettere diverse LAN situate all'interno di una città (ad esempio, le varie sedi di un'università o gli uffici comunali) offrendo velocità elevate su distanze di diversi chilometri.
 
 ---
-#### WAN
+#### Wide Area Network
 
 Su scala ancora più ampia operano le **Wide Area Network (WAN)**, che collegano città, regioni o intere nazioni. Gestite solitamente dai grandi **Internet Service Provider (ISP)**, le WAN si dividono in due sottocategorie strutturali:
 

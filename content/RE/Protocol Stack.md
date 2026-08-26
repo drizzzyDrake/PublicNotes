@@ -7,44 +7,20 @@ Per gestire la complessità dei sistemi di comunicazione, i progettisti organizz
 
 **Indipendenza (Modularità):** ogni livello è una "black box". Conosce i suoi ingressi e uscite, ma non come il livello adiacente elabori i dati internamente.
 
-**Modello di Servizio:** il livello $\large n$ utilizza i servizi del livello inferiore ($\large{n-1}$) per offrire un servizio a valore aggiunto al livello superiore ($\large{n+1}$). 
+**Modello di Servizio:** il livello $\displaystyle n$ utilizza i servizi del livello inferiore ($\displaystyle{n-1}$) per offrire un servizio a valore aggiunto al livello superiore ($\displaystyle{n+1}$). 
 
-**Comunicazione Logica:** esiste un collegamento logico tra livelli equivalenti **(peer-to-peer)**. Il livello $\large{n}$ del mittente comunica virtualmente solo con il livello $\large{n}$ del destinatario, seguendo le regole di un protocollo specifico.
+**Comunicazione Logica:** esiste un collegamento logico tra livelli equivalenti **(peer-to-peer)**. Il livello $\displaystyle{n}$ del mittente comunica virtualmente solo con il livello $\displaystyle{n}$ del destinatario, seguendo le regole di un protocollo specifico.
 
 ---
 ### STACK PROTOCOLLARE TCP/IP
 
 È lo standard de facto delle reti moderne. Si compone di **5 livelli**, ognuno con funzioni e unità di misura dei pacchetti **(PDU, Protocol Data Unit)** specifiche:
-#### [[Application Layer]]
 
-#### [[Transport Layer]]
-
-#### [[Network Layer]]
-#### 4. Livello di Collegamento
-
-Si occupa di trasferire i pacchetti, chiamati **frame**, da un nodo (host o router) a quello immediatamente successivo lungo il percorso.
-
-- **Servizi:** dipendono dal protocollo usato (es. **Ethernet, Wi-Fi, PPP**). Un datagramma può essere trasportato da protocolli diversi in tratte diverse del suo viaggio.
-
-> N.B. Può fornire una consegna affidabile point-to-point, diversa da quella end-to-end del TCP.
-
----
-#### 5. Livello Fisico
-
-È il livello di base che si occupa del trasferimento dei **singoli bit** all'interno di un frame da un nodo al successivo.
-
-- **Dipendenza:** I protocolli dipendono strettamente dal [[Network#LINK|mezzo trasmissivo]] utilizzato (fibra ottica, doppino di rame, onde radio, ecc.). Esempio: ethernet ha protocolli fisici diversi a seconda che si usi un cavo coassiale o la fibra.
-
----
-#### Tabella riassuntiva
-
-|**Livello**|**Nome PDU**|**Funzione Principale**|**Protocolli Comuni**|**Implementazione**|
-|---|---|---|---|---|
-|**Applicazione**|Messaggio|Supporto alle app di rete.|HTTP, SMTP, DNS, FTP|Software (Host)|
-|**Trasporto**|Segmento|Trasferimento processo-a-processo.|TCP, UDP|Software (Host)|
-|**Rete**|Datagramma|Instradamento (routing) da origine a destinazione.|IP|Mista (Hw/Sw)|
-|**Collegamento**|Frame|Trasmissione tra nodi adiacenti.|Ethernet, Wi-Fi, PPP|Hardware (NIC)|
-|**Fisico**|Bit|Trasferimento fisico dei singoli bit sul mezzo.|-|Hardware|
+- Applicazione [[Application Layer|7]]
+- Trasporto [[Transport Layer|4]]
+- Rete [[Network Layer|3]]
+- Collegamento [[Data Link Layer|2]]
+- Fisico 1
 
 ---
 ### PROCESSO DI COMUNICAZIONE
@@ -68,7 +44,7 @@ Ogni livello dello stack aggiunge informazioni specifiche sotto forma di **intes
 - **Header (intestazione):** contiene i dati di controllo (es. indirizzi, rilevamento errori).
 - **Payload (carico utile):** è l'intero pacchetto proveniente dal livello superiore.
 
-Il **livello applicazione** genera il **messaggio** originale $\large M$. Il **livello trasporto** aggiunge l'header $\large{H_t}$ (es. per identificare l'app di destinazione), creando il **segmento**. Il **livello rete** aggiunge l'header $\large{H_n}$ (es. indirizzi IP sorgente e destinazione), creando il **datagramma**. infine il **livello collegamento** aggiunge l'header $\large {H_l}$ (es. indirizzo fisico del dispositivo che sta trasmettendo), creando il **frame**.
+Il **livello applicazione** genera il **messaggio** originale $\displaystyle M$. Il **livello trasporto** aggiunge l'header $\displaystyle{H_t}$ (es. per identificare l'app di destinazione), creando il **segmento**. Il **livello rete** aggiunge l'header $\displaystyle{H_n}$ (es. indirizzi IP sorgente e destinazione), creando il **datagramma**. infine il **livello collegamento** aggiunge l'header $\displaystyle {H_l}$ (es. indirizzo fisico del dispositivo che sta trasmettendo), creando il **frame**.
 
 ---
 ##### Decapsulamento

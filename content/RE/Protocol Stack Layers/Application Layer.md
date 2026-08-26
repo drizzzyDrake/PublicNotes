@@ -20,30 +20,30 @@ A differenza del modello precedente, il sistema **Peer-to-Peer (P2P)** riduce o 
 ---
 #### Tempi di distribuzione a confronto
 
-Il **tempo di distribuzione** $\large D$ è il tempo necessario affinché $\large N$ peer ottengano una copia di un file di dimensione $\large F$. La distribuzione di un file di grandi dimensioni a un numero elevato di peer è uno scenario in cui il vantaggio del P2P è particolarmente evidente sul client-server. 
+Il **tempo di distribuzione** $\displaystyle D$ è il tempo necessario affinché $\displaystyle N$ peer ottengano una copia di un file di dimensione $\displaystyle F$. La distribuzione di un file di grandi dimensioni a un numero elevato di peer è uno scenario in cui il vantaggio del P2P è particolarmente evidente sul client-server. 
 
-Siano: $\large F$ la dimensione del file (in bit), $\large N$ il numero di peer destinatari, $\large {u_s}$ la banda di upload del server, $\large {u_i}$ e $\large {d_i}$ le bande di upload e download dell'i-esimo peer, $\large{d_\text{min}}$ la banda di download minima tra tutti i peer:
+Siano: $\displaystyle F$ la dimensione del file (in bit), $\displaystyle N$ il numero di peer destinatari, $\displaystyle {u_s}$ la banda di upload del server, $\displaystyle {u_i}$ e $\displaystyle {d_i}$ le bande di upload e download dell'i-esimo peer, $\displaystyle{d_\text{min}}$ la banda di download minima tra tutti i peer:
 
 ---
 ##### Architettura Client-Server:
 
 In questo modello, il carico grava interamente sul server. Il tempo di distribuzione è limitato da due fattori:
 
-- capacità del server: deve inviare $\large N$ copie del file ($\large NF$ bit), quindi impiega almeno $\large \frac{NF}{u_s}$.
-- capacità del peer più lento: Il tempo non può essere inferiore a quello necessario al peer con download minimo $\large d_{min}$ per ricevere il file ($\large \frac{F}{d_\text{min}}$).
+- capacità del server: deve inviare $\displaystyle N$ copie del file ($\displaystyle NF$ bit), quindi impiega almeno $\displaystyle \frac{NF}{u_s}$.
+- capacità del peer più lento: Il tempo non può essere inferiore a quello necessario al peer con download minimo $\displaystyle d_{min}$ per ricevere il file ($\displaystyle \frac{F}{d_\text{min}}$).
 
-Il tempo minimo di distribuzione è: $\large{D_{CS} = \text{max} \{ \frac{NF}{u_s} , \frac{F}{d_\text{min}} \}}$
+Il tempo minimo di distribuzione è: $\displaystyle{D_{CS} = \text{max} \{ \frac{NF}{u_s} , \frac{F}{d_\text{min}} \}}$
 
 ---
 ##### Architettura Peer-to-Peer:
 
 Qui i peer non sono solo ricevitori, ma aiutano attivamente nella distribuzione ridistribuendo i bit già scaricati. Il tempo è limitato da tre fattori:
 
-- invio iniziale: il server deve inviare ogni bit almeno una volta ($\large \frac{F}{u_s}$).
-- capacità del peer più lento: (come per client-server) Il tempo non può essere inferiore a quello necessario al peer con download minimo $\large d_{min}$ per ricevere il file ($\large \frac{F}{d_\text{min}}$).
-- capacità totale di upload: la velocità di distribuzione complessiva è data dalla somma della banda del server e di tutti i peer ($\large \sum_{i=1}^{N}u_i$). Il tempo minimo è quindi $\large \frac{NF}{u_s \  + \  \sum_{i=1}^{N}u_i}$.
+- invio iniziale: il server deve inviare ogni bit almeno una volta ($\displaystyle \frac{F}{u_s}$).
+- capacità del peer più lento: (come per client-server) Il tempo non può essere inferiore a quello necessario al peer con download minimo $\displaystyle d_{min}$ per ricevere il file ($\displaystyle \frac{F}{d_\text{min}}$).
+- capacità totale di upload: la velocità di distribuzione complessiva è data dalla somma della banda del server e di tutti i peer ($\displaystyle \sum_{i=1}^{N}u_i$). Il tempo minimo è quindi $\displaystyle \frac{NF}{u_s \  + \  \sum_{i=1}^{N}u_i}$.
 
-Il tempo minimo di distribuzione è: $\large D_\text{P2P} = \text{max} \{ \frac{F}{u_s} , \frac{F}{d_\text{min}} , \frac{NF}{u_s \  + \  \sum_{i=1}^{N}u_i} \}$
+Il tempo minimo di distribuzione è: $\displaystyle D_\text{P2P} = \text{max} \{ \frac{F}{u_s} , \frac{F}{d_\text{min}} , \frac{NF}{u_s \  + \  \sum_{i=1}^{N}u_i} \}$
 
 ---
 ##### Confronto visivo:
@@ -52,15 +52,15 @@ Il tempo minimo di distribuzione è: $\large D_\text{P2P} = \text{max} \{ \frac{
 
 La differenza fondamentale risiede nella scalabilità:
 
-- Client-Server: ogni nuovo peer aggiunge carico al sistema senza aggiungere risorse. Il tempo aumenta linearmente con il numero di utenti $\large N$.
-- P2P: Ogni nuovo peer è sia un carico che una risorsa di calcolo/banda. All'aumentare di $\large N$, aumenta anche la capacità di upload totale del sistema. 
+- Client-Server: ogni nuovo peer aggiunge carico al sistema senza aggiungere risorse. Il tempo aumenta linearmente con il numero di utenti $\displaystyle N$.
+- P2P: Ogni nuovo peer è sia un carico che una risorsa di calcolo/banda. All'aumentare di $\displaystyle N$, aumenta anche la capacità di upload totale del sistema. 
 
 Mentre la curva Client-Server cresce indefinitamente in modo lineare, la curva P2P si appiattisce, mantenendo i tempi di distribuzione contenuti anche per migliaia di utenti.
 
 ---
 ### PROCESSI COMUNICANTI
 
-Nel mondo delle reti, la comunicazione non avviene tra programmi generici, ma tra **[[Process|processi]]**. Quando due processi risiedono sullo stesso computer, essi interagiscono attraverso le regole di comunicazione interprocesso stabilite dal sistema operativo locale. Tuttavia, nell'architettura Internet, l'interesse principale risiede nella comunicazione tra processi situati su host differenti. Questi sistemi remoti possono avere sistemi operativi diversi, ma riescono a dialogare scambiandosi **messaggi** attraverso la rete: un processo mittente crea e invia un messaggio, mentre il destinatario lo riceve e, se necessario, risponde.
+Nel mondo delle reti, la comunicazione non avviene tra programmi generici, ma tra **[[Process|processi]]**. Quando due processi risiedono sullo stesso computer, essi interagiscono attraverso le regole di comunicazione inter-processo stabilite dal sistema operativo locale. Tuttavia, nell'architettura Internet, l'interesse principale risiede nella comunicazione tra processi situati su host differenti. Questi sistemi remoti possono avere sistemi operativi diversi, ma riescono a dialogare scambiandosi **messaggi** attraverso la rete: un processo mittente crea e invia un messaggio, mentre il destinatario lo riceve e, se necessario, risponde.
 
 ---
 #### Dinamica client-server nelle sessioni

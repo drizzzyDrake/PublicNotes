@@ -204,7 +204,7 @@ Il limite di HTTP/1.1 è la **sequenzialità**: il client deve attendere la risp
 > 
 > **Calcolo degli RTT totali:**
 > 
-> TOT<sub>RTT</sub> = 2 RTT per il file HTML + (10 $\large \times$ 1 RTT per le immagini ) = 12 RTT
+> TOT<sub>RTT</sub> = 2 RTT per il file HTML + (10 $\displaystyle \times$ 1 RTT per le immagini ) = 12 RTT
 
 ---
 ##### Connessioni HTTP/2
@@ -288,14 +288,14 @@ Il web caching si è sviluppato per due ragioni principali:
 **Esempio:**
 
 > [!example]
-> Consideriamo una rete locale collegata a Internet tramite un link a $\large R = 15 \text{ Mbps}$, con $\large a = 15 \text{ richieste/s}$ di oggetti da $\large L = 1 \text{ Mbit}$. Inoltre consideriamo $\large D_\text{Internet} = 2 \text{ s}$ il ritardo medio per una richiesta che va dal router di accesso fino al server di origine su Internet e torna indietro, e $\large D_\text{LAN} = 0,01 \text{ s}$ il ritardo per trasferire l'oggetto da un proxy (o dal router locale) fino al PC dell'utente all'interno della rete locale.
+> Consideriamo una rete locale collegata a Internet tramite un link a $\displaystyle R = 15 \text{ Mbps}$, con $\displaystyle a = 15 \text{ richieste/s}$ di oggetti da $\displaystyle L = 1 \text{ Mbit}$. Inoltre consideriamo $\displaystyle D_\text{Internet} = 2 \text{ s}$ il ritardo medio per una richiesta che va dal router di accesso fino al server di origine su Internet e torna indietro, e $\displaystyle D_\text{LAN} = 0,01 \text{ s}$ il ritardo per trasferire l'oggetto da un proxy (o dal router locale) fino al PC dell'utente all'interno della rete locale.
 > 
-> L'intensità di traffico sul collegamento di accesso è dunque $\large I = \frac{15 \times 1}{15} = 1,0$ (valore critico che genera ritardi dell'ordine dei minuti). Poiché $\large I = 1,0$ il ritardo di accodamento ($\large D_q$) nel router di accesso cresce in modo esponenziale. Secondo la teoria delle code, il ritardo totale $\large D$ tende all'infinito (nella pratica, l'utente aspetta **minuti** e sperimenta perdite di pacchetti).
+> L'intensità di traffico sul collegamento di accesso è dunque $\displaystyle I = \frac{15 \times 1}{15} = 1,0$ (valore critico che genera ritardi dell'ordine dei minuti). Poiché $\displaystyle I = 1,0$ il ritardo di accodamento ($\displaystyle D_q$) nel router di accesso cresce in modo esponenziale. Secondo la teoria delle code, il ritardo totale $\displaystyle D$ tende all'infinito (nella pratica, l'utente aspetta **minuti** e sperimenta perdite di pacchetti).
 
 ![[web caching example 1.png]]
 
 > [!example]
-> Installando un proxy con **hit rate** $\large H$ pari a 0,4 (il 40% delle richieste viene soddisfatto localmente dalla cache), solo il 60% ($\large 1-H$, miss rate) delle richieste transita sul collegamento di accesso, riducendo l'intensità di traffico $\large I$ ad uno stato stabile ($\large D_q$ trascurabile). Infatti Il nuovo tasso di arrivo sul link esterno ($\large a'$) diventa: $\large a' = a \times (1 - H) = 15 \times 0,6 = 9 \text{ richieste/s}$, e la nuova intensità di traffico ($\large I'$) diventa: $\large I' = \frac{L \times a'}{R} = \frac{1 \times 9}{15} = 0,6$.
+> Installando un proxy con **hit rate** $\displaystyle H$ pari a 0,4 (il 40% delle richieste viene soddisfatto localmente dalla cache), solo il 60% ($\displaystyle 1-H$, miss rate) delle richieste transita sul collegamento di accesso, riducendo l'intensità di traffico $\displaystyle I$ ad uno stato stabile ($\displaystyle D_q$ trascurabile). Infatti Il nuovo tasso di arrivo sul link esterno ($\displaystyle a'$) diventa: $\displaystyle a' = a \times (1 - H) = 15 \times 0,6 = 9 \text{ richieste/s}$, e la nuova intensità di traffico ($\displaystyle I'$) diventa: $\displaystyle I' = \frac{L \times a'}{R} = \frac{1 \times 9}{15} = 0,6$.
 
 ![[web caching example 2.png]]
 

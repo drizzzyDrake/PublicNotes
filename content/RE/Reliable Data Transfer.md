@@ -204,17 +204,17 @@ Il destinatario di rdt3.0 è identico a quello di rdt2.2: non ha bisogno di time
 Sebbene rdt3.0 sia corretto dal punto di vista funzionale, le sue **prestazioni** risultano del tutto inadeguate per le reti ad alta velocità moderne. Il problema risiede nel suo comportamento **stop-and-wait**: il mittente invia un pacchetto e rimane bloccato in attesa dell'ACK prima di poterne inviare un altro, lasciando il canale inutilizzato per la quasi totalità del tempo.
 
 > [!example]
-> Per quantificare il problema, si consideri il caso di due host collegati da un canale a $\large R = 1 \text{ Gbps}$, separati da un $\large \text{RTT}$ (tempo che un segnale impiega per fare andata e ritorno) di $\large 30 \text{ ms}$, con pacchetti di dimensione $\large L = 8000 \text{ bit}$. 
+> Per quantificare il problema, si consideri il caso di due host collegati da un canale a $\displaystyle R = 1 \text{ Gbps}$, separati da un $\displaystyle \text{RTT}$ (tempo che un segnale impiega per fare andata e ritorno) di $\displaystyle 30 \text{ ms}$, con pacchetti di dimensione $\displaystyle L = 8000 \text{ bit}$. 
 > 
-> Immaginiamo il cronometro che parte a $\large t = 0$ quando il mittente inizia a inviare: il [[Data Delivery#Delay di trasmissione $ large D_t$|tempo di trasmissione]] di un singolo pacchetto è: $\large D_t = \frac{L}{R} = \frac{8000}{10^9} = 8 \ \mu s$, quindi a $\large t = 8 \ \mu s$ l'ultimo bit del pacchetto ha lasciato il mittente.
+> Immaginiamo il cronometro che parte a $\displaystyle t = 0$ quando il mittente inizia a inviare: il [[Data Delivery#Delay di trasmissione $ large D_t$|tempo di trasmissione]] di un singolo pacchetto è: $\displaystyle D_t = \frac{L}{R} = \frac{8000}{10^9} = 8 \ \mu s$, quindi a $\displaystyle t = 8 \ \mu s$ l'ultimo bit del pacchetto ha lasciato il mittente.
 > 
-> Il pacchetto impiega $\large D_p = 15 \ ms$ ([[Data Delivery#Delay di propagazione $ large D_p$|tempo di propagazione]]) a viaggiare fisicamente verso il destinatario. Senza considerare il tempo di elaborazione e quello di queueing ([[Data Delivery#Delay di un pacchetto $ large D$|latenza totale]]), l'ultimo bit arriva al destinatario dopo $\large D_t + D_p = (15 + 0,008) \text{ ms} = 15,008 \text{ ms}$.
+> Il pacchetto impiega $\displaystyle D_p = 15 \ ms$ ([[Data Delivery#Delay di propagazione $ large D_p$|tempo di propagazione]]) a viaggiare fisicamente verso il destinatario. Senza considerare il tempo di elaborazione e quello di queueing ([[Data Delivery#Delay di un pacchetto $ large D$|latenza totale]]), l'ultimo bit arriva al destinatario dopo $\displaystyle D_t + D_p = (15 + 0,008) \text{ ms} = 15,008 \text{ ms}$.
 > 
-> Quando il destinatario riceve l'ultimo bit invia immediatamente un ACK (messaggio di conferma). L'ACK deve quindi viaggiare per altri $\large 15 \text{ ms}$ per tornare indietro. L'ACK arriva dunque al mittente al tempo: $\large 15,008 \text{ ms} + 15 \text{ ms} = 30,008 \text{ ms}$ (ovvero $\large \text{RTT} + D_t = 30 \text{ ms} + 0,008 \text{ ms}$).
+> Quando il destinatario riceve l'ultimo bit invia immediatamente un ACK (messaggio di conferma). L'ACK deve quindi viaggiare per altri $\displaystyle 15 \text{ ms}$ per tornare indietro. L'ACK arriva dunque al mittente al tempo: $\displaystyle 15,008 \text{ ms} + 15 \text{ ms} = 30,008 \text{ ms}$ (ovvero $\displaystyle \text{RTT} + D_t = 30 \text{ ms} + 0,008 \text{ ms}$).
 > 
-> Calcoliamo ora l'**utilizzo del mittente**, ovvero il rapporto tra il tempo in cui il mittente è effettivamente impegnato a trasmettere e il tempo totale del ciclo. Il tempo di utilizzo del mittente risulta quindi: $\large U_{\text{mittente}} = \frac{D_t}{RTT + D_t} = \frac{0{,}008}{30{,}008} \approx 0{,}00027$ (solo lo $\large 0,027\%$ del tempo totale).
+> Calcoliamo ora l'**utilizzo del mittente**, ovvero il rapporto tra il tempo in cui il mittente è effettivamente impegnato a trasmettere e il tempo totale del ciclo. Il tempo di utilizzo del mittente risulta quindi: $\displaystyle U_{\text{mittente}} = \frac{D_t}{RTT + D_t} = \frac{0{,}008}{30{,}008} \approx 0{,}00027$ (solo lo $\displaystyle 0,027\%$ del tempo totale).
 > 
-> Nonostante la linea sia da $\large 1 \text{ Gbps}$, stiamo trasferendo solo $\large 8000 \text{ bit}$ ogni $\large 30 \text{ ms}$, ovvero circa $\large 267 \text{ kbps}$ (come avere un' autostrada a 10 corsie e far passare un'auto ogni mezz'ora, lascia proprio stare bro, datti al golf).
+> Nonostante la linea sia da $\displaystyle 1 \text{ Gbps}$, stiamo trasferendo solo $\displaystyle 8000 \text{ bit}$ ogni $\displaystyle 30 \text{ ms}$, ovvero circa $\displaystyle 267 \text{ kbps}$ (come avere un' autostrada a 10 corsie e far passare un'auto ogni mezz'ora, lascia proprio stare bro, datti al golf).
 
 La soluzione è concettualmente semplice: invece di attendere l'ACK dopo ogni pacchetto, si consente al mittente di inviare **più pacchetti consecutivi** senza attendere i riscontri: il **pipelining**.
 
@@ -250,13 +250,13 @@ Il mittente visualizza i suoi pacchetti divisi in quattro categorie, basandosi s
 - **\[nextseqnum, base + N - 1\]**: numeri di sequenza disponibili per nuovi pacchetti.
 - **\[base + N, ...\]**: numeri non ancora utilizzabili.
 
-La finestra di ampiezza N scorre verso destra man mano che arrivano i riscontri: per questo GBN è detto anche **protocollo a finestra scorrevole** (sliding-window protocol). Poiché l'intestazione di un pacchetto ha uno spazio limitato (campo di $\large k$ bit), non possiamo avere infiniti numeri di sequenza.
+La finestra di ampiezza N scorre verso destra man mano che arrivano i riscontri: per questo GBN è detto anche **protocollo a finestra scorrevole** (sliding-window protocol). Poiché l'intestazione di un pacchetto ha uno spazio limitato (campo di $\displaystyle k$ bit), non possiamo avere infiniti numeri di sequenza.
 
-- L'intervallo dei numeri di sequenza utilizzabili va da **$\large 0$** a **$\large 2^k - 1$**.
-- Dopo il numero $\large 2^k - 1$, il conteggio ricomincia da $\large 0$ (ciclicità).
-- **Esempio:** se si hanno 3 bit, i numeri sono $\large 0, 1, 2, 3, 4, 5, 6, 7$ e poi di nuovo $\large 0$.
+- L'intervallo dei numeri di sequenza utilizzabili va da **$\displaystyle 0$** a **$\displaystyle 2^k - 1$**.
+- Dopo il numero $\displaystyle 2^k - 1$, il conteggio ricomincia da $\displaystyle 0$ (ciclicità).
+- **Esempio:** se si hanno 3 bit, i numeri sono $\displaystyle 0, 1, 2, 3, 4, 5, 6, 7$ e poi di nuovo $\displaystyle 0$.
 
-Nello specifico, per far sì che il protocollo funzioni correttamente senza confondere i pacchetti di una vecchia finestra con quelli di una nuova, deve valere la relazione: $\large N \le 2^k - 1$.
+Nello specifico, per far sì che il protocollo funzioni correttamente senza confondere i pacchetti di una vecchia finestra con quelli di una nuova, deve valere la relazione: $\displaystyle N \le 2^k - 1$.
 
 ---
 ##### Azioni del mittente
@@ -266,7 +266,7 @@ La FSM del mittente GBN è una FSM con uno stato di attesa e quattro tipi di eve
 ![[gbn sender fsm.png]]
 
 - Quando `rdt_send(data)` viene chiamata dall'applicazione: se la finestra non è piena (`nextseqnum < base + N`) il pacchetto viene creato e inviato. Se è il primo pacchetto in volo (`base == nextseqnum`) allora viene anche avviato il timer con `start_timer`. Se la finestra è piena (`else`) i dati vengono rifiutati e restituiti al livello superiore con `refuse_data(data)`. Ovviamente, una volta inviato un pacchetto, il sistema passa al successivo con `nextseqnum++`.
-- Se viene ricevuto un ACK, ovvero `rdt_rcv(rcvpkt) && notcorrupt(rcvpkt)`: l'ACK del pacchetto con il numero di sequenza $\large n$ verrà considerato un acknowledgment cumulativo (cumulative acknowledgment), che indica che tutti i pacchetti con un numero di sequenza minore o uguale a $\large n$ sono stati correttamente ricevuti dal destinatario. La finestra viene spostata in avanti con `base = getacknum(rcvpkt) + 1`. A questo punto se il numero di sequenza **base** corrisponde con **nextseqnum** (primo dei pacchetti non in volo), allora il sistema capisce che non ci sono più pacchetti in volo e blocca il timer (non serve più monitorare nulla). Altrimenti il sistema riavvia il timer per proteggere i pacchetti in volo.
+- Se viene ricevuto un ACK, ovvero `rdt_rcv(rcvpkt) && notcorrupt(rcvpkt)`: l'ACK del pacchetto con il numero di sequenza $\displaystyle n$ verrà considerato un acknowledgment cumulativo (cumulative acknowledgment), che indica che tutti i pacchetti con un numero di sequenza minore o uguale a $\displaystyle n$ sono stati correttamente ricevuti dal destinatario. La finestra viene spostata in avanti con `base = getacknum(rcvpkt) + 1`. A questo punto se il numero di sequenza **base** corrisponde con **nextseqnum** (primo dei pacchetti non in volo), allora il sistema capisce che non ci sono più pacchetti in volo e blocca il timer (non serve più monitorare nulla). Altrimenti il sistema riavvia il timer per proteggere i pacchetti in volo.
 - Se il timer scade, ovvero `timeout`: il mittente **ritrasmette tutti i pacchetti in volo**, ovvero tutti quelli nell'intervallo **\[base, nextseqnum - 1\]**. Il nome Go-Back-N deriva esattamente da questo comportamento: in caso di errore si torna indietro di N posizioni e si ritrasmette tutto.
 - Se arriva un ACK con errori, ovvero `rdt_rcv(rcvpkt) && corrupt(rcvpkt)`: l'ACK viene ignorato (`Λ`) semplicemente. Infatti, poiché gli ACK sono **cumulativi**, l'eventuale perdita di informazione causata da un ACK corrotto verrà sanata o da un ACK successivo valido o dalla ritrasmissione dell'intera finestra allo scadere del timer, garantendo l'integrità dei dati senza aggiungere logica complessa.
 
@@ -288,7 +288,7 @@ Il destinatario GBN è notevolmente più semplice del mittente e ha anch'esso un
 ![[gbn operation.png]]
 
 > [!example]
-> Con finestra $\large N = 4$, il mittente invia pkt0, pkt1, pkt2, pkt3. Il pacchetto pkt2 va perso. Il destinatario riceve correttamente pkt0 e pkt1 (invia ACK0, ACK1), ma scarta pkt3, pkt4 e pkt5 perché fuori sequenza, rimandando ogni volta ACK1. Quando scade il timer per pkt2, il mittente ritrasmette pkt2, pkt3, pkt4, pkt5. Questa volta il destinatario li riceve in ordine e li consegna tutti.
+> Con finestra $\displaystyle N = 4$, il mittente invia pkt0, pkt1, pkt2, pkt3. Il pacchetto pkt2 va perso. Il destinatario riceve correttamente pkt0 e pkt1 (invia ACK0, ACK1), ma scarta pkt3, pkt4 e pkt5 perché fuori sequenza, rimandando ogni volta ACK1. Quando scade il timer per pkt2, il mittente ritrasmette pkt2, pkt3, pkt4, pkt5. Questa volta il destinatario li riceve in ordine e li consegna tutti.
 > 
 
 ---
@@ -316,8 +316,8 @@ La **Ripetizione Selettiva** (SR, Selective Repeat) risolve questo problema in m
 Il mittente SR risponde a tre tipi di eventi:
 
 - **Dati ricevuti dall'alto**: Quando l'applicazione chiama `rdt_send()`, il mittente controlla il prossimo numero di sequenza disponibile. Se ricade all'interno della finestra (ovvero se **nextseqnum < send_base + N**), il pacchetto viene impacchettato, inviato e il suo **timer individuale** avviato. Se la finestra è piena, i dati vengono bufferizzati o restituiti al livello superiore per un tentativo successivo, esattamente come in GBN.
-- **Timeout individuale**: La differenza cruciale rispetto a GBN è che ogni pacchetto dispone del **proprio timer logico** indipendente (implementabile con un unico timer hardware tramite tecniche apposite). Allo scadere del timeout relativo al pacchetto $\large n$, viene ritrasmesso **solo il pacchetto $\large n$** e il suo timer viene riavviato. Non si tocca nessun altro pacchetto.
-- **Ricezione di un ACK**: Quando viene ricevuto l'ACK di un pacchetto $\large n$, se il numero di sequenza $\large n$ ricade nella finestra corrente **\[send_base, send_base + N - 1\]**, il pacchetto $\large n$ viene marcato come ricevuto. Se $\large n$ coincide esattamente con **send_base** (il pacchetto più vecchio non ancora riscontrato), la finestra avanza fino al successivo pacchetto non ancora riscontrato. Se lo spostamento della finestra porta in vista nuovi numeri di sequenza non ancora trasmessi, i relativi pacchetti vengono immediatamente inviati.
+- **Timeout individuale**: La differenza cruciale rispetto a GBN è che ogni pacchetto dispone del **proprio timer logico** indipendente (implementabile con un unico timer hardware tramite tecniche apposite). Allo scadere del timeout relativo al pacchetto $\displaystyle n$, viene ritrasmesso **solo il pacchetto $\displaystyle n$** e il suo timer viene riavviato. Non si tocca nessun altro pacchetto.
+- **Ricezione di un ACK**: Quando viene ricevuto l'ACK di un pacchetto $\displaystyle n$, se il numero di sequenza $\displaystyle n$ ricade nella finestra corrente **\[send_base, send_base + N - 1\]**, il pacchetto $\displaystyle n$ viene marcato come ricevuto. Se $\displaystyle n$ coincide esattamente con **send_base** (il pacchetto più vecchio non ancora riscontrato), la finestra avanza fino al successivo pacchetto non ancora riscontrato. Se lo spostamento della finestra porta in vista nuovi numeri di sequenza non ancora trasmessi, i relativi pacchetti vengono immediatamente inviati.
 
 ---
 ##### Azioni del destinatario 
@@ -332,10 +332,10 @@ Il destinatario SR distingue tre casi in base al numero di sequenza del pacchett
 ##### Esempio di funzionamento
 
 ![[sr operation.png]]
-Si consideri una trasmissione con finestra $\large N = 4$. Il mittente invia in sequenza pkt0, pkt1, pkt2, pkt3. Il pacchetto pkt2 si perde durante la trasmissione. Il destinatario riceve correttamente pkt0 e pkt1, li consegna al livello superiore e invia ACK0 e ACK1. Successivamente riceve pkt3, pkt4 e pkt5 che, pur essendo fuori ordine (è stato perso pkt2), vengono **bufferizzati** e riscontrati individualmente con ACK3, ACK4, ACK5 (comportamento radicalmente diverso da GBN, dove sarebbero stati scartati). Il mittente, ricevendo ACK0 e ACK1, fa avanzare la propria finestra e invia pkt4 e pkt5. Quando scade il **solo timer di pkt2**, il mittente ritrasmette esclusivamente pkt2. Il destinatario lo riceve, lo riconosce come `rcv_base` corrente, e può finalmente consegnare in blocco pkt2, pkt3, pkt4, pkt5 al livello superiore, facendo avanzare la finestra di ricezione di quattro posizioni. Il mittente riceve ACK2 e avanza la propria finestra di conseguenza.
+Si consideri una trasmissione con finestra $\displaystyle N = 4$. Il mittente invia in sequenza pkt0, pkt1, pkt2, pkt3. Il pacchetto pkt2 si perde durante la trasmissione. Il destinatario riceve correttamente pkt0 e pkt1, li consegna al livello superiore e invia ACK0 e ACK1. Successivamente riceve pkt3, pkt4 e pkt5 che, pur essendo fuori ordine (è stato perso pkt2), vengono **bufferizzati** e riscontrati individualmente con ACK3, ACK4, ACK5 (comportamento radicalmente diverso da GBN, dove sarebbero stati scartati). Il mittente, ricevendo ACK0 e ACK1, fa avanzare la propria finestra e invia pkt4 e pkt5. Quando scade il **solo timer di pkt2**, il mittente ritrasmette esclusivamente pkt2. Il destinatario lo riceve, lo riconosce come `rcv_base` corrente, e può finalmente consegnare in blocco pkt2, pkt3, pkt4, pkt5 al livello superiore, facendo avanzare la finestra di ricezione di quattro posizioni. Il mittente riceve ACK2 e avanza la propria finestra di conseguenza.
 
 > [!warning] 
-> Il problema dell'ambiguità nel protocollo **Selective Repeat (SR)** scaturisce dalla natura ciclica dei numeri di sequenza, i quali sono limitati dal numero di bit ($\large m$) disponibili nell'header del pacchetto. Poiché lo spazio di numerazione totale è pari a $\large 2^m$, i numeri vengono inevitabilmente riutilizzati secondo un'aritmetica modulare. 
+> Il problema dell'ambiguità nel protocollo **Selective Repeat (SR)** scaturisce dalla natura ciclica dei numeri di sequenza, i quali sono limitati dal numero di bit ($\displaystyle m$) disponibili nell'header del pacchetto. Poiché lo spazio di numerazione totale è pari a $\displaystyle 2^m$, i numeri vengono inevitabilmente riutilizzati secondo un'aritmetica modulare. 
 > 
 > L'ambiguità si manifesta quando la dimensione della finestra di ricezione è eccessiva rispetto allo spazio di numerazione. In tale scenario, il destinatario non è in grado di distinguere se un pacchetto ricevuto con un determinato numero di sequenza (ad esempio, lo "0") rappresenti:
 > 
@@ -344,7 +344,7 @@ Si consideri una trasmissione con finestra $\large N = 4$. Il mittente invia in 
 > 
 > Dal punto di vista del destinatario, i due eventi sono indistinguibili poiché il numero di sequenza è identico. Qualora il destinatario accettasse erroneamente una ritrasmissione come un nuovo dato, si verificherebbe una corruzione del flusso informativo consegnato al livello superiore. 
 > 
-> Per garantire la correttezza del protocollo, è necessaria una condizione di sicurezza che imponga un limite alla dimensione della finestra: $\large N \leq \frac{2^m}{2} = 2^{m-1}$. 
+> Per garantire la correttezza del protocollo, è necessaria una condizione di sicurezza che imponga un limite alla dimensione della finestra: $\displaystyle N \leq \frac{2^m}{2} = 2^{m-1}$. 
 > 
 > Tale vincolo assicura che la finestra del mittente e quella del destinatario non si sovrappongano mai in modo ambiguo. In termini formali, limitando la finestra alla **metà dello spazio di numerazione**, si garantisce che i numeri di sequenza attualmente attesi dal destinatario siano matematicamente disgiunti da quelli che il mittente potrebbe ancora ritrasmettere, eliminando alla radice ogni possibilità di errore.
 

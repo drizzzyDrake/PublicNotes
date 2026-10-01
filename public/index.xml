@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Drizzy Notes</title>
+      <link>https://https://drizzzydrake.github.io/PublicNotes/</link>
+      <description>Last 10 notes on Drizzy Notes</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Netwotk Security</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</guid>
+    <description><![CDATA[ La sicurezza di rete comprende l’insieme delle tecniche e dei meccanismi progettati per proteggere le comunicazioni e le risorse di rete da accessi non autorizzati, intercettazioni e manipolazioni. ]]></description>
+    <pubDate>Thu, 01 Oct 2026 13:36:54 GMT</pubDate>
+  </item><item>
+    <title>Data Delivery</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Data-Delivery</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Data-Delivery</guid>
+    <description><![CDATA[ Il Data Delivery è il processo complessivo mediante il quale l’informazione (sotto forma di pacchetti o frame) viene trasferita attraverso un’infrastruttura di rete dal sistema sorgente al sistema destinazione. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Web</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Network-Applications/Web</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Network-Applications/Web</guid>
+    <description><![CDATA[ Il Web è un’applicazione di rete di tipo client-server, distribuita su scala globale, che utilizza l’infrastruttura di Internet per consentire il reperimento e la fruizione di contenuti ipertestuali e multimediali (risorse), identificati univocamente tramite URL, trasferiti attraverso il protocollo ... ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Network</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Network</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Network</guid>
+    <description><![CDATA[ Una rete è un’infrastruttura composta da dispositivi detti nodi della rete in grado di scambiarsi informazioni tramite dei mezzi di comunicazione, wireless o cablati, detti link (o collegamenti). ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Application Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</guid>
+    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Data Link Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</guid>
+    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Network Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Network-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Network-Layer</guid>
+    <description><![CDATA[ Il livello di rete ha il compito fondamentale di permettere il trasferimento dei pacchetti da un host sorgente a un host destinazione attraverso una rete composta da molti router intermedi. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Transport Layer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Transport-Layer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Transport-Layer</guid>
+    <description><![CDATA[ Il livello di trasporto è il cuore logico della comunicazione end-to-end. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Protocol Stack</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</guid>
+    <description><![CDATA[ Per gestire la complessità dei sistemi di comunicazione, i progettisti organizzano protocolli, hardware e software in livelli (layer) gerarchici. ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item><item>
+    <title>Reliable Data Transfer</title>
+    <link>https://https://drizzzydrake.github.io/PublicNotes/RE/Reliable-Data-Transfer</link>
+    <guid>https://https://drizzzydrake.github.io/PublicNotes/RE/Reliable-Data-Transfer</guid>
+    <description><![CDATA[ Garantire un trasferimento dati affidabile significa offrire al livello superiore (ad esempio a un processo a livello applicativo) l’astrazione di un canale affidabile (parte a dell’immagine). ]]></description>
+    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

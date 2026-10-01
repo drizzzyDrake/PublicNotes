@@ -131,3 +131,5 @@ Affinché la firma digitale sia affidabile è necessario avere la certezza che u
 Questo problema viene risolto mediante le **Autorità di Certificazione (Certification Authority, CA)**, enti fidati che verificano l'identità dei soggetti e rilasciano un **certificato digitale**. Il certificato associa in modo sicuro una chiave pubblica al suo proprietario e viene firmato digitalmente dalla stessa CA.
 
 Quando un utente riceve un certificato, ne verifica la firma utilizzando la chiave pubblica della CA. Se la verifica ha esito positivo, può fidarsi dell'associazione tra identità e chiave pubblica e utilizzare quest'ultima per verificare firme digitali o instaurare comunicazioni sicure. Gli standard più diffusi per la struttura dei certificati sono definiti dalla raccomandazione **X.509**, adottata da numerosi protocolli di sicurezza come SSL/TLS e IPsec.
+
+... da finire.

@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env fish
 
 # === Dynamic Paths ===
-BASE_PATH="$HOME/Desktop/Obsidian"
-VAULT="$BASE_PATH/UniNotes"
-PUBLIC_NOTES="$BASE_PATH/PublicNotes"
-QUARTZ_CONTENT="$PUBLIC_NOTES/content"
+set BASE_PATH "$HOME/Progetti/Obsidian"
+set VAULT "$BASE_PATH/UniNotes"
+set PUBLIC_NOTES "$BASE_PATH/PublicNotes"
+set QUARTZ_CONTENT "$PUBLIC_NOTES/content"
 
 # === Git Config ===
-GIT_EMAIL="giuliodionisi@icloud.com"
-GIT_USER="drizzzyDrake"
+set GIT_EMAIL "giuliodionisi@icloud.com"
+set GIT_USER "drizzzyDrake"
 
 # === Folders to sync ===
-FOLDERS=("ADE" "BD1" "MDP" "SO1" "RE")
+set FOLDERS ADE BD1 MDP SO1 RE
 
 echo "--- Starting sync for $GIT_USER ---"
 
@@ -20,14 +20,14 @@ git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_USER"
 
 # === Sync notes ===
-for folder in "${FOLDERS[@]}"; do
-    SRC="$VAULT/$folder/"
-    DEST="$QUARTZ_CONTENT/$folder/"
+for folder in $FOLDERS
+    set SRC "$VAULT/$folder/"
+    set DEST "$QUARTZ_CONTENT/$folder/"
 
-    if [ ! -d "$SRC" ]; then
+    if not test -d "$SRC"
         echo "Source not found: $SRC. Skipping..."
         continue
-    fi
+    end
 
     echo "Syncing $folder..."
 
@@ -35,11 +35,11 @@ for folder in "${FOLDERS[@]}"; do
         --exclude=".obsidian" \
         --exclude="_Images" \
         "$SRC" "$DEST"
-done
+end
 
 # === Sync images ===
-IMAGES_SRC="$VAULT/_Images/"
-IMAGES_DEST="$QUARTZ_CONTENT/_Images/"
+set IMAGES_SRC "$VAULT/_Images/"
+set IMAGES_DEST "$QUARTZ_CONTENT/_Images/"
 
 echo "Syncing images..."
 
@@ -51,29 +51,28 @@ rsync -av --delete \
 # === Build Quartz ===
 echo "Building Quartz..."
 
-cd "$PUBLIC_NOTES" || exit
+cd "$PUBLIC_NOTES" || exit 1
 
-if [ ! -d "node_modules" ]; then
+if not test -d "node_modules"
     echo "Installing missing modules..."
     npm install
-fi
+end
 
 npx quartz build
 
 # === Git Commit & Push ===
 echo "Pushing changes to GitHub..."
 
-if [ -d ".git" ]; then
+if test -d ".git"
     git add .
 
-    COMMIT_MSG="Sync + build - $(date '+%Y-%m-%d %H:%M')"
+    set COMMIT_MSG "Sync + build - "(date '+%Y-%m-%d %H:%M')
 
-    git commit -m "$COMMIT_MSG" || true
+    git commit -m "$COMMIT_MSG"; or true
 
     git push origin main
 else
     echo "ERROR: $PUBLIC_NOTES is not a Git repository!"
-fi
+end
 
 echo "--- Sync completed successfully! ---"
-

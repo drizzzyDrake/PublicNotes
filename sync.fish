@@ -31,6 +31,7 @@ for folder in $FOLDERS
 
     echo "Syncing $folder..."
 
+    mkdir -p "$DEST"
     rsync -av --delete \
         --exclude=".obsidian" \
         --exclude="_Images" \
@@ -41,17 +42,19 @@ end
 set IMAGES_SRC "$VAULT/_Images/"
 set IMAGES_DEST "$QUARTZ_CONTENT/_Images/"
 
-echo "Syncing images..."
-
-mkdir -p "$IMAGES_DEST"
-
-rsync -av --delete \
-    "$IMAGES_SRC" "$IMAGES_DEST"
+if test -d "$IMAGES_SRC"
+    echo "Syncing images..."
+    mkdir -p "$IMAGES_DEST"
+    rsync -av --delete "$IMAGES_SRC" "$IMAGES_DEST"
+else
+    echo "No images folder found at $IMAGES_SRC"
+end
 
 # === Build Quartz ===
 echo "Building Quartz..."
 
-cd "$PUBLIC_NOTES" || exit 1
+# In Fish si usa ';' seguito da 'or' al posto di '||'
+cd "$PUBLIC_NOTES"; or exit 1
 
 if not test -d "node_modules"
     echo "Installing missing modules..."

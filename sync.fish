@@ -71,11 +71,17 @@ if test -d ".git"
 
     set COMMIT_MSG "Sync + build - "(date '+%Y-%m-%d %H:%M')
 
-    git commit -m "$COMMIT_MSG"; or true
+    # Commit e push gestiti correttamente in Fish
+    if git commit -m "$COMMIT_MSG"
+        echo "Commit eseguito con successo."
+    else
+        echo "Nessuna modifica da committare o commit non necessario."
+    end
 
+    echo "Invio delle modifiche a GitHub..."
     git push origin main
 else
-    echo "ERROR: $PUBLIC_NOTES is not a Git repository!"
+    echo "ERROR: $PUBLIC_NOTES non è un repository Git!"
 end
 
 echo "--- Sync completed successfully! ---"

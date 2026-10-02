@@ -6,6 +6,12 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Drizzy Notes</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/</guid>
+    <description><![CDATA[ Drizzy Notes Appunti universitari di Informatica. ]]></description>
+    <pubDate>Fri, 02 Oct 2026 17:47:33 GMT</pubDate>
+  </item><item>
     <title>Netwotk Security</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</guid>
@@ -58,12 +64,6 @@
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</guid>
     <description><![CDATA[ Per gestire la complessità dei sistemi di comunicazione, i progettisti organizzano protocolli, hardware e software in livelli (layer) gerarchici. ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Reliable Data Transfer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Reliable-Data-Transfer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Reliable-Data-Transfer</guid>
-    <description><![CDATA[ Garantire un trasferimento dati affidabile significa offrire al livello superiore (ad esempio a un processo a livello applicativo) l’astrazione di un canale affidabile (parte a dell’immagine). ]]></description>
     <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
   </item>
     </channel>

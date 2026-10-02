@@ -10,8 +10,9 @@ Questo repository raccoglie appunti, schemi ed esercizi relativi ai principali c
 
 - **ADE** – Architettura degli Elaboratori  
 - **BD** – Basi di Dati  
-- **SO** – Sistemi Operativi  (in lavorazione)
+- **SO** – Sistemi Operativi  (modulo 1)
 - **MDP** – Metodologie di Programmazione
+- **RE** - Reti (non completo)
 
 ---
 

@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
       <title>Drizzy Notes</title>
-      <link>https://drizzzydrake.github.io/PublicNotes/</link>
+      <link>https://drizzzydrake.github.io/PublicNotes</link>
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
@@ -10,7 +10,7 @@
     <link>https://drizzzydrake.github.io/PublicNotes/</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/</guid>
     <description><![CDATA[ Drizzy Notes Appunti universitari di Informatica. ]]></description>
-    <pubDate>Fri, 02 Oct 2026 17:47:33 GMT</pubDate>
+    <pubDate>Fri, 02 Oct 2026 21:15:37 GMT</pubDate>
   </item><item>
     <title>Netwotk Security</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</link>

@@ -2,18 +2,17 @@
 
 Questo repository raccoglie appunti, schemi ed esercizi relativi ai principali corsi universitari che sto seguendo. Il materiale è organizzato in modo da essere facilmente consultabile online tramite Quartz v4. Gli appunti sono pensati per offrire spiegazioni chiare, esempi pratici e collegamenti tra argomenti, così da supportare lo studio individuale e il ripasso.
 
-**Sito accessibile cliccando qui:**
-**https://drizzzydrake.github.io/PublicNotes/**
+**Sito accessibile [cliccando qui](https://drizzzydrake.github.io/PublicNotes/)**
 
 ---
 
 ### Contenuti principali
 
 - **ADE** – Architettura degli Elaboratori  
-- **BD** – Basi di Dati  
+- **BD** – Basi di Dati (modulo 1)  
 - **SO** – Sistemi Operativi  (modulo 1)
 - **MDP** – Metodologie di Programmazione
-- **RE** - Reti (non completo)
+- **RE** – Reti (non completo)
 
 ---
 

@@ -2,7 +2,7 @@
 
 Questo repository raccoglie appunti, schemi ed esercizi relativi ai principali corsi universitari che sto seguendo. Il materiale è organizzato in modo da essere facilmente consultabile online tramite Quartz v4. Gli appunti sono pensati per offrire spiegazioni chiare, esempi pratici e collegamenti tra argomenti, così da supportare lo studio individuale e il ripasso.
 
-**Sito accessibile <a href="https://drizzzydrake.github.io/PublicNotes/">cliccando qui</a>**
+**Sito accessibile [cliccando qui](https://drizzzydrake.github.io/PublicNotes/)**
 
 ---
 

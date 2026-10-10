@@ -6,11 +6,41 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Automaton</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
+    <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
+    <pubDate>Sat, 10 Oct 2026 15:28:36 GMT</pubDate>
+  </item><item>
+    <title>ANNOTAZIONI TEMP</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/ANNOTAZIONI-TEMP</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/ANNOTAZIONI-TEMP</guid>
+    <description><![CDATA[ Teorema di Chiusura dell’Unione (Costruzione Prodotto) TEOREMA: La classe \text{REG} è chiusa rispetto alle operazioni di unione (\cup), intersezione (\cap), complemento (\overline{\phantom{L}}), concatenazione (\circ) e stella di Kleene (*). ]]></description>
+    <pubDate>Thu, 08 Oct 2026 07:42:29 GMT</pubDate>
+  </item><item>
+    <title>Strings</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</guid>
+    <description><![CDATA[ Una stringa è una sequenza di caratteri. Una stringa è definita su un alfabeto, che varia a seconda dell’applicazione. ]]></description>
+    <pubDate>Thu, 08 Oct 2026 07:20:13 GMT</pubDate>
+  </item><item>
+    <title>Boolean Logic</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</guid>
+    <description><![CDATA[ La logica booleana è un sistema matematico costruito intorno ai due valori vero e falso (valori booleani) rappresentati rispettivamente dai numeri 1 e 0. ]]></description>
+    <pubDate>Wed, 07 Oct 2026 16:19:01 GMT</pubDate>
+  </item><item>
+    <title>Graphs</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</guid>
+    <description><![CDATA[ Un grafo non orientato, o semplicemente grafo, è un insieme di punti connessi da un insieme di linee. ]]></description>
+    <pubDate>Sun, 04 Oct 2026 19:25:17 GMT</pubDate>
+  </item><item>
     <title>Drizzy Notes</title>
     <link>https://drizzzydrake.github.io/PublicNotes/</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/</guid>
     <description><![CDATA[ Appunti universitari di Informatica. ]]></description>
-    <pubDate>Fri, 02 Oct 2026 21:15:37 GMT</pubDate>
+    <pubDate>Fri, 02 Oct 2026 21:27:07 GMT</pubDate>
   </item><item>
     <title>Netwotk Security</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Netwotk-Security</link>
@@ -34,36 +64,6 @@
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Network</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Network</guid>
     <description><![CDATA[ Una rete è un’infrastruttura composta da dispositivi detti nodi della rete in grado di scambiarsi informazioni tramite dei mezzi di comunicazione, wireless o cablati, detti link (o collegamenti). ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Application Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Application-Layer</guid>
-    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Data Link Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Data-Link-Layer</guid>
-    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Network Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Network-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Network-Layer</guid>
-    <description><![CDATA[ Il livello di rete ha il compito fondamentale di permettere il trasferimento dei pacchetti da un host sorgente a un host destinazione attraverso una rete composta da molti router intermedi. ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Transport Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Transport-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack-Layers/Transport-Layer</guid>
-    <description><![CDATA[ Il livello di trasporto è il cuore logico della comunicazione end-to-end. ]]></description>
-    <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
-  </item><item>
-    <title>Protocol Stack</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Protocol-Stack</guid>
-    <description><![CDATA[ Per gestire la complessità dei sistemi di comunicazione, i progettisti organizzano protocolli, hardware e software in livelli (layer) gerarchici. ]]></description>
     <pubDate>Wed, 26 Aug 2026 10:12:39 GMT</pubDate>
   </item>
     </channel>

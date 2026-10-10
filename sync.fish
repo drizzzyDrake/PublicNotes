@@ -8,10 +8,10 @@ set QUARTZ_CONTENT "$PUBLIC_NOTES/content"
 
 # === Git Config ===
 set GIT_EMAIL "giuliodionisi@icloud.com"
-set GIT_USER "drizzzyDrake"
+set GIT_USER drizzzyDrake
 
 # === Folders to sync ===
-set FOLDERS ADE BD1 MDP SO1 RE
+set FOLDERS ADE BD1 MDP SO1 RE ACC
 
 echo "--- Starting sync for $GIT_USER ---"
 
@@ -56,7 +56,7 @@ echo "Building Quartz..."
 # In Fish si usa ';' seguito da 'or' al posto di '||'
 cd "$PUBLIC_NOTES"; or exit 1
 
-if not test -d "node_modules"
+if not test -d node_modules
     echo "Installing missing modules..."
     npm install
 end
@@ -85,4 +85,3 @@ else
 end
 
 echo "--- Sync completed successfully! ---"
-

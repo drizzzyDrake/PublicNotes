@@ -6,35 +6,35 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Automaton</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
-    <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
-    <pubDate>Sat, 10 Oct 2026 15:28:36 GMT</pubDate>
-  </item><item>
     <title>ANNOTAZIONI TEMP</title>
     <link>https://drizzzydrake.github.io/PublicNotes/ACC/ANNOTAZIONI-TEMP</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/ACC/ANNOTAZIONI-TEMP</guid>
     <description><![CDATA[ Teorema di Chiusura dell’Unione (Costruzione Prodotto) TEOREMA: La classe \text{REG} è chiusa rispetto alle operazioni di unione (\cup), intersezione (\cap), complemento (\overline{\phantom{L}}), concatenazione (\circ) e stella di Kleene (*). ]]></description>
-    <pubDate>Thu, 08 Oct 2026 07:42:29 GMT</pubDate>
+    <pubDate>Sat, 10 Oct 2026 15:46:57 GMT</pubDate>
   </item><item>
-    <title>Strings</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</guid>
-    <description><![CDATA[ Una stringa è una sequenza di caratteri. Una stringa è definita su un alfabeto, che varia a seconda dell’applicazione. ]]></description>
-    <pubDate>Thu, 08 Oct 2026 07:20:13 GMT</pubDate>
+    <title>Automaton</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
+    <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
+    <pubDate>Sat, 10 Oct 2026 15:46:57 GMT</pubDate>
   </item><item>
     <title>Boolean Logic</title>
     <link>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</guid>
     <description><![CDATA[ La logica booleana è un sistema matematico costruito intorno ai due valori vero e falso (valori booleani) rappresentati rispettivamente dai numeri 1 e 0. ]]></description>
-    <pubDate>Wed, 07 Oct 2026 16:19:01 GMT</pubDate>
+    <pubDate>Sat, 10 Oct 2026 15:46:57 GMT</pubDate>
   </item><item>
     <title>Graphs</title>
     <link>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</guid>
     <description><![CDATA[ Un grafo non orientato, o semplicemente grafo, è un insieme di punti connessi da un insieme di linee. ]]></description>
-    <pubDate>Sun, 04 Oct 2026 19:25:17 GMT</pubDate>
+    <pubDate>Sat, 10 Oct 2026 15:46:57 GMT</pubDate>
+  </item><item>
+    <title>Strings</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</guid>
+    <description><![CDATA[ Una stringa è una sequenza di caratteri. Una stringa è definita su un alfabeto, che varia a seconda dell’applicazione. ]]></description>
+    <pubDate>Sat, 10 Oct 2026 15:46:57 GMT</pubDate>
   </item><item>
     <title>Drizzy Notes</title>
     <link>https://drizzzydrake.github.io/PublicNotes/</link>

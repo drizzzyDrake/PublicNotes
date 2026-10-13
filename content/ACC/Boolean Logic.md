@@ -3,10 +3,9 @@ La **logica booleana** è un sistema matematico costruito intorno ai due valori 
 ---
 ### OPERAZIONI BOOLEANE
 
-Siamo in grado di manipolare i valori booleani attraverso le **operazioni booleane**. L'operazione più semplice è la **negazione** (**not**): $\large \lnot 0 = 1 \quad \lnot 1 = 0$. Tra le altre troviamo:
+Siamo in grado di manipolare i valori booleani attraverso le **operazioni booleane**. L'operazione più semplice è la **negazione** (**not**): $\lnot 0 = 1 \quad \lnot 1 = 0$. Tra le altre troviamo:
 
 $$
-\large
 \begin{array}{|l|c|c|c|c|c|}
 \hline
 \textbf{Operazione} & \textbf{Simbolo} & \mathbf{0 \text{ e } 0} & \mathbf{0 \text{ e } 1} & \mathbf{1 \text{ e } 0} & \mathbf{1 \text{ e } 1} \\
@@ -27,10 +26,10 @@ $$
 > [!tip]
 > Usiamo le operazioni booleane per combinare asserzioni semplici in espressioni complesse. Siamo infatti in grado di esprimere tutte le operazioni booleane in termini di operazioni **and** e **not**: 
 > 
-> - $\large P \lor Q$ equivale a scrivere $\large \lnot(\lnot P \land \lnot Q)$
-> - $\large P \to Q$ equivale a scrivere $\large \lnot P \lor Q$
-> - $\large P \leftrightarrow Q$ equivale a scrivere $\large (P \to Q) \land (Q \to P)$
-> - $\large P \oplus Q$ equivale a scrivere $\large \lnot(P \leftrightarrow Q)$
+> - $P \lor Q$ equivale a scrivere $\lnot(\lnot P \land \lnot Q)$
+> - $P \to Q$ equivale a scrivere $\lnot P \lor Q$
+> - $P \leftrightarrow Q$ equivale a scrivere $(P \to Q) \land (Q \to P)$
+> - $P \oplus Q$ equivale a scrivere $\lnot(P \leftrightarrow Q)$
 > 
 
 ---
@@ -38,23 +37,23 @@ $$
 
 La **legge distributiva** descrive come due operatori booleani interagiscono tra loro. A differenza dell'algebra classica, nella logica booleana la congiunzione ($\land$) distribuisce sulla disgiunzione ($\lor$) e viceversa, consentendo di semplificare e trasformare le espressioni complesse.
 
-- $\large P \land (Q \lor R)$ è uguale a $\large (P \land Q) \lor (P \land R)$
-- $\large P \lor (Q \land R)$ è uguale a $\large (P \lor Q) \land (P \lor R)$
+- $P \land (Q \lor R)$ è uguale a $(P \land Q) \lor (P \land R)$
+- $P \lor (Q \land R)$ è uguale a $(P \lor Q) \land (P \lor R)$
 
 ---
 ### LEGGI DI DE MORGAN
 
 Le **leggi di De Morgan** spiegano come la negazione ($\lnot$) si distribuisce sui connettivi $\land$ e $\lor$. Permettono di trasformare una congiunzione in una disgiunzione (e viceversa) invertendo i valori dei singoli termini, fondamentale per la semplificazione dei circuiti logici.
 
-- $\large \lnot(P \land Q)$ equivale a scrivere $\large \lnot P \lor \lnot Q$
-- $\large \lnot(P \lor Q)$ equivale a scrivere $\large \lnot P \land \lnot Q$
+- $\lnot(P \land Q)$ equivale a scrivere $\lnot P \lor \lnot Q$
+- $\lnot(P \lor Q)$ equivale a scrivere $\lnot P \land \lnot Q$
 
 ---
 ### LEGGI DI ASSORBIMENTO
 
 Le **leggi di assorbimento** consentono di eliminare termini ridondanti all'interno di un'espressione booleana. Quando una variabile compare sia all'esterno sia all'interno di una parentesi accoppiata con l'operatore opposto, l'intera parentesi viene "assorbita".
 
-- $\large P \lor (P \land Q)$ equivale a scrivere $\large P$
-- $\large P \land (P \lor Q)$ equivale a scrivere $\large P$
+- $P \lor (P \land Q)$ equivale a scrivere $P$
+- $P \land (P \lor Q)$ equivale a scrivere $P$
 
 ---

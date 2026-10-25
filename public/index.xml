@@ -6,65 +6,65 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Automaton</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
+    <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
+  </item><item>
     <title>Internet Architecture</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Fundamentals/Internet-Architecture</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Fundamentals/Internet-Architecture</guid>
     <description><![CDATA[ Internet è una rete di reti, ossia un’infrastruttura globale, pubblica e decentralizzata che interconnette milioni di reti in tutto il mondo. ]]></description>
-    <pubDate>Sat, 24 Oct 2026 17:15:56 GMT</pubDate>
-  </item><item>
-    <title>Data Link Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</guid>
-    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
-    <pubDate>Sat, 24 Oct 2026 17:15:56 GMT</pubDate>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
     <title>Network Basics</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Fundamentals/Network-Basics</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Fundamentals/Network-Basics</guid>
     <description><![CDATA[ Una rete è un’infrastruttura composta da dispositivi detti nodi della rete in grado di scambiarsi informazioni tramite dei mezzi di comunicazione, wireless o cablati, detti link. ]]></description>
-    <pubDate>Sat, 24 Oct 2026 17:15:44 GMT</pubDate>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
-    <title>Reliable Data Transfer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Reliable-Data-Transfer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Reliable-Data-Transfer</guid>
-    <description><![CDATA[ Garantire un trasferimento dati affidabile significa offrire al livello superiore (ad esempio a un processo a livello applicativo) l’astrazione di un canale affidabile (parte a dell’immagine). ]]></description>
-    <pubDate>Sat, 24 Oct 2026 17:15:44 GMT</pubDate>
+    <title>DNS</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/DNS</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/DNS</guid>
+    <description><![CDATA[ Gli host Internet possono essere identificati in due modi distinti: tramite hostname (es. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
+  </item><item>
+    <title>E-mail</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/E-mail</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/E-mail</guid>
+    <description><![CDATA[ La posta elettronica, meglio conosciuta come e-mail (electronic mail), è un servizio internet che ti permette di inviare e ricevere messaggi digitali in modo quasi istantaneo e asincrono. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
+  </item><item>
+    <title>File Sharing</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/File-Sharing</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/File-Sharing</guid>
+    <description><![CDATA[ Il File Sharing (condivisione di file) è il servizio di rete che permette la distribuzione e l’accesso a risorse digitali (documenti, file multimediali, software) tra più utenti o dispositivi attraverso una rete (Internet o LAN). ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
     <title>Web</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/Web</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/Web</guid>
     <description><![CDATA[ Il Web è un’applicazione di rete di tipo client-server, distribuita su scala globale, che utilizza l’infrastruttura di Internet Architecture per consentire il reperimento e la fruizione di contenuti ipertestuali e multimediali (risorse), identificati univocamente tramite URL, trasferiti attraverso i... ]]></description>
-    <pubDate>Sat, 24 Oct 2026 17:15:44 GMT</pubDate>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
-    <title>Automaton</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
-    <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
-    <pubDate>Tue, 13 Oct 2026 10:16:37 GMT</pubDate>
+    <title>Application Layer</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</guid>
+    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
-    <title>Boolean Logic</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Boolean-Logic</guid>
-    <description><![CDATA[ La logica booleana è un sistema matematico costruito intorno ai due valori vero e falso (valori booleani) rappresentati rispettivamente dai numeri 1 e 0. ]]></description>
-    <pubDate>Tue, 13 Oct 2026 10:16:37 GMT</pubDate>
+    <title>Data Link Layer</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</guid>
+    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item><item>
-    <title>Graphs</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Graphs</guid>
-    <description><![CDATA[ Un grafo non orientato, o semplicemente grafo, è un insieme di punti connessi da un insieme di linee. ]]></description>
-    <pubDate>Tue, 13 Oct 2026 10:16:37 GMT</pubDate>
-  </item><item>
-    <title>Strings</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</guid>
-    <description><![CDATA[ Una stringa è una sequenza di caratteri. Una stringa è definita su un alfabeto, che varia a seconda dell’applicazione. ]]></description>
-    <pubDate>Tue, 13 Oct 2026 10:16:37 GMT</pubDate>
-  </item><item>
-    <title>Drizzy Notes</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/</guid>
-    <description><![CDATA[ Appunti universitari di Informatica. ]]></description>
-    <pubDate>Fri, 02 Oct 2026 21:27:07 GMT</pubDate>
+    <title>Network Layer</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Network-Layer</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Network-Layer</guid>
+    <description><![CDATA[ Il livello di rete ha il compito fondamentale di permettere il trasferimento dei pacchetti da un host sorgente a un host destinazione attraverso una rete composta da molti router intermedi. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item>
     </channel>
   </rss>

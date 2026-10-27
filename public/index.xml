@@ -6,11 +6,23 @@
       <description>Last 10 notes on Drizzy Notes</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Automaton</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Automaton</guid>
+    <title>Regular Expressions</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Expressions</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Expressions</guid>
+    <description><![CDATA[ Dato un alfabeto \Sigma, definiamo come espressione regolare di \Sigma una stringa R rappresentante un linguaggio L(R) \subseteq \Sigma^*. ]]></description>
+    <pubDate>Tue, 27 Oct 2026 13:02:37 GMT</pubDate>
+  </item><item>
+    <title>Finite Automaton</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Finite-Automaton</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Finite-Automaton</guid>
     <description><![CDATA[ Per parlare di automi introduciamo prima il concetto di diagramma di stato, ovvero un grafo orientato ed etichettato in cui le strutture matematiche del grafo assumono un significato semantico ben preciso per modellare il comportamento di un sistema. ]]></description>
-    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
+    <pubDate>Mon, 26 Oct 2026 14:31:07 GMT</pubDate>
+  </item><item>
+    <title>Regular Languages</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Languages</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Languages</guid>
+    <description><![CDATA[ I linguaggi regolari costituiscono una classe fondamentale dei linguaggi formali, definita come l’insieme di tutti i linguaggi che possono essere riconosciuti da un automa finito. ]]></description>
+    <pubDate>Sun, 25 Oct 2026 16:30:46 GMT</pubDate>
   </item><item>
     <title>Internet Architecture</title>
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Fundamentals/Internet-Architecture</link>
@@ -52,18 +64,6 @@
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</guid>
     <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
-    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
-  </item><item>
-    <title>Data Link Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Data-Link-Layer</guid>
-    <description><![CDATA[ Il livello di collegamento ha il compito fondamentale di trasferire i dati tra due nodi direttamente collegati attraverso un singolo mezzo trasmissivo. ]]></description>
-    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
-  </item><item>
-    <title>Network Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Network-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Network-Layer</guid>
-    <description><![CDATA[ Il livello di rete ha il compito fondamentale di permettere il trasferimento dei pacchetti da un host sorgente a un host destinazione attraverso una rete composta da molti router intermedi. ]]></description>
     <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item>
     </channel>

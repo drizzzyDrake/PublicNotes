@@ -123,7 +123,7 @@ La funzione $\delta$ permette di definire formalmente i passaggi di stato di un 
 Dopo aver definito la relazione di transizione, possiamo ridefinire in modo compatto la condizione di accettazione di una stringa $x \in \Sigma^*$ da parte di un automa. Un automa $M$ **accetta** una stringa $x \in \Sigma^*$ se e solo se $(q_0, x) \vdash_M^* (q, \varepsilon)$ con $q \in F$.
 
 > [!tip]
-> Questa formulazione basata sulle configurazioni è del tutto equivalente a quella definita tramite la funzione di [[Automaton#Definizione formale del linguaggio riconosciuto|transizione estesa]] $\delta^*$:
+> Questa formulazione basata sulle configurazioni è del tutto equivalente a quella definita tramite la funzione di [[Finite Automaton#Definizione formale del linguaggio riconosciuto|transizione estesa]] $\delta^*$:
 >
 > $$
 > x \in L(M) \iff (q_0, x) \vdash_M^* (q, \varepsilon) \text{ con } q \in F \iff \delta^*(q_0, x) \in F
@@ -168,7 +168,7 @@ Un **Automa Non Deterministico a Stati Finiti**, in inglese **Non-deterministic 
 - $F \subseteq Q$ è l'insieme degli **stati accettanti** dell'automa. 
 
 > [!important]
-> Nota come dalla [[Automaton#Definizione formale di DFA|definizione di DFA]] cambi solamente la struttura della funzione di transizione degli stati che va da $Q\times \Sigma_\varepsilon$, dove $ \Sigma_\varepsilon = \Sigma \cup \{\varepsilon\}$, a $\mathcal{P}(Q)$, ovvero l'**insieme delle parti** (o insieme potenza) di $Q$, la collezione di tutti i possibili sottoinsiemi di $Q$.
+> Nota come dalla [[Finite Automaton#Definizione formale di DFA|definizione di DFA]] cambi solamente la struttura della funzione di transizione degli stati che va da $Q\times \Sigma_\varepsilon$, dove $\Sigma_\varepsilon = \Sigma \cup \{\varepsilon\}$, a $\mathcal{P}(Q)$, ovvero l'**insieme delle parti** (o insieme potenza) di $Q$, la collezione di tutti i possibili sottoinsiemi di $Q$.
 
 Consideriamo nuovamente l'automa descritto sopra, che da adesso possiamo confermare essere un NFA in quanto rispetta la definizione, e chiamiamolo  $N_{1}$.
 
@@ -215,7 +215,7 @@ Attraverso la relazione di transizione estesa $\vdash_N^*$, possiamo definire in
 > [!quote] Theorem
 > Per ogni automa finito non deterministico esiste un automa finito deterministico equivalente.
 
-Prima di affrontare la dimostrazione del teorema, definiamo il concetto di equivalenza tra automi. Dato un alfabeto $\Sigma$, possiamo definire la classe dei linguaggi su $\Sigma$ [[Automaton#Definizione formale del linguaggio riconosciuto|riconosciuti]] da un DFA come l'insieme: $\mathcal{L}(\text{DFA}) = \{L \subseteq \Sigma^* \mid \exists \text{ DFA } D : L = L(D)\}$. Analogamente definiamo la classe dei linguaggi riconosciuti da un NFA come: $\mathcal{L}(\text{NFA}) = \{L \subseteq \Sigma^* \mid \exists \text{ NFA } N : L = L(N)\}$. Poiché due macchine si dicono **equivalenti** se riconoscono lo stesso linguaggio, per dimostrare l'equivalenza tra NFA e DFA dobbiamo provare che $\mathcal{L}(\text{DFA}) = \mathcal{L}(\text{NFA})$.
+Prima di affrontare la dimostrazione del teorema, definiamo il concetto di equivalenza tra automi. Dato un alfabeto $\Sigma$, possiamo definire la classe dei linguaggi su $\Sigma$ [[Finite Automaton#Definizione formale del linguaggio riconosciuto|riconosciuti]] da un DFA come l'insieme: $\mathcal{L}(\text{DFA}) = \{L \subseteq \Sigma^* \mid \exists \text{ DFA } D : L = L(D)\}$. Analogamente definiamo la classe dei linguaggi riconosciuti da un NFA come: $\mathcal{L}(\text{NFA}) = \{L \subseteq \Sigma^* \mid \exists \text{ NFA } N : L = L(N)\}$. Poiché due macchine si dicono **equivalenti** se riconoscono lo stesso linguaggio, per dimostrare l'equivalenza tra NFA e DFA dobbiamo provare che $\mathcal{L}(\text{DFA}) = \mathcal{L}(\text{NFA})$.
 
 **Dimostrazione:**
 
@@ -285,181 +285,3 @@ Avendo dimostrato sia l'inclusione banale $\mathcal{L}(\text{DFA}) \subseteq \ma
 ![[nfa = dfa example 2.png]]
 
 ---
-### LINGUAGGI REGOLARI
-
-> [!quote] Theorem
-> La classe dei **linguaggi regolari** ($\text{REG}$) è l'insieme di tutti i linguaggi accettati da un DFA: $\text{REG} = \{ L \subseteq \Sigma^* : \exists \text{ un DFA } M \text{ tale che } L(M) = L \} = \mathcal{L}(\text{DFA})$.
-
-![[regular languages example.png]]
-
-> [!example]
-> Considerando il linguaggio delle stringhe binari che iniziano con il simbolo $1$:
-> 
-> $$
-> L = \{ x \in \{0, 1\}^* : x = 1y, \text{ con } y \in \{0, 1\}^* \}
-> $$
-> 
-> Il DFA in grado di riconoscere tale linguaggio esiste ed è quello in figura, dunque $L$ è un linguaggio regolare (lo stato $q_1$ è detto stato pozzo o trap state: un particolare stato non accettante dal quale è impossibile uscire).
-> 
-
-> [!quote] Corollary
-> Dalla definizione di linguaggi regolari e dal [[Automaton#EQUIVALENZA TRA NFA E DFA|teorema di equivalenza]] segue immediatamente che la classe dei linguaggi regolari coincide con la classe dei linguaggi riconosciuti dagli NFA: $\text{REG} = \mathcal{L}(\text{NFA})$.
-
----
-#### Chiusura rispetto alle operazioni regolari
-
-Vogliamo ora dimostrare che la classe dei linguaggi regolari ($\text{REG}$) è chiusa rispetto alle [[Strings#Operazioni sui linguaggi|operazioni]] di unione ($\cup$), concatenazione ($\circ$) e star di Kleene ($*$). Ovvero, che applicando tali operazioni a uno o più linguaggi regolari, il linguaggio risultante è anch'esso regolare.
-
----
-##### Chiusura rispetto all'unione
-
-> [!quote] Theorem
-> La classe dei linguaggi regolari è chiusa rispetto all'operazione di unione
-
-**Dimostrazione:**
-
-Prendiamo due linguaggi regolari $A_1$ e $A_2$ e proviamo che $A_1 \cup A_2$ è regolare. Per definizione, poiché $A_1$ e $A_2$ sono regolari, esistono due NFA $N_1 = (Q_1, \Sigma_1, \delta_1, q_1, F_1)$ e $N_2 = (Q_2, \Sigma_2, \delta_2, q_2, F_2)$ che riconoscono rispettivamente i due linguaggi. Per dimostrare la tesi, costruiamo un nuovo NFA $N = (Q, \Sigma, \delta, q_0, F)$ che combini $N_1$ e $N_2$. Il nuovo automa $N$ deve configurarsi in modo tale da accettare una stringa di input se e solo se questa viene accettata da almeno uno dei due automi di partenza ($N_1$ oppure $N_2$):
-
-- $Q = \{q_0\} \cup Q_1 \cup Q_2$ è l'insieme degli stati di $N$,
-- $q_0$ è lo stato iniziale di $N$,
-- $F = F_1 \cup F_2$ è l'insieme degli stati accettanti di $N$,
-- Per ogni $q \in Q$ e ogni $a \in \Sigma_\varepsilon$: $$\delta(q,a) = \begin{cases} \delta_1(q,a)\quad q \in Q_1 \\ \delta_2(q,a) \quad q \in Q_2 \\ \{q_1,q_2\} \quad q = q_0 \text{ e } a = \varepsilon \\ \emptyset \qquad\quad\space\space\space q = q_0 \text{ e } a \neq \varepsilon \end{cases}$$
-
-![[union closure.png]]
-
-Come è mostrato nella figura, $N$ ha uno stato iniziale che si dirama nei precedenti stati iniziali di $N_1$ e $N_2$ con $\varepsilon$-archi, in questo modo la nuova macchina ipotizza non deterministicamente quale delle due macchine accetta l'input: se almeno una di esse accetta l'input, anche $N$ lo accetterà.
-
----
-##### Chiusura rispetto alla concatenazione
-
-> [!quote] Theorem
-> La classe dei linguaggi regolari è chiusa rispetto all'operazione di concatenazione
-
-**Dimostrazione:**
-
-Prendiamo due linguaggi regolari $A_1$ e $A_2$ e proviamo che $A_1 \circ A_2$ è regolare. Per definizione, poiché $A_1$ e $A_2$ sono regolari, esistono due NFA $N_1 = (Q_1, \Sigma_1, \delta_1, q_1, F_1)$ e $N_2 = (Q_2, \Sigma_2, \delta_2, q_2, F_2)$ che riconoscono rispettivamente i due linguaggi. Per dimostrare la tesi, costruiamo un nuovo NFA $N = (Q, \Sigma, \delta, q_1, F_2)$ che combini $N_1$ e $N_2$. Il nuovo automa $N$ deve configurarsi in modo tale da accettare una stringa di input se e solo se la stringa può essere divisa in due parti, la prima accettata da $N_1$ e la seconda accettata da $N_2$:
-
-- $Q = Q_1 \cup Q_2$ è l'insieme degli stati di $N$,
-- $q_1$ è lo stato iniziale di $N$,
-- $F_2$ è l'insieme degli stati accettanti di $N$,
-- Per ogni $q \in Q$ e ogni $a \in \Sigma_\varepsilon$: $$\delta(q,a) = \begin{cases} \delta_1(q,a)\qquad\qquad q \in Q_1 \text{ e } q \notin F_1 \\ \delta_1(q,a) \qquad\qquad q \in F_1 \text{ e } a \neq \varepsilon \\ \delta_1(q,a) \cup \{q_2\} \quad q \in F_1 \text{ e } a = \varepsilon \\ \delta_2(q,a)\qquad\qquad q \in Q_2 \end{cases}$$
-
-![[concatenation closure.png]]
-
-Come è mostrato nella figura, $N$ ha come stato iniziale lo stato iniziale di $N_1$, mentre gli stati finali di $N_1$ sono diventati degli stati intermedi di $N$ che confluiscono nel  precedenti stato iniziale di $N_2$ tramite $\varepsilon$-archi. Gli stati accettanti di $N$ rimangono quelli di $N_2$. In questo modo la nuova macchina permette di spostarsi non deterministicamente in $N_2$ ogni volta che $N_1$ è in uno stato accettante, dunque $N$ finisce in uno stato accettante se la prima parte dell'input è accettata da $N_1$ e la seconda parte dell'input è accettata da $N_2$.
-
----
-##### Chiusura rispetto all'operazione star
-
-> [!quote] Theorem
-> La classe dei linguaggi regolari è chiusa rispetto all'operazione star
-
-**Dimostrazione:**
-
-Prendiamo un linguaggio regolare $A_1$ e proviamo che $A_1^*$ è regolare. Per definizione, poiché $A_1$ è regolare, esiste un NFA $N_1 = (Q_1, \Sigma, \delta_1, q_1, F_1)$ che lo riconosce. Per dimostrare la tesi, costruiamo un nuovo NFA $N = (Q, \Sigma, \delta, q_0, F)$ modificando l'automa $N_1$. Il nuovo automa $N$ deve configurarsi in modo tale da riconoscere $A_1^*$, e quindi accettare una stringa di input se e solo se questa può essere divisa in varie parti ed $N_1$ accetta ognuna di queste parti:
-
-- $Q = \{q_0\} \cup Q_1$ è l'insieme degli stati di $N$,
-- $q_0$ è lo stato iniziale di $N$,
-- $F = \{q_0\} \cup F_1$ è l'insieme degli stati accettanti di $N$,
-- Per ogni $q \in Q$ e ogni $a \in \Sigma_\varepsilon$: $$\delta(q,a) = \begin{cases} \delta_1(q,a)\qquad\qquad q \in Q_1 \text{ e } q \notin F_1 \\ \delta_1(q,a) \qquad\qquad q \in F_1 \text{ e } a \neq \varepsilon \\ \delta_1(q,a) \cup \{q_1\} \quad q \in F_1 \text{ e } a = \varepsilon \\ \{q_1\} \space\quad\qquad\qquad q = q_0 \text{ e } a = \varepsilon \\ \emptyset \space\space\space\qquad\qquad\qquad q = q_0 \text{ e } a \neq \varepsilon \end{cases}$$
-
-![[star closure.png]]
-
-Come è mostrato nella figura, $N$ ha uno stato iniziale $q_0$ che punta nel precedente stato iniziale $q_1$ di $N_1$ con un $\varepsilon$-arco. Anche gli stati finali di $N$ puntano con degli $\varepsilon$-archi a $q_1$. In questo modo la nuova macchina può ripetere il processo e accettare la concatenazione di un numero arbitrario di stringhe di $A_1$. Infine, poiché lo stato iniziale $q_0$ appartiene anche all'insieme degli stati finali $F$ ($q_0 \in F$), la stringa vuota $\varepsilon$ viene accettata con il cammino nullo, garantendo correttamente che $\varepsilon \in A_1^*$.
-
----
-### ESPRESSIONI REGOLARI
-
-Dato un alfabeto $\Sigma$, definiamo come espressione regolare di $\Sigma$ una stringa $R$ rappresentante un linguaggio $L(R) \subseteq \Sigma^*$. In altre parole, ogni espressione regolare $R$ rappresenta in realtà il linguaggio $L(R)$ ad essa associata. In particolare, definiamo l’insieme delle espressioni regolari di $\Sigma$, indicato con $\text{re}(\Sigma)$, come:
-
-- $a \in \text{re}(\Sigma)$ dove $a \in \Sigma$,
-- $\varepsilon  \in \text{re}(\Sigma)$,
-- $\emptyset  \in \text{re}(\Sigma)$,
-- $R_1, R_2 \in \text{re}(\Sigma) \implies (R_1 \cup R_2) \in \text{re}(\Sigma)$,
-- $R_1, R_2 \in \text{re}(\Sigma) \implies (R_1 \circ R_2) \in \text{re}(\Sigma)$,
-- $R_1 \in \text{re}(\Sigma) \implies R_1^* \in \text{re}(\Sigma)$.
-
-> [!tip] 
-> Osserviamo come, dalla definizione:
-> - $R = a \in \text{re}(\Sigma), a \in \Sigma \implies L(R) = \{a\}$,
-> - $R = \varepsilon  \in \text{re}(\Sigma) \implies L(R) = \{\varepsilon\}$,
-> - $R = \emptyset  \in \text{re}(\Sigma) \implies L(R) = \emptyset$,
-> - $R = R_1 \cup R_2 \in \text{re}(\Sigma) \implies L(R) = L(R_1) \cup L(R_2)$,
-> - $R = R_1 \circ R_2 \in \text{re}(\Sigma) \implies L(R) = L(R_1) \circ L(R_2)$,
-> - $R = R_1^* \in \text{re}(\Sigma) \implies L(R) = L(R_1)^*$.
-
----
-#### Regole e identità nelle espressioni regolari
-
-Quando si valuta un'espressione regolare senza parentesi, le operazioni si applicano secondo la seguente gerarchia (dalla più forte alla più debole): $* \succ \circ \succ \cup$. Inoltre, nelle operazioni che comprendono $\varepsilon$ e $\emptyset$, riconosciamo le seguenti identità:
-
-$$\begin{array}{|l|l|l|} 
-\hline 
-\textbf{Elemento} & \textbf{Proprietà / Descrizione} & \textbf{Identità} \\ 
-\hline 
-\text{Insieme Vuoto } (\emptyset) & \text{Elemento neutro dell'unione} & R \cup \emptyset = R \\ 
-& \text{Elemento assorbente della concatenazione} & R \circ \emptyset = \emptyset \\ 
-& \text{Chiusura di Kleene dell'insieme vuoto} & \emptyset^* = \varepsilon \\ 
-\hline 
-\text{Stringa Vuota } (\varepsilon) & \text{Elemento neutro della concatenazione} & R \circ \varepsilon = R \\ 
-& \text{Chiusura di Kleene della stringa vuota} & \varepsilon^* = \{\varepsilon\} \\ 
-\hline 
-\end{array}$$
-
-Nota come il simbolo di concatenazione viene omesso nella stesura delle espressioni.
-
-> [!example]
-> Negli esempi seguenti assumiamo che l'alfabeto $\Sigma$ sia $\{0,1\}$:
-> - $0^*10^* = \{w\ |\ w \text{ contiene un solo } 1\}$
-> - $\Sigma^*1\Sigma^* = \{w\ |\ w \text{ ha almeno un } 1\}$
-> - $\Sigma^*001\Sigma^* = \{w\ |\ w \text{ contiene la stringa } 001 \text{ come sottostringa}\}$
-> - $(\Sigma\Sigma)^* = \{w\ |\ w \text{ è una stringa di lunghezza pari}\}$
-> - $(\Sigma\Sigma\Sigma)^* = \{w\ |\ w \text{ è una stringa che ha lunghezza multipla di 3}\}$
-> - $01 \cup 10 = \{01,10\}$
-> - $0\Sigma^*0 \cup 1\Sigma^*1 \cup 0 \cup 1 = \{w\ |\ w \text{ inizia e termina con lo stesso simbolo}\}$
-> - $(0 \cup \varepsilon)1^* = 01^* \cup \varepsilon1^* = 01^* \cup 1^*$
-> - $(0 \cup \varepsilon)(1 \cup \varepsilon) = \{\varepsilon,0,1,01\}$
-> - $1^*\emptyset = \emptyset$ 
-> - $\emptyset^* = \{\varepsilon\}$
-
----
-#### Equivalenza con gli automi finiti
-
-Le espressioni regolari e gli automi finiti sono equivalenti rispetto alla loro potenza descrittiva: ogni espressione regolare può essere trasformata in un automa finito che riconosce il linguaggio che essa descrive, e viceversa (ricorda il [[Automaton#LINGUAGGI REGOLARI|teorema]]).
-
-> [!quote] Theorem
-> Un linguaggio $A \subseteq \Sigma^*$ è regolare se e solo se esiste un'espressione regolare $R \in \text{re}(\Sigma)$ tale che $L(R) = A$.
-
-**Dimostrazione:**
-
-Dimostriamo il primo lemma:
-
-> [!quote] Lemma
-> Se un linguaggio $A$ è descritto da un'espressione regolare $R \in \text{re}(\Sigma)$ (ovvero $A = L(R)$), allora $A$ è un linguaggio regolare (ossia esiste un NFA $N$ tale che $L(N) = L(R)$).
-
-Procediamo per induzione strutturale sulla complessità dell'espressione regolare $R \in \text{re}(\Sigma)$. 
-
-Caso base:
-
-![[lemma 1 base case re equivalent nfa.png]]
-
-- Se $R = \emptyset$: dalla definizione si ha $L(R) = \emptyset$. Definiamo l'NFA $N_\emptyset$ = $(\{q_0\}, \Sigma, \delta, q_{0}, \emptyset)$, dove $\delta(q_0,b) = \emptyset$ per ogni $b \in \Sigma$. Dal momento in cui non ci sono sono stati di accettazione, possiamo dire che $L(N_\emptyset) = \emptyset = L(R)$.
-- Se $R = \varepsilon$: dalla definizione si ha $L(R) = \{\varepsilon\}$. Definiamo l'NFA $N_\varepsilon$ = $(\{q_0\}, \Sigma, \delta, q_{0}, \{q_0\})$, dove $\delta(q_0,b) = \emptyset$ per ogni $b \in \Sigma$. Dal momento in cui l'automa accetta solo la stringa vuota $\varepsilon$, possiamo dire che $L(N_\varepsilon) = \{\varepsilon\} = L(R)$.
-- Se $R = a$: dalla definizione si ha $L(R) = \{a\}$. Definiamo l'NFA $N_a$ = $(\{q_0,q_1\}, \Sigma, \delta, q_{0}, \{q_1\})$, dove $\delta(q_0,a) = \{q_1\}$ e $\delta(r,b) = \emptyset$. Dal momento in cui l'automa accetta solo la stringa formata dal simbolo $a$, possiamo dire che $L(N_a) = \{a\} = L(R)$.
-
-Passo induttivo:
-
-Ipotesi induttiva: assumiamo che per le espressioni regolari $R_1, R_2 \in \text{re}(\Sigma)$ valga la proprietà, ossia che esistano due NFA $N_1$ e $N_2$ tali che: $L(N_1) = L(R_1)$ e $L(N_2) = L(R_2)$. Mostriamo che la proprietà vale anche per i composti formati dalle operazioni regolari:
-
-- Se $R = R_1 \cup R_2$: dalla definizione si ha $L(R) = L(R_1) \cup L(R_2)$. Per ipotesi induttiva, $L(R_1)$ e $L(R_2)$ sono riconosciuti dagli automi $N_1$ e $N_2$. Poiché la classe dei linguaggi regolari è [[Automaton#Chiusura rispetto all'unione|chiusa rispetto all'unione]], è possibile costruire un NFA $N$ che riconosce $L(N_1) \cup L(N_2)$ mediante l'aggiunta di un nuovo stato iniziale e $\varepsilon$-archi verso gli stati iniziali $N_1$ e $N_2$. Ne consegue che $L(N) = L(R_1) \cup L(R_2) = L(R)$.
-- Se $R = R_1 \circ R_2$: dalla definizione si ha $L(R) = L(R_1) \circ L(R_2)$. Per ipotesi induttiva, $L(R_1)$ e $L(R_2)$ sono riconosciuti dagli automi $N_1$ e $N_2$. Poiché la classe dei linguaggi regolari è [[Automaton#Chiusura rispetto alla concatenazione|chiusa rispetto alla concatenazione]], è possibile costruire un NFA $N$ che riconosce $L(N_1) \circ L(N_2)$ collegando tutti gli stati finali di $N_1$ allo stato iniziale di $N_2$ tramite $\varepsilon$-archi. Ne consegue che $L(N) = L(R_1) \circ L(R_2) = L(R)$.
-- Se $R = R_1^*$: dalla definizione si ha $L(R) = L(R_1)^*$. Per ipotesi induttiva, $L(R_1)$ e $L(R_2)$ sono riconosciuti dagli automi $N_1$ e $N_2$. Poiché la classe dei linguaggi regolari è [[Automaton#Chiusura rispetto all'operazione star|chiusa rispetto all'operazione star]], è possibile costruire un NFA $N$ che riconosce $L(N_1)^*$ aggiungendo un nuovo stato accettante, un $\varepsilon$-arco da questo al vecchio stato iniziale, e $\varepsilon$-archi che riportano dagli stati di accettazione di $N_1$ al suo stato iniziale. Ne consegue che $L(N) = L(R_1)^* = L(R)$.
-
-
-> [!example] 
-> Trasformiamo l'espressione regolare $(\text{ab} \cup \text{a})^*$ in un NFA, partendo dalle sottoespressioni più piccole a quelle più grandi.
-
-![[(ab U a)* example.png]]
-![[(ab U a)* example 1.png]]
-![[(ab U a)* example 2.png]]
-

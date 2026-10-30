@@ -126,7 +126,7 @@ Una volta ottenuto il GNFA equivalente dall'NFA di partenza possiamo applicare l
 - **Caso base:** se il GNFA è costituito solamente dallo stato iniziale $q_{\text{start}}$ e dallo stato accettante $q_{\text{accept}}$, allora esiste un unico arco tra i due stati, etichettato con $R=\delta(q_{\text{start}},q_{\text{accept}})$. La procedura restituisce direttamente l'espressione regolare $R$.
 - **Passo ricorsivo:** se il GNFA possiede più di due stati, scegliamo arbitrariamente uno stato $q_{\text{rip}}\neq q_{\text{start}},q_{\text{accept}}$ e lo eliminiamo. Otteniamo dunque $G' = (Q',\Sigma,\delta',q_{\text{start}},q_{\text{accept}})$, dove $Q'=Q-\{q_{\text{rip}}\}$. L'eliminazione di $q_{\text{rip}}$ richiede di aggiornare tutte le etichette degli archi tra gli stati rimanenti. Quindi, per ogni coppia di stati rimanenti $q_i\in Q'-\{q_{\text{accept}}\}$ e $q_j\in Q'-\{q_{\text{start}}\}$, definiamo $R_1=\delta(q_i,q_{\text{rip}})$, $R_2=\delta(q_{\text{rip}},q_{\text{rip}})$, $R_3=\delta(q_{\text{rip}},q_j)$, $R_4=\delta(q_i,q_j)$. Il termine $(R_1)(R_2)^*(R_3)$ rappresenta tutti i percorsi che passano attraverso $q_{\text{rip}}$, eventualmente visitandolo più volte grazie al ciclo $R_2$, mentre il termine $(R_4)$ rappresenta il percorso diretto da $q_i$ a $q_j$. Dunque, la funzione di transizione del nuovo GNFA è definita come $\delta'(q_i,q_j)= (R_1)(R_2)^*(R_3)\cup(R_4)$. 
 
-![[convert.png|700]]
+![[convert.png]]
 
 Una volta aggiornate tutte le etichette degli archi, la procedura viene applicata ricorsivamente al nuovo GNFA $G'$. Il procedimento termina quando rimangono solamente lo stato iniziale e lo stato accettante (caso base). L'etichetta $R$ dell'unico arco rimanente rappresenta l'espressione regolare equivalente al GNFA iniziale.
 

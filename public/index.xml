@@ -10,7 +10,13 @@
     <link>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Expressions</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Regular-Expressions</guid>
     <description><![CDATA[ Dato un alfabeto \Sigma, definiamo come espressione regolare di \Sigma una stringa R rappresentante un linguaggio L(R) \subseteq \Sigma^*. ]]></description>
-    <pubDate>Fri, 30 Oct 2026 18:51:15 GMT</pubDate>
+    <pubDate>Fri, 30 Oct 2026 19:03:46 GMT</pubDate>
+  </item><item>
+    <title>Strings</title>
+    <link>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</link>
+    <guid>https://drizzzydrake.github.io/PublicNotes/ACC/Strings</guid>
+    <description><![CDATA[ Una stringa è una sequenza di caratteri. Una stringa è definita su un alfabeto, che varia a seconda dell’applicazione. ]]></description>
+    <pubDate>Fri, 30 Oct 2026 19:03:46 GMT</pubDate>
   </item><item>
     <title>Finite Automaton</title>
     <link>https://drizzzydrake.github.io/PublicNotes/ACC/Finite-Automaton</link>
@@ -58,12 +64,6 @@
     <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/Web</link>
     <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Network-Applications/Web</guid>
     <description><![CDATA[ Il Web è un’applicazione di rete di tipo client-server, distribuita su scala globale, che utilizza l’infrastruttura di Internet Architecture per consentire il reperimento e la fruizione di contenuti ipertestuali e multimediali (risorse), identificati univocamente tramite URL, trasferiti attraverso i... ]]></description>
-    <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
-  </item><item>
-    <title>Application Layer</title>
-    <link>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</link>
-    <guid>https://drizzzydrake.github.io/PublicNotes/RE/Layered-Architecture/Protocol-Stack-Layers/Application-Layer</guid>
-    <description><![CDATA[ Il livello applicativo è la sede delle applicazioni di rete. ]]></description>
     <pubDate>Sun, 25 Oct 2026 08:47:07 GMT</pubDate>
   </item>
     </channel>

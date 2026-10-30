@@ -21,7 +21,8 @@ Dato un alfabeto $\Sigma$, definiamo come espressione regolare di $\Sigma$ una s
 
 Quando si valuta un'espressione regolare senza parentesi, le operazioni si applicano secondo la seguente gerarchia (dalla più forte alla più debole): $* \succ \circ \succ \cup$. Inoltre, nelle operazioni che comprendono $\varepsilon$ e $\emptyset$, riconosciamo le seguenti identità:
 
-$$\begin{array}{|l|l|l|} 
+$$
+\begin{array}{|l|l|l|} 
 \hline 
 \textbf{Elemento} & \textbf{Proprietà / Descrizione} & \textbf{Identità} \\ 
 \hline 
@@ -32,7 +33,8 @@ $$\begin{array}{|l|l|l|}
 \text{Stringa Vuota } (\varepsilon) & \text{Elemento neutro della concatenazione} & R \circ \varepsilon = R \\ 
 & \text{Chiusura di Kleene della stringa vuota} & \varepsilon^* = \{\varepsilon\} \\ 
 \hline 
-\end{array}$$
+\end{array}
+$$
 
 Nota come il simbolo di concatenazione viene omesso nella stesura delle espressioni.
 

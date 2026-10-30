@@ -42,7 +42,7 @@ Dati due linguaggi $L_1, L_2 \subseteq \Sigma^*$, si definiscono le seguenti ope
 $$
 \begin{array}{|l|l|}
 \hline
-\textbf{operazione} & \textbf{definizione} \\
+\textbf{Operazione} & \textbf{Definizione} \\
 \hline
 \text{unione} & L_1 \cup L_2 = \{ x \in \Sigma^* : x \in L_1 \lor x \in L_2 \} \\
 \hline

@@ -22,17 +22,16 @@ Dato un alfabeto $\Sigma$, definiamo come espressione regolare di $\Sigma$ una s
 Quando si valuta un'espressione regolare senza parentesi, le operazioni si applicano secondo la seguente gerarchia (dalla più forte alla più debole): $* \succ \circ \succ \cup$. Inoltre, nelle operazioni che comprendono $\varepsilon$ e $\emptyset$, riconosciamo le seguenti identità:
 
 $$
-\begin{array}{|l|l|l|} 
-\hline 
-\textbf{Elemento} & \textbf{Proprietà / Descrizione} & \textbf{Identità} \\ 
+\begin{array}{|l|l|l|}
+\hline
+\textbf{Elemento} & \textbf{Descrizione} & \textbf{Regola} \\ 
 \hline 
 \text{Insieme Vuoto } (\emptyset) & \text{Elemento neutro dell'unione} & R \cup \emptyset = R \\ 
 & \text{Elemento assorbente della concatenazione} & R \circ \emptyset = \emptyset \\ 
-& \text{Chiusura di Kleene dell'insieme vuoto} & \emptyset^* = \varepsilon \\ 
-\hline 
-\text{Stringa Vuota } (\varepsilon) & \text{Elemento neutro della concatenazione} & R \circ \varepsilon = R \\ 
-& \text{Chiusura di Kleene della stringa vuota} & \varepsilon^* = \{\varepsilon\} \\ 
-\hline 
+& \text{Chiusura di Kleene dell'insieme vuoto} & \emptyset^* = \varepsilon \\  \hline
+\text{Stringa Vuota } (\varepsilon) & \text{Elemento neutro della concatenazione} & R \circ \varepsilon = R \\
+& \text{Chiusura di Kleene della stringa vuota} & \varepsilon^* = \{\varepsilon\} \\
+\hline
 \end{array}
 $$
 

@@ -131,7 +131,14 @@ Una volta aggiornate tutte le etichette degli archi, la procedura viene applicat
 
 ---
 #### Esempio di conversione da NFA a espressione regolare
-~
+
+
+> [!example] 
+> Convertiamo il seguente NFA in un'espressione regolare equivalente.
+
+![[from nfa to re example.png]]
+![[from nfa to re example 1.png]]
+![[from nfa to re example 2.png]]
 
 ---
 ### EQUIVALENZA CON GLI AUTOMI FINITI
@@ -139,7 +146,7 @@ Una volta aggiornate tutte le etichette degli archi, la procedura viene applicat
 Le espressioni regolari e gli automi finiti sono equivalenti rispetto alla loro potenza descrittiva: ogni espressione regolare può essere trasformata in un automa finito che riconosce il linguaggio che essa descrive, e viceversa (ricorda il [[Finite Automaton#LINGUAGGI REGOLARI|teorema]]).
 
 > [!quote] Theorem
-> Un linguaggio $A \subseteq \Sigma^*$ è regolare se e solo se esiste un'espressione regolare $R \in \text{re}(\Sigma)$ tale che $L(R) = A$.
+> Un linguaggio $A \subseteq \Sigma^*$ è [[Regular Languages|regolare]] se e solo se esiste un'espressione regolare $R \in \text{re}(\Sigma)$ tale che $L(R) = A$.
 
 **Dimostrazione:**
 
@@ -175,89 +182,22 @@ Ipotesi induttiva: assumiamo che per le espressioni regolari $R_1, R_2 \in \text
 ![[(ab U a)* example 1.png]]
 ![[(ab U a)* example 2.png]]
 
----
-
 Il primo lemma è dimostrato. Ora veniamo all'altra direzione:
 
 > [!quote] Lemma
 > Se un linguaggio $A$ è regolare (ossia esiste un NFA $N$ tale che $L(N) = A$), allora $A$ è descritto da un'espressione regolare $R \in \text{re}(\Sigma)$ (ovvero $A = L(R)$).
 
-Perfetto. Adesso il **Lemma 2** è molto più snello, perché tutta la teoria è stata spostata nelle due sezioni precedenti. Ho cercato di renderlo il più possibile speculare al **Lemma 1**, mantenendo la tua nomenclatura e richiamando semplicemente i concetti già introdotti.
+Poiché $A$ è un linguaggio regolare, esiste un NFA $N$ tale che $L(N)=A$. Come visto nella sezione [[Regular Expressions#DA NFA A ESPRESSIONE REGOLARE|precedente]], trasformiamo dapprima $N$ in un GNFA equivalente e applichiamo quindi ricorsivamente la procedura CONVERT. Poiché la trasformazione da NFA a GNFA preserva il linguaggio riconosciuto (equivalenza), è sufficiente dimostrare che CONVERT restituisca sempre un'espressione regolare equivalente al GNFA di partenza. Procediamo quindi per induzione sul numero di stati del GNFA.
 
----
+Caso base:
 
-## Lemma
+Sia $k=2$, dove $k$ è il numero di stati del GNFA. In questo caso il GNFA è costituito solamente dallo stato iniziale $q_{\text{start}}$, dallo stato accettante $q_{\text{accept}}$ e dall'unico arco che li collega, etichettato con un'espressione regolare $R$. Per definizione della procedura CONVERT, viene restituita direttamente l'espressione regolare $R$. Poiché tutte e sole le stringhe accettate dal GNFA sono descritte da tale etichetta, possiamo concludere che $L(R)=L(G)$.
 
-Se un linguaggio $A$ è regolare (ossia esiste un NFA $N$ tale che $L(N)=A$), allora $A$ è descritto da un'espressione regolare $R\in\mathrm{re}(\Sigma)$ (ovvero $A=L(R)$).
+Passo induttivo:
 
-**Dimostrazione:**
+Ipotesi induttiva: assumiamo che la proprietà valga per tutti i GNFA con $k-1$ stati, ossia che la procedura CONVERT restituisca un'espressione regolare equivalente al GNFA considerato. Mostriamo che la proprietà vale anche per un GNFA $G$ con $k$ stati. La procedura CONVERT sceglie arbitrariamente uno stato $q_{\text{rip}}\neq q_{\text{start}},q_{\text{accept}}$, ottenendo un nuovo GNFA $G'$ con $k-1$ stati. Per costruzione della procedura CONVERT, $G'$ riconosce lo stesso linguaggio del GNFA originario, ovvero $L(G')=L(G)$. Poiché $G'$ possiede $k-1$ stati, per ipotesi induttiva la procedura CONVERT restituisce un'espressione regolare $R$ tale che $L(R)=L(G')$. Essendo $L(G')=L(G)$, segue che $L(R)=L(G)$.  
 
-Poiché $A$ è un linguaggio regolare, esiste un NFA $N$ tale che
-
-$ L(N)=A. $
-
-Trasformiamo dapprima $N$ in un **GNFA** equivalente (vedi [[GNFA]]), quindi applichiamo ricorsivamente la procedura **CONVERT** (vedi [[CONVERT]]) fino a ottenere un GNFA costituito solamente dallo stato iniziale e dallo stato accettante.
-
-Dimostriamo ora che la procedura **CONVERT** restituisce sempre un'espressione regolare equivalente al GNFA di partenza.
-
-Procediamo per induzione sul numero di stati del GNFA.
-
-### Caso base
-
-Sia
-
-$ k=2, $
-
-dove $k$ è il numero di stati del GNFA.
-
-In questo caso il GNFA è costituito solamente dallo stato iniziale $q_{start}$, dallo stato accettante $q_{accept}$ e dall'unico arco che li collega, etichettato con un'espressione regolare $R$.
-
-Per definizione della procedura **CONVERT**, viene restituita direttamente l'espressione regolare $R$. Poiché tutte e sole le stringhe accettate dal GNFA sono descritte da tale etichetta, possiamo concludere che
-
-$ L(R)=L(G). $
-
-### Passo induttivo
-
-**Ipotesi induttiva:** assumiamo che la proprietà valga per tutti i GNFA con $k-1$ stati, ossia che la procedura **CONVERT** restituisca un'espressione regolare equivalente al GNFA considerato.
-
-Mostriamo che la proprietà vale anche per un GNFA $G$ con $k$ stati.
-
-La procedura **CONVERT** sceglie arbitrariamente uno stato
-
-$ q_{rip}\neq q_{start},q_{accept}, $
-
-lo elimina e costruisce un nuovo GNFA $G'$ aggiornando le etichette degli archi secondo la regola
-
-$ (R_1)(R_2)^*(R_3)\cup(R_4). $
-
-Questa nuova etichetta descrive esattamente tutte le stringhe che consentivano di passare da uno stato $q_i$ a uno stato $q_j$:
-
-- transitando attraverso lo stato eliminato $q_{rip}$, eventualmente percorrendone il ciclo un numero arbitrario di volte;
-- oppure utilizzando direttamente l'arco già esistente tra $q_i$ e $q_j$.
-
-Di conseguenza, il nuovo GNFA $G'$ riconosce lo stesso linguaggio del GNFA originario, ovvero
-
-$ L(G')=L(G). $
-
-Poiché $G'$ possiede $k-1$ stati, per ipotesi induttiva la procedura **CONVERT** restituisce un'espressione regolare $R$ tale che
-
-$ L(R)=L(G'). $
-
-Essendo
-
-$ L(G')=L(G), $
-
-segue che
-
-$ L(R)=L(G). $
-
-Poiché il GNFA $G$ è equivalente all'NFA iniziale $N$, possiamo concludere che
-
-$ L(R)=L(G)=L(N)=A. $
-
-Pertanto il linguaggio regolare $A$ è descritto da un'espressione regolare, cioè
-
-$ A=L(R). $
+Abbiamo quindi dimostrato che la procedura CONVERT restituisce un'espressione regolare equivalente al GNFA di partenza. In conclusione: poiché il GNFA $G$ è stato costruito a partire dall'NFA iniziale $N$ mantenendo invariato il linguaggio riconosciuto, allora: $L(R)=L(G)=L(N)=A$. Il linguaggio regolare $A$ è descritto da un'espressione regolare, cioè $A=L(R)$.
 
 ---
 
